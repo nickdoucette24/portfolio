@@ -1,7 +1,7 @@
 const sequelize = require("../sequelize");
 const Theme = require("../models/Theme");
 
-// Define the teams data
+// Define the themes data
 const themesData = [
   {
     themeName: "Winter",
@@ -19,7 +19,7 @@ const themesData = [
 async function seedThemes() {
   try {
     await sequelize.sync({ force: true });
-    await Team.bulkCreate(themesData);
+    await Theme.bulkCreate(themesData);
     console.log("Themes table has been seeded successfully");
     process.exit();
   } catch (error) {

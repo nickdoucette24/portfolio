@@ -46,7 +46,7 @@ const Theme = sequelize.define(
     },
   },
   {
-    tableName: "Teams",
+    tableName: "Themes",
     timestamps: true,
   }
 );
