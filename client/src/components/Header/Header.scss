@@ -1,0 +1,170 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+// ? Keyframe Animations
+// Heartbeat animation for the /forthedogs link icon
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.1);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// ! Main Styling
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1.5rem;
+  background-color: transparent;
+
+  @include mobile {
+    padding: 2.25rem 1.75rem;
+  }
+
+  @include tablet {
+    padding: 2.5rem 2rem;
+  }
+  @include laptop {
+    padding: 2rem 2rem 2rem 1rem;
+    max-width: 100%;
+  }
+  @include desktop {
+    padding: 2rem 2.5rem 2rem 1.5rem;
+  }
+
+  &__navs {
+    display: none;
+
+    @include laptop {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+
+  &__home {
+    @include flex-centre;
+  }
+
+  &__links {
+    display: none;
+    @include laptop {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    @include desktop {
+      gap: 2rem;
+    }
+  }
+
+  &__hamburger {
+    @include laptop {
+      display: none;
+    }
+  }
+
+  &__logo {
+    width: 8rem;
+
+    @include mobile {
+      width: 9rem;
+    }
+
+    @include tablet {
+      width: 10rem;
+    }
+
+    @include laptop {
+      width: 15rem;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.03);
+      }
+
+      &:active {
+        transform: scale(1);
+      }
+    }
+
+    @include desktop {
+      width: 20rem;
+    }
+  }
+
+  &__cta {
+    @include work-together-button;
+
+    &--text {
+      color: $iceBlue-winter;
+    }
+  }
+
+  &__z {
+    @include laptop {
+      width: 1.5rem;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        animation: heartbeat 1s infinite;
+      }
+
+      &:active {
+        transform: scale(1);
+        animation: none;
+      }
+    }
+
+    @include desktop {
+      width: 2.25rem;
+    }
+
+    &--link {
+      @include flex-centre;
+    }
+  }
+}
+
+.nav-container {
+  @include flex-centre;
+
+  &__list {
+    @include nav-list;
+  }
+
+  &__item {
+    @include nav-link;
+
+    &--button {
+      @include nav-button;
+    }
+  }
+}
+
+// ! Third Party Styling Edits
+.hamburger {
+  padding: 0;
+}
+
+.hamburger-inner {
+  filter: invert(1) brightness(2);
+}

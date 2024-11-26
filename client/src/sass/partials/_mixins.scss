@@ -1,0 +1,113 @@
+@use "./variables" as *;
+
+// ! CTA Button Mixins
+@mixin work-together-button {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-family: Lexend;
+  font-weight: 600;
+  background-color: #00000090;
+  color: $iceBlue-winter;
+  text-wrap: nowrap;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease,
+    color 0.2s ease;
+
+  @include desktop {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    color: $royalBlue-winter;
+    background-color: $iceBlue-winter;
+  }
+
+  &:active {
+    transform: scale(1);
+  }
+}
+
+//  ! Flexbox Mixins
+@mixin flex-centre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// ! Nav Mixins
+@mixin nav-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include desktop {
+    gap: 0.25rem;
+  }
+}
+
+@mixin nav-link {
+  text-wrap: nowrap;
+  transition: transform 0.15s ease-in-out, background-colour 0.15s ease-in-out,
+    border-radius 0.15s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: #00000090;
+    border-radius: 0.5rem;
+  }
+
+  &:active {
+    transform: scale(1);
+    background-color: #00000060;
+  }
+}
+
+@mixin nav-button {
+  background-color: transparent;
+  font-family: Lexend;
+  font-weight: 900;
+  font-size: 1rem;
+  color: $iceBlue-winter;
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+
+  @include desktop {
+    font-size: 1.25rem;
+  }
+}
+
+// ! Media Queries
+@mixin mobile {
+  @media (min-width: $mobile-breakpoint) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: $laptop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
