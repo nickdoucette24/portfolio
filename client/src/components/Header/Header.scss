@@ -1,27 +1,50 @@
 @use "../../sass/partials/variables" as *;
 @use "../../sass/partials/mixins" as *;
 
+// ? Keyframe Animations
+// Heartbeat animation for the /forthedogs link icon
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.1);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 // ! Main Styling
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 0.75rem;
+  padding: 2rem 1.5rem;
   background-color: transparent;
 
   @include mobile {
-    padding: 1.5rem 1rem;
+    padding: 2.25rem 1.75rem;
   }
 
   @include tablet {
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 2rem;
   }
   @include laptop {
-    padding: 1.5rem 2rem;
+    padding: 2rem 2rem 2rem 1rem;
     max-width: 100%;
   }
   @include desktop {
-    padding: 1.5rem;
+    padding: 2rem 2.5rem 2rem 1.5rem;
   }
 
   &__navs {
@@ -46,6 +69,10 @@
       align-items: center;
       gap: 1rem;
     }
+
+    @include desktop {
+      gap: 2rem;
+    }
   }
 
   &__hamburger {
@@ -66,7 +93,7 @@
     }
 
     @include laptop {
-      width: 12rem;
+      width: 15rem;
       cursor: pointer;
       transition: transform 0.2s ease-in-out;
 
@@ -78,16 +105,17 @@
         transform: scale(1);
       }
     }
+
+    @include desktop {
+      width: 20rem;
+    }
   }
 
   &__cta {
     @include work-together-button;
-    position: relative;
-    z-index: 1;
 
     &--text {
       color: $iceBlue-winter;
-      z-index: 2;
     }
   }
 
@@ -97,11 +125,12 @@
       transition: transform 0.2s ease-in-out;
 
       &:hover {
-        transform: scale(1.2);
+        animation: heartbeat 1s infinite;
       }
 
       &:active {
         transform: scale(1);
+        animation: none;
       }
     }
 

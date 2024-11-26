@@ -25,7 +25,7 @@ const Header = () => {
           <ul className="nav-container__list">
             <li className="nav-container__item">
               <button className="nav-container__item--button" type="button">
-                About
+                My Process
               </button>
             </li>
             <li className="nav-container__item">
