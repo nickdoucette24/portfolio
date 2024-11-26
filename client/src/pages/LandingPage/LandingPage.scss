@@ -1,6 +1,88 @@
 @use "../../sass/partials/variables" as *;
 @use "../../sass/partials/mixins" as *;
 
+// ! Page Styling
 body {
   background-color: $darkBlue-winter;
+}
+
+// ! Main Styling
+.landing-page {
+  @include flex-centre;
+  color: $iceBlue-winter;
+
+  &__rotating-cube {
+    perspective: 1000px;
+    display: inline-block;
+  }
+}
+
+// ! Rotating Cube Styling
+// Cube container
+.cube {
+  width: 10rem;
+  height: 4rem;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCube 14s infinite ease-in-out;
+}
+
+// Face styling
+.face {
+  position: absolute;
+  width: 22rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $darkBlue-winter;
+  font-family: Lexend;
+  font-weight: 800;
+  text-wrap: nowrap;
+  border: 2px solid $iceBlue-winter;
+  color: white;
+  font-size: 2rem;
+  box-sizing: border-box;
+  border-radius: 1px;
+}
+
+// Position Each Face
+.front {
+  transform: rotateX(0deg) translateZ(1.75rem);
+  background-color: rgb(249, 179, 47);
+  color: $navyBlue-winter;
+}
+
+.bottom {
+  transform: rotateX(90deg) translateZ(1.75rem);
+  background-color: rgb(20, 89, 20);
+  color: $cream;
+}
+
+.back {
+  transform: rotateX(180deg) translateZ(1.75rem);
+  background-color: $slate;
+  color: rgb(219, 179, 70);
+}
+
+.top {
+  transform: rotateX(270deg) translateZ(1.75rem);
+  background-color: $royalBlue-winter;
+}
+
+// Keyframes for Cube Rotation on X-Axis
+@keyframes rotateCube {
+  0%,
+  100% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: rotateX(90deg) rotateY(0deg);
+  }
+  50% {
+    transform: rotateX(180deg) rotateY(0deg);
+  }
+  75% {
+    transform: rotateX(270deg) rotateY(0deg);
+  }
 }
