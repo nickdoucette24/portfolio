@@ -1,0 +1,6 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+body {
+  background-color: $darkBlue-winter;
+}
