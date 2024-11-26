@@ -1,5 +1,59 @@
 @use "./variables" as *;
 
+// ! Styling Mixins
+@mixin h1 {
+  font-size: 4.5rem;
+  font-family: Lexend;
+  font-weight: 900;
+
+  @include mobile {
+    font-size: 4.75rem;
+  }
+
+  @include tablet {
+    font-size: 5.25rem;
+  }
+
+  @include laptop {
+    font-size: 5.75rem;
+  }
+}
+
+@mixin h2 {
+  font-size: 3rem;
+  font-family: Lexend;
+
+  @include mobile {
+    font-size: 3.25rem;
+  }
+
+  @include tablet {
+    font-size: 3.75rem;
+  }
+
+  @include laptop {
+    font-size: 4rem;
+  }
+}
+
+@mixin h3 {
+  font-size: 2rem;
+  font-family: Lexend;
+
+  @include mobile {
+    font-size: 2.25rem;
+  }
+
+  @include tablet {
+    font-size: 2.75rem;
+  }
+
+  @include laptop {
+    font-size: 3rem;
+  }
+}
+
+// ! Font Mixins
 // ! CTA Button Mixins
 @mixin work-together-button {
   padding: 1rem;

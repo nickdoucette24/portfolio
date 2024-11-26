@@ -6,14 +6,190 @@ body {
   background-color: $darkBlue-winter;
 }
 
+// ! Root variables for in-line JS
+:root {
+  --ice-blue: #{$iceBlue-winter};
+}
+
 // ! Main Styling
 .landing-page {
   @include flex-centre;
+  width: 100%;
+  margin: auto;
   color: $iceBlue-winter;
+  position: relative;
 
   &__rotating-cube {
     perspective: 1000px;
     display: inline-block;
+  }
+
+  &__line {
+    width: 1px;
+    height: 12rem;
+    background: $iceBlue-winter;
+    position: absolute;
+    top: 28rem;
+    left: 16rem;
+
+    @include tablet {
+      top: 32rem;
+    }
+
+    @include laptop {
+      top: 37rem;
+      left: 30rem;
+    }
+
+    &--title {
+      font-family: Parkinsans;
+      transform: rotateZ(270deg);
+      position: absolute;
+      top: 28.5rem;
+      left: 13rem;
+      transition: color 0.2s ease-in-out;
+      cursor: default;
+
+      &:hover {
+        color: $pastelBlue-winter;
+      }
+    }
+  }
+}
+
+.hero-wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: center;
+    padding: 1rem 2rem;
+    gap: 7%;
+  }
+
+  &__headshot {
+    @include flex-centre;
+    opacity: 0;
+    margin-top: 20rem;
+    cursor: default;
+    position: relative;
+    transform: translateY(50px);
+    display: hidden;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+    @include tablet {
+      margin-top: 0;
+    }
+
+    &--img {
+      width: 10rem;
+      border-radius: 0.3rem;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+      @include mobile {
+        width: 11rem;
+      }
+
+      @include tablet {
+        width: 13.5rem;
+        margin-top: 0;
+      }
+
+      @include laptop {
+        width: 18rem;
+      }
+
+      &.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    &.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &__text {
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include laptop {
+      align-items: baseline;
+    }
+
+    &--h1 {
+      @include h1;
+      text-align: center;
+      margin: 3rem 0 0 0;
+    }
+
+    &--h2 {
+      @include h2;
+      margin: 0.5rem 0;
+    }
+
+    &--h3 {
+      @include h3;
+      margin: 1rem 0;
+    }
+
+    &--highlight {
+      color: $logoRed;
+      font-size: 4.75rem;
+
+      @include mobile {
+        font-size: 5rem;
+      }
+
+      @include tablet {
+        font-size: 5.25rem;
+      }
+
+      @include laptop {
+        font-size: 5.5rem;
+      }
+    }
+
+    &--group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include laptop {
+        flex-direction: row;
+        text-wrap: nowrap;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: baseline;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  &__cube-container {
+    @include flex-centre;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+
+    @include mobile {
+      gap: 1.25rem;
+    }
+
+    @include tablet {
+      gap: 1.5rem;
+      width: 100%;
+    }
   }
 }
 
@@ -21,56 +197,114 @@ body {
 // Cube container
 .cube {
   width: 10rem;
-  height: 4rem;
+  height: 2.25rem;
   position: relative;
   transform-style: preserve-3d;
   animation: rotateCube 14s infinite ease-in-out;
+
+  @include laptop {
+    height: 3.25rem;
+  }
 }
 
 // Face styling
 .face {
   position: absolute;
-  width: 22rem;
-  height: 3.5rem;
+  width: 11rem;
+  height: 2.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $darkBlue-winter;
-  font-family: Lexend;
   font-weight: 800;
   text-wrap: nowrap;
-  border: 2px solid $iceBlue-winter;
+  border: 2px solid white;
   color: white;
-  font-size: 2rem;
+  font-size: 1rem;
   box-sizing: border-box;
   border-radius: 1px;
+
+  @include mobile {
+    width: 12rem;
+    font-size: 1.1rem;
+  }
+
+  @include tablet {
+    width: 14.5rem;
+    font-size: 1.35rem;
+    padding: 1.25rem 1rem;
+  }
+
+  @include laptop {
+    width: 29rem;
+    height: 3.25rem;
+    font-size: 2rem;
+    padding: 1.5rem;
+  }
+
+  &__period {
+    color: $iceBlue-winter;
+  }
 }
 
-// Position Each Face
+// Positionings for each face
 .front {
-  transform: rotateX(0deg) translateZ(1.75rem);
-  background-color: rgb(249, 179, 47);
-  color: $navyBlue-winter;
+  transform: rotateX(0deg) translateZ(1.12rem);
+  background-color: $cream;
+  color: $logoRed;
+
+  @include tablet {
+    transform: rotateX(0deg) translateZ(1.365rem);
+  }
+
+  @include laptop {
+    transform: rotateX(0deg) translateZ(1.6rem);
+  }
 }
 
 .bottom {
-  transform: rotateX(90deg) translateZ(1.75rem);
-  background-color: rgb(20, 89, 20);
+  transform: rotateX(270deg) translateZ(1.12rem);
+  background-color: $logoRed;
   color: $cream;
+
+  @include tablet {
+    transform: rotateX(270deg) translateZ(1.365rem);
+  }
+
+  @include laptop {
+    transform: rotateX(270deg) translateZ(1.6rem);
+  }
 }
 
 .back {
-  transform: rotateX(180deg) translateZ(1.75rem);
-  background-color: $slate;
-  color: rgb(219, 179, 70);
+  transform: rotateX(180deg) translateZ(1.12rem);
+  background-color: #ffecd1;
+  color: #15616d;
+
+  @include tablet {
+    transform: rotateX(180deg) translateZ(1.365rem);
+  }
+
+  @include laptop {
+    transform: rotateX(180deg) translateZ(1.6rem);
+  }
 }
 
 .top {
-  transform: rotateX(270deg) translateZ(1.75rem);
-  background-color: $royalBlue-winter;
+  transform: rotateX(90deg) translateZ(1.12rem);
+  background-color: #15616d;
+  color: $cream;
+
+  @include tablet {
+    transform: rotateX(90deg) translateZ(1.365rem);
+  }
+
+  @include laptop {
+    transform: rotateX(90deg) translateZ(1.6rem);
+  }
 }
 
-// Keyframes for Cube Rotation on X-Axis
+// ! Keyframes
+// Cube Rotation
 @keyframes rotateCube {
   0%,
   100% {
@@ -84,5 +318,17 @@ body {
   }
   75% {
     transform: rotateX(270deg) rotateY(0deg);
+  }
+}
+
+// Fade-In from Bottom
+@keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
