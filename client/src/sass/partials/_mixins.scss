@@ -17,6 +17,10 @@
   @include laptop {
     font-size: 5.75rem;
   }
+
+  @include desktop {
+    font-size: 6rem;
+  }
 }
 
 @mixin h2 {
@@ -34,11 +38,16 @@
   @include laptop {
     font-size: 4rem;
   }
+
+  @include desktop {
+    font-size: 4.25rem;
+  }
 }
 
 @mixin h3 {
   font-size: 2rem;
   font-family: Lexend;
+  text-wrap: nowrap;
 
   @include mobile {
     font-size: 2.25rem;
@@ -51,6 +60,10 @@
   @include laptop {
     font-size: 3rem;
   }
+
+  @include desktop {
+    font-size: 3.25rem;
+  }
 }
 
 // ! Font Mixins
@@ -62,7 +75,7 @@
   font-family: Lexend;
   font-weight: 600;
   background-color: #00000090;
-  color: $iceBlue-winter;
+  color: $pastelGreen;
   text-wrap: nowrap;
   cursor: pointer;
   font-size: 0.85rem;
@@ -76,8 +89,8 @@
 
   &:hover {
     transform: scale(1.05);
-    color: $royalBlue-winter;
-    background-color: $iceBlue-winter;
+    color: $lightBrown;
+    background-color: $pastelGreen;
   }
 
   &:active {
@@ -131,7 +144,7 @@
   font-family: Lexend;
   font-weight: 900;
   font-size: 1rem;
-  color: $iceBlue-winter;
+  color: $pastelGreen;
   border: none;
   cursor: pointer;
   padding: 1rem;

@@ -3,12 +3,12 @@
 
 // ! Page Styling
 body {
-  background-color: $darkBlue-winter;
+  background-color: $darkGreen;
 }
 
 // ! Root variables for in-line JS
 :root {
-  --ice-blue: #{$iceBlue-winter};
+  --ice-blue: #{$pastelGreen};
 }
 
 // ! Main Styling
@@ -16,7 +16,7 @@ body {
   @include flex-centre;
   width: 100%;
   margin: auto;
-  color: $iceBlue-winter;
+  color: $pastelGreen;
   position: relative;
 
   &__rotating-cube {
@@ -26,11 +26,12 @@ body {
 
   &__line {
     width: 1px;
-    height: 12rem;
-    background: $iceBlue-winter;
+    height: 14rem;
+    background: $lightBrown;
     position: absolute;
     top: 28rem;
     left: 16rem;
+    transition: background 0.1s ease-in-out;
 
     @include tablet {
       top: 32rem;
@@ -41,17 +42,31 @@ body {
       left: 30rem;
     }
 
+    &:hover {
+      background: $winterGreen;
+    }
+
     &--title {
       font-family: Parkinsans;
       transform: rotateZ(270deg);
       position: absolute;
+      color: $lightBrown;
       top: 28.5rem;
       left: 13rem;
-      transition: color 0.2s ease-in-out;
+      transition: color 0.1s ease-in-out;
       cursor: default;
 
+      @include tablet {
+        top: 32.4rem;
+      }
+
+      @include laptop {
+        top: 37.5rem;
+        left: 27rem;
+      }
+
       &:hover {
-        color: $pastelBlue-winter;
+        color: $winterGreen;
       }
     }
   }
@@ -70,53 +85,65 @@ body {
     gap: 7%;
   }
 
-  &__headshot {
-    @include flex-centre;
-    opacity: 0;
-    margin-top: 20rem;
-    cursor: default;
-    position: relative;
-    transform: translateY(50px);
-    display: hidden;
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  // &__headshot {
+  //   @include flex-centre;
+  //   opacity: 0;
+  //   margin-top: 20rem;
+  //   cursor: default;
+  //   position: relative;
+  //   transform: translateY(2rem);
+  //   display: hidden;
+  //   gap: 2rem;
+  //   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 
-    @include tablet {
-      margin-top: 0;
-    }
+  //   @include tablet {
+  //     margin-top: 0;
+  //   }
 
-    &--img {
-      width: 10rem;
-      border-radius: 0.3rem;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  //   &--img {
+  //     width: 10rem;
+  //     border-radius: 0.3rem;
+  //     opacity: 0;
+  //     transform: translateY(2rem);
+  //     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 
-      @include mobile {
-        width: 11rem;
-      }
+  //     @include mobile {
+  //       width: 11rem;
+  //     }
 
-      @include tablet {
-        width: 13.5rem;
-        margin-top: 0;
-      }
+  //     @include tablet {
+  //       width: 13.5rem;
+  //       margin-top: 0;
+  //     }
 
-      @include laptop {
-        width: 18rem;
-      }
+  //     @include laptop {
+  //       width: 18rem;
+  //     }
 
-      &.fade-in {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+  //     &.fade-in {
+  //       opacity: 1;
+  //       transform: translateY(0);
+  //     }
+  //   }
 
-    &.fade-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  //   &.fade-in {
+  //     opacity: 1;
+  //     transform: translateY(0);
+  //   }
+
+  //   &--text {
+  //     font-family: Parkinsans;
+  //     width: 6.8rem;
+  //     text-align: center;
+  //     font-size: 0.75rem;
+  //     transform: rotate(-20deg);
+  //   }
+  // }
 
   &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     @include tablet {
       display: flex;
       flex-direction: column;
@@ -129,7 +156,15 @@ body {
     &--h1 {
       @include h1;
       text-align: center;
-      margin: 3rem 0 0 0;
+      margin: 2.5rem 0 0 0;
+
+      @include laptop {
+        margin-top: 7rem;
+      }
+
+      @include desktop {
+        margin-top: 8.5rem;
+      }
     }
 
     &--h2 {
@@ -175,6 +210,10 @@ body {
     }
   }
 
+  &__rotating-cube {
+    width: 100%;
+  }
+
   &__cube-container {
     @include flex-centre;
     flex-wrap: nowrap;
@@ -217,7 +256,7 @@ body {
   align-items: center;
   font-weight: 800;
   text-wrap: nowrap;
-  border: 2px solid white;
+  border: 2px solid $winterGreen;
   color: white;
   font-size: 1rem;
   box-sizing: border-box;
@@ -242,7 +281,7 @@ body {
   }
 
   &__period {
-    color: $iceBlue-winter;
+    color: $pastelGreen;
   }
 }
 
@@ -277,8 +316,8 @@ body {
 
 .back {
   transform: rotateX(180deg) translateZ(1.12rem);
-  background-color: #ffecd1;
-  color: #15616d;
+  background-color: $cream;
+  color: $darkTeal;
 
   @include tablet {
     transform: rotateX(180deg) translateZ(1.365rem);
@@ -291,7 +330,7 @@ body {
 
 .top {
   transform: rotateX(90deg) translateZ(1.12rem);
-  background-color: #15616d;
+  background-color: $darkTeal;
   color: $cream;
 
   @include tablet {
