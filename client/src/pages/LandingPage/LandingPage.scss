@@ -3,12 +3,12 @@
 
 // ! Page Styling
 body {
-  background-color: $darkGreen;
+  background-color: $brunswick;
 }
 
 // ! Root variables for in-line JS
 :root {
-  --ice-blue: #{$pastelGreen};
+  --ice-blue: #{$rain};
 }
 
 // ! Main Styling
@@ -16,7 +16,7 @@ body {
   @include flex-centre;
   width: 100%;
   margin: auto;
-  color: $pastelGreen;
+  color: $rain;
   position: relative;
 
   &__rotating-cube {
@@ -27,7 +27,7 @@ body {
   &__line {
     width: 1px;
     height: 14rem;
-    background: $lightBrown;
+    background: $lion;
     position: absolute;
     top: 28rem;
     left: 16rem;
@@ -43,14 +43,14 @@ body {
     }
 
     &:hover {
-      background: $winterGreen;
+      background: $wintergreen;
     }
 
     &--title {
       font-family: Parkinsans;
       transform: rotateZ(270deg);
       position: absolute;
-      color: $lightBrown;
+      color: $lion;
       top: 28.5rem;
       left: 13rem;
       transition: color 0.1s ease-in-out;
@@ -66,7 +66,7 @@ body {
       }
 
       &:hover {
-        color: $winterGreen;
+        color: $wintergreen;
       }
     }
   }
@@ -178,7 +178,7 @@ body {
     }
 
     &--highlight {
-      color: $logoRed;
+      color: $error;
       font-size: 4.75rem;
 
       @include mobile {
@@ -256,7 +256,7 @@ body {
   align-items: center;
   font-weight: 800;
   text-wrap: nowrap;
-  border: 2px solid $winterGreen;
+  border: 2px solid $wintergreen;
   color: white;
   font-size: 1rem;
   box-sizing: border-box;
@@ -281,7 +281,7 @@ body {
   }
 
   &__period {
-    color: $pastelGreen;
+    color: $rain;
   }
 }
 
@@ -289,7 +289,7 @@ body {
 .front {
   transform: rotateX(0deg) translateZ(1.12rem);
   background-color: $cream;
-  color: $logoRed;
+  color: $error;
 
   @include tablet {
     transform: rotateX(0deg) translateZ(1.365rem);
@@ -302,7 +302,7 @@ body {
 
 .bottom {
   transform: rotateX(270deg) translateZ(1.12rem);
-  background-color: $logoRed;
+  background-color: $error;
   color: $cream;
 
   @include tablet {
@@ -317,7 +317,7 @@ body {
 .back {
   transform: rotateX(180deg) translateZ(1.12rem);
   background-color: $cream;
-  color: $darkTeal;
+  color: $deep;
 
   @include tablet {
     transform: rotateX(180deg) translateZ(1.365rem);
@@ -330,7 +330,7 @@ body {
 
 .top {
   transform: rotateX(90deg) translateZ(1.12rem);
-  background-color: $darkTeal;
+  background-color: $deep;
   color: $cream;
 
   @include tablet {

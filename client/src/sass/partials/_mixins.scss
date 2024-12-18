@@ -2,72 +2,108 @@
 
 // ! Styling Mixins
 @mixin h1 {
-  font-size: 4.5rem;
-  font-family: Lexend;
+  font-size: 4rem;
+  line-height: 6rem;
   font-weight: 900;
 
-  @include mobile {
-    font-size: 4.75rem;
-  }
-
   @include tablet {
-    font-size: 5.25rem;
+    font-size: 4.75rem;
+    line-height: 7.125rem;
   }
 
   @include laptop {
-    font-size: 5.75rem;
-  }
-
-  @include desktop {
     font-size: 6rem;
+    line-height: 9rem;
   }
 }
 
 @mixin h2 {
-  font-size: 3rem;
-  font-family: Lexend;
-
-  @include mobile {
-    font-size: 3.25rem;
-  }
+  font-size: 2.75rem;
+  line-height: 4.125rem;
+  font-weight: 800;
 
   @include tablet {
-    font-size: 3.75rem;
+    font-size: 3.4375rem;
+    line-height: 5.125rem;
   }
 
   @include laptop {
-    font-size: 4rem;
-  }
-
-  @include desktop {
-    font-size: 4.25rem;
+    font-size: 4.125rem;
+    line-height: 6.1875rem;
   }
 }
 
 @mixin h3 {
-  font-size: 2rem;
-  font-family: Lexend;
-  text-wrap: nowrap;
-
-  @include mobile {
-    font-size: 2.25rem;
-  }
+  font-size: 2.5rem;
+  line-height: 3.75rem;
+  font-weight: 600;
 
   @include tablet {
-    font-size: 2.75rem;
+    font-size: 3.125rem;
+    line-height: 4.6875rem;
   }
 
   @include laptop {
-    font-size: 3rem;
-  }
-
-  @include desktop {
-    font-size: 3.25rem;
+    font-size: 3.75rem;
+    line-height: 5.625rem;
   }
 }
 
-// ! Font Mixins
-// ! CTA Button Mixins
+@mixin h4 {
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  font-weight: 600;
+
+  @include tablet {
+    font-size: 1.5625rem;
+    line-height: 2.375rem;
+  }
+
+  @include laptop {
+    font-size: 1.875rem;
+    line-height: 2.8125rem;
+  }
+}
+
+@mixin p1 {
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
+  font-weight: 400;
+
+  @include tablet {
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+  }
+
+  @include laptop {
+    font-size: 1.375rem;
+    line-height: 2.0625rem;
+  }
+}
+
+@mixin p2 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 300;
+
+  @include tablet {
+    font-size: 1.125rem;
+    line-height: 1.6875rem;
+  }
+}
+
+@mixin p3 {
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+  font-weight: 300;
+
+  @include tablet {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+// ! CTA Mixins
 @mixin work-together-button {
   padding: 1rem;
   border-radius: 0.5rem;
@@ -75,7 +111,7 @@
   font-family: Lexend;
   font-weight: 600;
   background-color: #00000090;
-  color: $pastelGreen;
+  color: $rain;
   text-wrap: nowrap;
   cursor: pointer;
   font-size: 0.85rem;
@@ -89,8 +125,8 @@
 
   &:hover {
     transform: scale(1.05);
-    color: $lightBrown;
-    background-color: $pastelGreen;
+    color: $lion;
+    background-color: $rain;
   }
 
   &:active {
@@ -144,7 +180,7 @@
   font-family: Lexend;
   font-weight: 900;
   font-size: 1rem;
-  color: $pastelGreen;
+  color: $rain;
   border: none;
   cursor: pointer;
   padding: 1rem;
