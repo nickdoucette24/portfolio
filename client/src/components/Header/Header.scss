@@ -1,37 +1,12 @@
 @use "../../sass/partials/variables" as *;
 @use "../../sass/partials/mixins" as *;
 
-// ? Keyframe Animations
-// Heartbeat animation for the /forthedogs link icon
-@keyframes heartbeat {
-  0% {
-    transform: scale(1);
-  }
-  20% {
-    transform: scale(1.1);
-  }
-  40% {
-    transform: scale(1);
-  }
-  60% {
-    transform: scale(1.1);
-  }
-  80% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 // ! Main Styling
 .header {
   position: fixed;
   box-sizing: border-box;
-  top: 0;
-  left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 100;
   padding: 1rem 1.5rem;
   background-color: transparent;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -45,9 +20,14 @@
   }
   @include laptop {
     padding: 2rem 2rem 2rem 1rem;
+    height: 9rem;
     max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   @include desktop {
+    height: 10rem;
     padding: 2rem 2.5rem 2rem 1.5rem;
   }
 
@@ -63,6 +43,12 @@
   &__home {
     display: flex;
     justify-content: space-between;
+
+    @include laptop {
+      @include flex-centre;
+      width: 100%;
+      position: absolute;
+    }
   }
 
   &__links {
@@ -93,15 +79,17 @@
     transition: filter 0.3s ease-in-out;
 
     @include mobile {
-      width: 9rem;
+      width: 10.25rem;
     }
 
     @include tablet {
-      width: 10rem;
+      width: 12rem;
     }
 
     @include laptop {
+      @include flex-centre;
       width: 15rem;
+      margin: 0 auto;
       cursor: pointer;
       transition: transform 0.2s ease-in-out;
 
@@ -115,7 +103,7 @@
     }
 
     @include desktop {
-      width: 20rem;
+      width: 16rem;
     }
 
     &--scrolled {
@@ -200,5 +188,28 @@
   &::after {
     width: 2rem;
     height: 0.2rem;
+  }
+}
+
+// ? Keyframe Animations
+// Heartbeat animation for the /forthedogs link icon
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.1);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
