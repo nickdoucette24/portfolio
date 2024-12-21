@@ -3,7 +3,7 @@
 
 // ! Page Styling
 body {
-  background-color: $brunswick;
+  background-color: $rain;
 }
 
 // ! Root variables for in-line JS
@@ -16,7 +16,7 @@ body {
   @include flex-centre;
   width: 100%;
   margin: auto;
-  color: $rain;
+  color: $brunswick;
   position: relative;
 
   &__rotating-cube {
@@ -178,7 +178,7 @@ body {
     }
 
     &--highlight {
-      color: $error;
+      color: $firered;
       font-size: 4.75rem;
 
       @include mobile {
@@ -289,7 +289,7 @@ body {
 .front {
   transform: rotateX(0deg) translateZ(1.12rem);
   background-color: $cream;
-  color: $error;
+  color: $firered;
 
   @include tablet {
     transform: rotateX(0deg) translateZ(1.365rem);
@@ -302,7 +302,7 @@ body {
 
 .bottom {
   transform: rotateX(270deg) translateZ(1.12rem);
-  background-color: $error;
+  background-color: $firered;
   color: $cream;
 
   @include tablet {
