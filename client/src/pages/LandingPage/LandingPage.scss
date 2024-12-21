@@ -24,49 +24,34 @@ body {
     display: inline-block;
   }
 
-  &__line {
-    width: 1px;
-    height: 14rem;
-    background: $lion;
+  &__line-container {
+    display: flex;
+    align-items: flex-start;
     position: absolute;
-    top: 28rem;
-    left: 16rem;
-    transition: background 0.1s ease-in-out;
-
-    @include tablet {
-      top: 32rem;
-    }
-
-    @include laptop {
-      top: 37rem;
-      left: 30rem;
-    }
-
-    &:hover {
-      background: $wintergreen;
-    }
+    top: 33rem;
+    left: 50vw;
+    z-index: -1;
 
     &--title {
-      font-family: Parkinsans;
-      transform: rotateZ(270deg);
-      position: absolute;
+      writing-mode: vertical-rl;
+      text-orientation: sideways;
+      transform: rotate(180deg);
       color: $lion;
-      top: 28.5rem;
-      left: 13rem;
-      transition: color 0.1s ease-in-out;
-      cursor: default;
-
-      @include tablet {
-        top: 32.4rem;
-      }
-
-      @include laptop {
-        top: 37.5rem;
-        left: 27rem;
-      }
+      margin: 0.25rem;
 
       &:hover {
-        color: $wintergreen;
+        color: $orange;
+      }
+    }
+
+    &--line {
+      width: 1px;
+      height: 16rem;
+      background: $lion;
+      transition: background 0.1s ease-in-out;
+
+      &:hover {
+        background: $orange;
       }
     }
   }
@@ -75,6 +60,7 @@ body {
 .hero-wrapper {
   display: flex;
   width: 100%;
+  margin-top: 6rem;
   flex-direction: column-reverse;
   align-items: center;
 
@@ -153,7 +139,7 @@ body {
       align-items: baseline;
     }
 
-    &--h1 {
+    &--hello {
       @include h1;
       text-align: center;
       margin: 2.5rem 0 0 0;
@@ -177,8 +163,14 @@ body {
       margin: 1rem 0;
     }
 
+    &--h4 {
+      text-wrap: nowrap;
+      @include h4;
+      font-size: 2rem;
+    }
+
     &--highlight {
-      color: $firered;
+      color: $orange;
       font-size: 4.75rem;
 
       @include mobile {
@@ -289,7 +281,7 @@ body {
 .front {
   transform: rotateX(0deg) translateZ(1.12rem);
   background-color: $cream;
-  color: $firered;
+  color: $orange;
 
   @include tablet {
     transform: rotateX(0deg) translateZ(1.365rem);
@@ -302,7 +294,7 @@ body {
 
 .bottom {
   transform: rotateX(270deg) translateZ(1.12rem);
-  background-color: $firered;
+  background-color: $orange;
   color: $cream;
 
   @include tablet {

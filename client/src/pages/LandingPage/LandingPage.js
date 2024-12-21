@@ -40,7 +40,7 @@ const LandingPage = () => {
     <section className="landing-page">
       <div className="hero-wrapper">
         <div className="hero-wrapper__text">
-          <h1 className="hero-wrapper__text--h1">Hello,</h1>
+          <h1 className="hero-wrapper__text--hello">Hello,</h1>
           <div className="hero-wrapper__text--group">
             <h2 className="hero-wrapper__text--h2">my name is</h2>
             <h2 className="hero-wrapper__text--h2">
@@ -48,7 +48,7 @@ const LandingPage = () => {
             </h2>
           </div>
           <div className="hero-wrapper__cube-container">
-            <h3 className="hero-wrapper__text--h3">I'm a</h3>
+            <h4 className="hero-wrapper__text--h4">I'm a</h4>
             <div className="hero-wrapper__rotating-cube">
               <div className="cube">
                 <div className="face front">
@@ -68,9 +68,9 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <div className="landing-page__line--container">
-        <p className="landing-page__line--title">this way</p>
-        <div className="landing-page__line"></div>
+      <div className="landing-page__line-container">
+        <p className="landing-page__line-container--title">this way</p>
+        <div className="landing-page__line-container--line"></div>
       </div>
       {/* <div
           className={`hero-wrapper__headshot ${isVisible ? "fade-in" : ""}`}
