@@ -26,18 +26,22 @@
 
 // ! Main Styling
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 1.5rem;
+  position: fixed;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 1rem 1.5rem;
   background-color: transparent;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
   @include mobile {
-    padding: 2.25rem 1.75rem;
+    padding: 1.25rem 1.75rem;
   }
 
   @include tablet {
-    padding: 2.5rem 2rem;
+    padding: 1.5rem 1.75rem;
   }
   @include laptop {
     padding: 2rem 2rem 2rem 1rem;
@@ -57,7 +61,8 @@
   }
 
   &__home {
-    @include flex-centre;
+    display: flex;
+    justify-content: space-between;
   }
 
   &__links {
@@ -76,13 +81,16 @@
   }
 
   &__hamburger {
+    @include flex-centre;
+
     @include laptop {
       display: none;
     }
   }
 
   &__logo {
-    width: 8rem;
+    width: 10rem;
+    transition: filter 0.3s ease-in-out;
 
     @include mobile {
       width: 9rem;
@@ -108,6 +116,11 @@
 
     @include desktop {
       width: 20rem;
+    }
+
+    &--scrolled {
+      filter: brightness(1000%) contrast(200%);
+      transition: filter 0.3s ease-in-out;
     }
   }
 
@@ -142,6 +155,11 @@
       @include flex-centre;
     }
   }
+
+  &--scrolled {
+    background-color: $deep;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .nav-container {
@@ -165,6 +183,22 @@
   padding: 0;
 }
 
+.hamburger-box {
+  width: 2.25rem;
+}
+
 .hamburger-inner {
+  width: 2rem;
+  height: 0.2rem;
   filter: invert(1) brightness(2);
+
+  &::before {
+    width: 2rem;
+    height: 0.2rem;
+  }
+
+  &::after {
+    width: 2rem;
+    height: 0.2rem;
+  }
 }
