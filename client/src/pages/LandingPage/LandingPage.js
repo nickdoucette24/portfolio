@@ -1,8 +1,36 @@
 // import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import AboutSection from "../../components/AboutSection/AboutSection";
 import "./LandingPage.scss";
 
 const LandingPage = () => {
+  const [isAboutVisible, setIsAboutVisible] = useState(false);
+  const aboutSectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.intersectionRatio >= 0.2) {
+          setIsAboutVisible(true);
+        }
+      },
+      {
+        root: null,
+        threshold: 0.2,
+      }
+    );
+
+    if (aboutSectionRef.current) {
+      observer.observe(aboutSectionRef.current);
+    }
+
+    return () => {
+      if (aboutSectionRef.current) {
+        observer.unobserve(aboutSectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="landing-page">
       <section className="hero-wrapper">
@@ -39,9 +67,14 @@ const LandingPage = () => {
         <p className="landing-page__line-container--title">this way</p>
         <div className="landing-page__line-container--line"></div>
       </div>
-      <section className="about-wrapper">
+      <div
+        ref={aboutSectionRef}
+        className={`about-wrapper ${
+          isAboutVisible ? "about-wrapper__visible" : ""
+        }`}
+      >
         <AboutSection />
-      </section>
+      </div>
     </div>
   );
 };
