@@ -20,13 +20,15 @@ const LandingPage = () => {
       }
     );
 
-    if (aboutSectionRef.current) {
-      observer.observe(aboutSectionRef.current);
+    const currentRef = aboutSectionRef.current; // Store the current value
+
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (aboutSectionRef.current) {
-        observer.unobserve(aboutSectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
