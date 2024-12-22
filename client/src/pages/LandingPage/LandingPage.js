@@ -1,44 +1,39 @@
 // import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import AboutSection from "../../components/AboutSection/AboutSection";
 import "./LandingPage.scss";
-// import headshot from "../../assets/images/headshot.JPG";
 
 const LandingPage = () => {
-  // const [borderPosition, setBorderPosition] = useState({ x: 0, y: 0 });
-  // const [isVisible, setIsVisible] = useState(false);
+  const [isAboutVisible, setIsAboutVisible] = useState(false);
+  const aboutSectionRef = useRef(null);
 
-  // const handleMouseMove = (event) => {
-  //   const img = event.target.getBoundingClientRect();
-  //   const x = (event.clientX - img.left - img.width / 2) / 20;
-  //   const y = (event.clientY - img.top - img.height / 2) / 20;
-  //   setBorderPosition({ x, y });
-  // };
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.intersectionRatio >= 0.2) {
+          setIsAboutVisible(true);
+        }
+      },
+      {
+        root: null,
+        threshold: 0.2,
+      }
+    );
 
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           setIsVisible(true);
-  //         }
-  //       });
-  //     },
-  //     { threshold: 0.75 }
-  //   );
+    if (aboutSectionRef.current) {
+      observer.observe(aboutSectionRef.current);
+    }
 
-  //   const target = document.querySelector(".hero-wrapper__headshot");
-  //   if (target) {
-  //     observer.observe(target);
-  //   }
-  //   return () => {
-  //     if (target) {
-  //       observer.unobserve(target);
-  //     }
-  //   };
-  // }, []);
+    return () => {
+      if (aboutSectionRef.current) {
+        observer.unobserve(aboutSectionRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <section className="landing-page">
-      <div className="hero-wrapper">
+    <div className="landing-page">
+      <section className="hero-wrapper">
         <div className="hero-wrapper__text">
           <h1 className="hero-wrapper__text--hello">Hello,</h1>
           <div className="hero-wrapper__text--group">
@@ -67,30 +62,20 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
       <div className="landing-page__line-container">
         <p className="landing-page__line-container--title">this way</p>
         <div className="landing-page__line-container--line"></div>
       </div>
-      {/* <div
-          className={`hero-wrapper__headshot ${isVisible ? "fade-in" : ""}`}
-          onMouseMove={handleMouseMove}
-        >
-          <img
-            className={`hero-wrapper__headshot--img ${
-              isVisible ? "fade-in" : ""
-            }`}
-            src={headshot}
-            alt="headshot of Nick, the one who made this website"
-            style={{
-              boxShadow: `${-borderPosition.x}px ${-borderPosition.y}px 0 2px var(--ice-blue)`,
-            }}
-          />
-          <p className="hero-wrapper__headshot--text">
-            Here's a photo of me looking professional so you know I'm real!
-          </p>
-        </div> */}
-    </section>
+      <div
+        ref={aboutSectionRef}
+        className={`about-wrapper ${
+          isAboutVisible ? "about-wrapper__visible" : ""
+        }`}
+      >
+        <AboutSection />
+      </div>
+    </div>
   );
 };
 
