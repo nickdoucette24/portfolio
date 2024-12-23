@@ -65,6 +65,13 @@
   }
 }
 
+@mixin h5 {
+  @include tablet {
+    font-size: 1rem;
+    line-height: 2.0625rem;
+  }
+}
+
 @mixin p1 {
   font-size: 1.125rem;
   line-height: 1.6875rem;
@@ -104,29 +111,25 @@
 }
 
 // ! CTA Mixins
-@mixin work-together-button {
-  padding: 1rem;
+@mixin work-together {
+  padding: 0.25rem 1rem;
+  background-color: transparent;
   border-radius: 0.5rem;
-  border: none;
-  font-family: Lexend;
+  border: 2px solid $superhero;
+  font-family: Parkinsans;
   font-weight: 600;
-  background-color: #00000090;
-  color: $rain;
+  color: $superhero;
+  text-decoration: none;
   text-wrap: nowrap;
   cursor: pointer;
-  font-size: 0.85rem;
+  @include h5;
   transition: transform 0.2s ease-in-out, background-color 0.2s ease,
     color 0.2s ease;
 
-  @include desktop {
-    padding: 0.75rem 1.25rem;
-    font-size: 1rem;
-  }
-
   &:hover {
-    transform: scale(1.05);
-    color: $lion;
-    background-color: $rain;
+    transform: scale(1.03);
+    color: $deep;
+    background-color: #00000020;
   }
 
   &:active {

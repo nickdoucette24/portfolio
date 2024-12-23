@@ -51,6 +51,51 @@
     }
   }
 
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    @include mobile {
+      gap: 1rem;
+    }
+
+    @include tablet {
+      gap: 2rem;
+    }
+
+    &--icon {
+      height: 1.7rem;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--hamburger {
+      @include flex-centre;
+
+      @include laptop {
+        display: none;
+      }
+    }
+
+    &--link {
+      display: none;
+
+      @include tablet {
+        @include flex-centre;
+        @include work-together;
+      }
+    }
+  }
+
   &__links {
     display: none;
     @include laptop {
@@ -66,17 +111,18 @@
     }
   }
 
-  &__hamburger {
-    @include flex-centre;
-
-    @include laptop {
-      display: none;
-    }
-  }
-
   &__logo {
     width: 10rem;
-    transition: filter 0.3s ease-in-out;
+    transition: filter 0.3s ease-in-out, transform 0.1s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    &:active {
+      transform: scale(0.99);
+    }
 
     @include mobile {
       width: 10.25rem;
@@ -90,16 +136,6 @@
       @include flex-centre;
       width: 15rem;
       margin: 0 auto;
-      cursor: pointer;
-      transition: transform 0.2s ease-in-out;
-
-      &:hover {
-        transform: scale(1.03);
-      }
-
-      &:active {
-        transform: scale(1);
-      }
     }
 
     @include desktop {
@@ -108,12 +144,11 @@
 
     &--scrolled {
       filter: brightness(1000%) contrast(200%);
-      transition: filter 0.3s ease-in-out;
     }
   }
 
   &__cta {
-    @include work-together-button;
+    @include work-together;
 
     &--text {
       color: $rain;
@@ -166,6 +201,26 @@
   }
 }
 
+.cta-scrolled {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  background-color: $cloud;
+  color: $deep;
+
+  &:hover {
+    background-color: $superhero;
+    color: $cloud;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+      rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  }
+
+  &:active {
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 1px 1px,
+      rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 8px 8px;
+  }
+}
+
 // ! Third Party Styling Edits
 .hamburger {
   padding: 0;
@@ -173,6 +228,7 @@
 
 .hamburger-box {
   width: 2.25rem;
+  @include flex-centre;
 }
 
 .hamburger-inner {
