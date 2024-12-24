@@ -1,2 +1,86 @@
 @use "../../sass/partials/variables" as *;
 @use "../../sass/partials/mixins" as *;
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+
+  &__link {
+    @include body-cta;
+    width: auto;
+    margin-top: 1rem;
+  }
+}
+
+.heading-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &__question {
+    font-size: 1.4rem;
+
+    @include mobile {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__small {
+    font-size: 1.4rem;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__mobile {
+    display: none;
+    font-size: 1.8rem;
+
+    @include mobile {
+      display: flex;
+    }
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__tablet {
+    display: none;
+    font-size: 1.8rem;
+
+    @include tablet {
+      display: flex;
+    }
+
+    @include laptop {
+      display: none;
+    }
+  }
+
+  &__laptop {
+    display: none;
+
+    @include laptop {
+      display: flex;
+    }
+  }
+}
+
+.rotating-word {
+  display: inline-block;
+  transition: opacity 0.85s ease-out, filter 0.85s ease-out;
+  opacity: 1;
+  font-weight: 600;
+  font-family: Parkinsans;
+  width: 4.5rem;
+  color: $deep;
+  filter: blur(0);
+}
+
+.fading {
+  opacity: 0;
+  filter: blur(0.25rem);
+}

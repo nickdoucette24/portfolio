@@ -66,9 +66,11 @@
 }
 
 @mixin h5 {
-  @include tablet {
-    font-size: 1rem;
-    line-height: 2.0625rem;
+  font-size: 1rem;
+  line-height: 2.0625rem;
+
+  @include mobile {
+    font-size: 1.125rem;
   }
 }
 
@@ -114,7 +116,7 @@
 @mixin work-together {
   padding: 0.25rem 1rem;
   background-color: transparent;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   border: 2px solid $superhero;
   font-family: Parkinsans;
   font-weight: 600;
@@ -124,16 +126,56 @@
   cursor: pointer;
   @include h5;
   transition: transform 0.2s ease-in-out, background-color 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease, box-shadow 0.2s ease-in-out;
 
   &:hover {
     transform: scale(1.03);
     color: $deep;
     background-color: #00000020;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+      rgba(0, 0, 0, 0.07) 0px 16px 16px;
   }
 
   &:active {
     transform: scale(1);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 1px 1px,
+      rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 8px 8px;
+  }
+}
+
+@mixin body-cta {
+  display: inline-block;
+  text-align: center;
+  padding: 0.25rem 1rem;
+  background-color: transparent;
+  border-radius: 0.2rem;
+  border: 2px solid $superhero;
+  font-family: Parkinsans;
+  font-weight: 600;
+  color: $superhero;
+  text-decoration: none;
+  text-wrap: nowrap;
+  cursor: pointer;
+  @include h5;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease,
+    color 0.2s ease, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+    color: $cloud;
+    background-color: $superhero;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+      rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  }
+
+  &:active {
+    transform: scale(1);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 1px 1px,
+      rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 8px 8px;
   }
 }
 
@@ -163,19 +205,25 @@
 @mixin nav-link {
   text-wrap: nowrap;
   transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out,
-    border 0.2s ease-in-out;
+    border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 0.2rem;
   border: 1px solid transparent;
 
   &:hover {
     transform: scale(1.03);
     background-color: #00000020;
     border: 1px solid $superhero;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+      rgba(0, 0, 0, 0.07) 0px 16px 16px;
   }
 
   &:active {
     transform: scale(1);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 1px 1px,
+      rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 8px 8px;
   }
 }
 

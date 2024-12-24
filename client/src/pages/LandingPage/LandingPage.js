@@ -20,7 +20,7 @@ const LandingPage = () => {
       }
     );
 
-    const currentRef = aboutSectionRef.current; // Store the current value
+    const currentRef = aboutSectionRef.current;
 
     if (currentRef) {
       observer.observe(currentRef);
