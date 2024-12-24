@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../assets/images/logo.svg";
 import heartIcon from "../../assets/icons/headerHeart.svg";
+import workTogetherIcon from "../../assets/icons/work-together.svg";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -38,17 +39,32 @@ const Header = () => {
         <nav className="nav-container">
           <ul className="nav-container__list">
             <li className="nav-container__item">
-              <button className="nav-container__item--button" type="button">
+              <button
+                className={`nav-container__item--button ${
+                  isScrolled ? "nav-link__scrolled" : ""
+                }`}
+                type="button"
+              >
                 My Process
               </button>
             </li>
             <li className="nav-container__item">
-              <button className="nav-container__item--button" type="button">
+              <button
+                className={`nav-container__item--button ${
+                  isScrolled ? "nav-link__scrolled" : ""
+                }`}
+                type="button"
+              >
                 My Work
               </button>
             </li>
             <li className="nav-container__item">
-              <button className="nav-container__item--button" type="button">
+              <button
+                className={`nav-container__item--button ${
+                  isScrolled ? "nav-link__scrolled" : ""
+                }`}
+                type="button"
+              >
                 Contact
               </button>
             </li>
@@ -72,22 +88,34 @@ const Header = () => {
           alt="nickd development logo and link to the home page"
           onClick={handleNavigateHome}
         />
-        <div className="header__hamburger">
-          <button
-            className={`hamburger hamburger--spring ${
-              isActive ? "is-active" : ""
+        <div className="header__container">
+          <img className="header__container--icon" src={workTogetherIcon} />
+          <Link
+            className={`header__container--link ${
+              isScrolled ? "cta-scrolled" : ""
             }`}
-            type="button"
-            onClick={toggleHamburger}
           >
-            <span className="hamburger-box">
-              <span className="hamburger-inner"></span>
-            </span>
-          </button>
+            Work Together
+          </Link>
+          <div className="header__container--hamburger">
+            <button
+              className={`hamburger hamburger--spring ${
+                isActive ? "is-active" : ""
+              }`}
+              type="button"
+              onClick={toggleHamburger}
+            >
+              <span className="hamburger-box">
+                <span className="hamburger-inner"></span>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
       <div className="header__links">
-        <button className="header__cta">Work Together</button>
+        <button className={`header__cta ${isScrolled ? "cta-scrolled" : ""}`}>
+          Work Together
+        </button>
         <Link to={"/forthedogs"} className="header__z--link">
           <img
             className="header__z"

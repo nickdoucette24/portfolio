@@ -65,6 +65,13 @@
   }
 }
 
+@mixin h5 {
+  @include tablet {
+    font-size: 1rem;
+    line-height: 2.0625rem;
+  }
+}
+
 @mixin p1 {
   font-size: 1.125rem;
   line-height: 1.6875rem;
@@ -104,29 +111,25 @@
 }
 
 // ! CTA Mixins
-@mixin work-together-button {
-  padding: 1rem;
+@mixin work-together {
+  padding: 0.25rem 1rem;
+  background-color: transparent;
   border-radius: 0.5rem;
-  border: none;
-  font-family: Lexend;
+  border: 2px solid $superhero;
+  font-family: Parkinsans;
   font-weight: 600;
-  background-color: #00000090;
-  color: $rain;
+  color: $superhero;
+  text-decoration: none;
   text-wrap: nowrap;
   cursor: pointer;
-  font-size: 0.85rem;
+  @include h5;
   transition: transform 0.2s ease-in-out, background-color 0.2s ease,
     color 0.2s ease;
 
-  @include desktop {
-    padding: 0.75rem 1.25rem;
-    font-size: 1rem;
-  }
-
   &:hover {
-    transform: scale(1.05);
-    color: $lion;
-    background-color: $rain;
+    transform: scale(1.03);
+    color: $deep;
+    background-color: #00000020;
   }
 
   &:active {
@@ -159,31 +162,32 @@
 
 @mixin nav-link {
   text-wrap: nowrap;
-  transition: transform 0.15s ease-in-out, background-colour 0.15s ease-in-out,
-    border-radius 0.15s ease-in-out;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    border 0.2s ease-in-out;
   cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid transparent;
 
   &:hover {
-    transform: scale(1.1);
-    background-color: #00000090;
-    border-radius: 0.5rem;
+    transform: scale(1.03);
+    background-color: #00000020;
+    border: 1px solid $superhero;
   }
 
   &:active {
     transform: scale(1);
-    background-color: #00000060;
   }
 }
 
 @mixin nav-button {
   background-color: transparent;
-  font-family: Lexend;
-  font-weight: 900;
+  font-family: Parkinsans;
+  font-weight: 400;
   font-size: 1rem;
-  color: $rain;
+  color: $deep;
   border: none;
   cursor: pointer;
-  padding: 1rem;
+  padding: 0.5rem 0.75rem;
 
   @include desktop {
     font-size: 1.25rem;

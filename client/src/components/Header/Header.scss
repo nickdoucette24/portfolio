@@ -16,10 +16,10 @@
   }
 
   @include tablet {
-    padding: 1.5rem 1.75rem;
+    padding: 1.5rem 2.25rem;
   }
   @include laptop {
-    padding: 2rem 2rem 2rem 1rem;
+    padding: 2rem 2.5rem 2rem 1.75rem;
     height: 9rem;
     max-width: 100%;
     display: flex;
@@ -28,7 +28,7 @@
   }
   @include desktop {
     height: 10rem;
-    padding: 2rem 2.5rem 2rem 1.5rem;
+    padding: 2rem 2.75rem 2rem 2rem;
   }
 
   &__navs {
@@ -36,6 +36,7 @@
 
     @include laptop {
       display: flex;
+      z-index: 1;
       gap: 1rem;
     }
   }
@@ -51,6 +52,55 @@
     }
   }
 
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    @include mobile {
+      gap: 1.5rem;
+    }
+
+    @include tablet {
+      gap: 2rem;
+    }
+
+    &--icon {
+      height: 1.7rem;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--hamburger {
+      @include flex-centre;
+
+      @include laptop {
+        display: none;
+      }
+    }
+
+    &--link {
+      display: none;
+
+      @include tablet {
+        @include flex-centre;
+        @include work-together;
+      }
+
+      @include laptop {
+        display: none;
+      }
+    }
+  }
+
   &__links {
     display: none;
     @include laptop {
@@ -58,7 +108,7 @@
       flex-wrap: nowrap;
       justify-content: space-between;
       align-items: center;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     @include desktop {
@@ -66,17 +116,18 @@
     }
   }
 
-  &__hamburger {
-    @include flex-centre;
-
-    @include laptop {
-      display: none;
-    }
-  }
-
   &__logo {
     width: 10rem;
-    transition: filter 0.3s ease-in-out;
+    transition: filter 0.3s ease-in-out, transform 0.1s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    &:active {
+      transform: scale(0.99);
+    }
 
     @include mobile {
       width: 10.25rem;
@@ -90,16 +141,6 @@
       @include flex-centre;
       width: 15rem;
       margin: 0 auto;
-      cursor: pointer;
-      transition: transform 0.2s ease-in-out;
-
-      &:hover {
-        transform: scale(1.03);
-      }
-
-      &:active {
-        transform: scale(1);
-      }
     }
 
     @include desktop {
@@ -108,12 +149,13 @@
 
     &--scrolled {
       filter: brightness(1000%) contrast(200%);
-      transition: filter 0.3s ease-in-out;
     }
   }
 
   &__cta {
-    @include work-together-button;
+    @include flex-centre;
+    @include work-together;
+    z-index: 0;
 
     &--text {
       color: $rain;
@@ -122,7 +164,8 @@
 
   &__z {
     @include laptop {
-      width: 1.5rem;
+      width: 2.5rem;
+      z-index: 1;
       transition: transform 0.2s ease-in-out;
 
       &:hover {
@@ -166,6 +209,40 @@
   }
 }
 
+// ! Extra Scroll Effect Classes
+
+.cta-scrolled {
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: $cloud;
+  color: $deep;
+
+  &:hover {
+    background-color: $superhero;
+    transform: scale(1.03);
+    color: $cloud;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+      rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  }
+
+  &:active {
+    transform: scale(1);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 1px 1px,
+      rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 8px 8px;
+  }
+}
+
+.nav-link__scrolled {
+  color: $cloud;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #00000030;
+  }
+}
+
 // ! Third Party Styling Edits
 .hamburger {
   padding: 0;
@@ -173,6 +250,7 @@
 
 .hamburger-box {
   width: 2.25rem;
+  @include flex-centre;
 }
 
 .hamburger-inner {
