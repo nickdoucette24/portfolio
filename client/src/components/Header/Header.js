@@ -39,17 +39,32 @@ const Header = () => {
         <nav className="nav-container">
           <ul className="nav-container__list">
             <li className="nav-container__item">
-              <button className="nav-container__item--button" type="button">
+              <button
+                className={`nav-container__item--button ${
+                  isScrolled ? "nav-link__scrolled" : ""
+                }`}
+                type="button"
+              >
                 My Process
               </button>
             </li>
             <li className="nav-container__item">
-              <button className="nav-container__item--button" type="button">
+              <button
+                className={`nav-container__item--button ${
+                  isScrolled ? "nav-link__scrolled" : ""
+                }`}
+                type="button"
+              >
                 My Work
               </button>
             </li>
             <li className="nav-container__item">
-              <button className="nav-container__item--button" type="button">
+              <button
+                className={`nav-container__item--button ${
+                  isScrolled ? "nav-link__scrolled" : ""
+                }`}
+                type="button"
+              >
                 Contact
               </button>
             </li>
@@ -98,7 +113,9 @@ const Header = () => {
         </div>
       </div>
       <div className="header__links">
-        <button className="header__cta">Work Together</button>
+        <button className={`header__cta ${isScrolled ? "cta-scrolled" : ""}`}>
+          Work Together
+        </button>
         <Link to={"/forthedogs"} className="header__z--link">
           <img
             className="header__z"
