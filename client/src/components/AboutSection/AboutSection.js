@@ -27,28 +27,45 @@ const AboutSection = () => {
   }, [wordbank.length]);
 
   return (
-    <div className="about-container">
-      <div className="heading-container">
-        <h2 className="heading-container__small">Let's work together.</h2>
-        <h2 className="heading-container__mobile">Let's work together.</h2>
-        <h2 className="heading-container__tablet">
-          Let's build something together.
-        </h2>
-        <h2 className="heading-container__laptop">
-          Let's build something together, the right way.
-        </h2>
+    <section className="about-section">
+      <div className="about-container">
+        <div className="heading-container">
+          <h2 className="heading-container__small">Let's work together.</h2>
+          <h2 className="heading-container__mobile">Let's work together.</h2>
+          <h2 className="heading-container__tablet">
+            Let's build something together.
+          </h2>
+          <h2 className="heading-container__laptop">
+            Let's build something together.
+          </h2>
+        </div>
+        <p className="about-container__text">
+          I’m a full-stack software engineer based in Ontario, Canada. I craft{" "}
+          <span className={`rotating-word ${isFading ? "fading" : ""}`}>
+            {wordbank[currentWord]}
+          </span>{" "}
+          cloud-based solutions from the ground up, line by line.
+        </p>
+        <p className="about-container__text--tablet">
+          From smooth{" "}
+          <span className="about-container__text--bold">
+            single-page applications
+          </span>{" "}
+          to dynamic{" "}
+          <span className="about-container__text--bold">
+            multi-page websites
+          </span>
+          , or even full-scale frontend + backend{" "}
+          <span className="about-container__text--bold">software systems</span>,
+          I always sweat the{" "}
+          <span className="about-container__text--little">little</span> details
+          that bring your idea to life and provide a top-tier user experience.
+        </p>
+        <div className="about-container__button">
+          <Link className="about-container__link">About My Process</Link>
+        </div>
       </div>
-      <p>
-        I’m a full-stack software engineer based in Ontario, Canada. I craft{" "}
-        <span className={`rotating-word ${isFading ? "fading" : ""}`}>
-          {wordbank[currentWord]}
-        </span>{" "}
-        cloud-based solutions from the ground up, line by line.
-      </p>
-      <div className="about-container__button">
-        <Link className="about-container__link">About My Process</Link>
-      </div>
-    </div>
+    </section>
   );
 };
 

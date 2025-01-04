@@ -1,16 +1,6 @@
 @use "../../sass/partials/variables" as *;
 @use "../../sass/partials/mixins" as *;
 
-// ! Page Styling
-body {
-  background-color: $rain;
-}
-
-// ! Root variables for in-line JS
-:root {
-  --ice-blue: #{$rain};
-}
-
 // ! Main Styling
 .landing-page {
   @include flex-centre;
@@ -49,7 +39,7 @@ body {
       writing-mode: vertical-rl;
       text-orientation: sideways;
       transform: rotate(180deg);
-      color: $lion;
+      color: $cloud;
       cursor: default;
       margin: 0.25rem;
       transition: color 0.1s ease-in-out;
@@ -62,7 +52,7 @@ body {
     &--line {
       width: 1px;
       height: 16rem;
-      background: $lion;
+      background: $cloud;
       transition: background 0.1s ease-in-out;
 
       &:hover {
@@ -193,7 +183,7 @@ body {
     }
 
     &--highlight {
-      color: $orange;
+      color: $superhero;
       font-size: 4.75rem;
 
       @include mobile {
@@ -271,7 +261,7 @@ body {
   align-items: center;
   font-weight: 800;
   text-wrap: nowrap;
-  border: 2px solid $wintergreen;
+  border: 2px solid $cloud;
   color: white;
   font-size: 1rem;
   box-sizing: border-box;
@@ -296,15 +286,15 @@ body {
   }
 
   &__period {
-    color: $rain;
+    color: $cloud;
   }
 }
 
 // Positionings for each face
 .front {
   transform: rotateX(0deg) translateZ(1.12rem);
-  background-color: $cream;
-  color: $orange;
+  background-color: $deep;
+  color: $cloud;
 
   @include tablet {
     transform: rotateX(0deg) translateZ(1.365rem);
@@ -317,8 +307,8 @@ body {
 
 .bottom {
   transform: rotateX(270deg) translateZ(1.12rem);
-  background-color: $orange;
-  color: $cream;
+  background-color: $superhero;
+  color: $cloud;
 
   @include tablet {
     transform: rotateX(270deg) translateZ(1.365rem);
@@ -331,8 +321,8 @@ body {
 
 .back {
   transform: rotateX(180deg) translateZ(1.12rem);
-  background-color: $cream;
-  color: $deep;
+  background-color: $deep;
+  color: $cloud;
 
   @include tablet {
     transform: rotateX(180deg) translateZ(1.365rem);
@@ -345,8 +335,8 @@ body {
 
 .top {
   transform: rotateX(90deg) translateZ(1.12rem);
-  background-color: $deep;
-  color: $cream;
+  background-color: $superhero;
+  color: $cloud;
 
   @include tablet {
     transform: rotateX(90deg) translateZ(1.365rem);
