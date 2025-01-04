@@ -89,7 +89,12 @@ const Header = () => {
           onClick={handleNavigateHome}
         />
         <div className="header__container">
-          <img className="header__container--icon" src={workTogetherIcon} />
+          <img
+            className={`header__container--icon ${
+              isScrolled ? "header__container--iconScrolled" : ""
+            }`}
+            src={workTogetherIcon}
+          />
           <Link
             className={`header__container--link ${
               isScrolled ? "cta-scrolled" : ""
@@ -106,7 +111,11 @@ const Header = () => {
               onClick={toggleHamburger}
             >
               <span className="hamburger-box">
-                <span className="hamburger-inner"></span>
+                <span
+                  className={`hamburger-inner ${
+                    isScrolled ? "hamburger-scrolled" : ""
+                  }`}
+                ></span>
               </span>
             </button>
           </div>

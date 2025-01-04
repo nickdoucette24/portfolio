@@ -20,7 +20,7 @@ const LandingPage = () => {
       }
     );
 
-    const currentRef = aboutSectionRef.current; // Store the current value
+    const currentRef = aboutSectionRef.current;
 
     if (currentRef) {
       observer.observe(currentRef);
@@ -69,13 +69,15 @@ const LandingPage = () => {
         <p className="landing-page__line-container--title">this way</p>
         <div className="landing-page__line-container--line"></div>
       </div>
-      <div
-        ref={aboutSectionRef}
-        className={`about-wrapper ${
-          isAboutVisible ? "about-wrapper__visible" : ""
-        }`}
-      >
-        <AboutSection />
+      <div className="about-section">
+        <div
+          ref={aboutSectionRef}
+          className={`about-wrapper ${
+            isAboutVisible ? "about-wrapper__visible" : ""
+          }`}
+        >
+          <AboutSection />
+        </div>
       </div>
     </div>
   );
