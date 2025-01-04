@@ -1,0 +1,7 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+.project-card {
+  border: 1px solid $cloud;
+  border-radius: 0.25rem;
+}

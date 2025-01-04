@@ -370,6 +370,25 @@
   }
 }
 
+.projects-section {
+  display: flex;
+  align-items: center;
+  background-color: $deep;
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.projects-wrapper {
+  display: flex;
+  align-items: center;
+
+  @include tablet {
+    max-width: 67.5rem;
+    margin: auto;
+  }
+}
+
 // ! Keyframes
 // Cube Rotation
 @keyframes rotateCube {
