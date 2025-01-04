@@ -76,18 +76,6 @@
   }
 }
 
-.about-section {
-  display: flex;
-  align-items: center;
-  background-color: $cloud;
-  width: 100vw;
-  margin-top: 1rem;
-
-  @include tablet {
-    margin-top: 3rem;
-  }
-}
-
 .heading-container {
   display: flex;
   align-items: center;
