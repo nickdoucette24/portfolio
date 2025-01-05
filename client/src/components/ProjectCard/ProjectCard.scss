@@ -2,6 +2,25 @@
 @use "../../sass/partials/mixins" as *;
 
 .project-card {
+  display: flex;
+  flex-direction: column;
   border: 1px solid $cloud;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-family: Zing Lines;
+  }
+}
+
+.mobile-tile {
+  display: flex;
+
+  &__content {
+    display: flex;
+  }
 }

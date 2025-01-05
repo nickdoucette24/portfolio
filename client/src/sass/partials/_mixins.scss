@@ -56,18 +56,20 @@
 }
 
 @mixin h4 {
-  font-size: 1.25rem;
-  line-height: 1.875rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 600;
+  font-family: Parkinsans;
+  color: $superhero;
 
   @include tablet {
-    font-size: 1.5625rem;
-    line-height: 2.375rem;
+    font-size: 1.125rem;
+    line-height: 1.6875rem;
   }
 
   @include laptop {
-    font-size: 1.875rem;
-    line-height: 2.8125rem;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
   }
 }
 
@@ -120,17 +122,14 @@
 
 // ! CTA Mixins
 @mixin work-together {
-  padding: 0.25rem 1rem;
+  @include h4;
+  padding: 0.5rem 1rem;
   background-color: transparent;
   border-radius: 0.2rem;
   border: 2px solid $superhero;
-  font-family: Parkinsans;
-  font-weight: 600;
-  color: $superhero;
   text-decoration: none;
   text-wrap: nowrap;
   cursor: pointer;
-  @include h5;
   transition: transform 0.2s ease-in-out, background-color 0.2s ease,
     color 0.2s ease, box-shadow 0.2s ease-in-out;
 

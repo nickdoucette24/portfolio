@@ -53,8 +53,8 @@ const AboutSection = () => {
         to dynamic{" "}
         <span className="about-container__text--bold">multi-page websites</span>
         , or even full-scale frontend + backend{" "}
-        <span className="about-container__text--bold">software systems</span>, I
-        always sweat the{" "}
+        <span className="about-container__text--bold">software systems</span>,
+        what you'll find about me is that I always sweat the{" "}
         <span className="about-container__text--little">little</span> details
         that bring your idea to life and provide a top-tier user experience.
       </p>

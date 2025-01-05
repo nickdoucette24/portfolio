@@ -70,8 +70,20 @@
 
     &--little {
       text-wrap: nowrap;
+      display: inline-block;
       font-family: Parkinsans;
       font-weight: 400;
+      transition: transform 0.1s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(0.75);
+        color: $superhero;
+      }
+
+      &:active {
+        transform: scale(0.5);
+      }
     }
   }
 }

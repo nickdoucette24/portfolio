@@ -19,6 +19,7 @@ const ProjectsSection = () => {
         "User Settings",
       ],
       stack: ["React", "Node"],
+      browser: "www.google.com",
       link: "/projects/portfolio",
       github: "https://github.com/nickdoucette24/portfolio",
     },
@@ -37,6 +38,7 @@ const ProjectsSection = () => {
         "User Settings",
       ],
       stack: ["React", "Express", "MySQL", "Python", "Node"],
+      browser: "www.google.com",
       link: "/projects/spectra",
       github: "https://github.com/nickdoucette24/portfolio",
     },
@@ -54,6 +56,7 @@ const ProjectsSection = () => {
         "User Settings",
       ],
       stack: ["React", "Express", "Local Database", "Node"],
+      browser: "www.google.com",
       link: "/projects/instock",
       github: "https://github.com/nickdoucette24/portfolio",
     },
@@ -71,6 +74,7 @@ const ProjectsSection = () => {
         "User Settings",
       ],
       stack: ["React", "Node"],
+      browser: "www.google.com",
       link: "/projects/brainflix",
       github: "https://github.com/nickdoucette24/portfolio",
     },
@@ -88,6 +92,7 @@ const ProjectsSection = () => {
         "User Settings",
       ],
       stack: ["React", "Node"],
+      browser: "www.google.com",
       link: "/projects/bandsite",
       github: "https://github.com/nickdoucette24/portfolio",
     },
@@ -102,6 +107,9 @@ const ProjectsSection = () => {
             key={project.id}
             title={project.title}
             description={project.description}
+            year={project.year}
+            browser={project.browser}
+            github={project.github}
           />
         ))}
       </div>
