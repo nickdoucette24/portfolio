@@ -14,13 +14,112 @@
 
   &__title {
     font-family: Zing Lines;
+    color: #f0e515;
+    font-weight: 100;
+    margin: 0.5rem 0 0 1rem;
+    font-size: 3.5rem;
+  }
+
+  &__divider {
+    border: 1px solid #f0e515;
+    margin: 0 1rem 1rem 1rem;
+  }
+
+  &__label {
+    margin: 0 0 0.5rem 0;
+    width: fit-content;
+    color: $cloud;
+    font-family: Parkinsans;
+    border-bottom: 1px solid #f0e515;
+    padding-bottom: 0.125rem;
+  }
+
+  &__description {
+    color: $cloud;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 1rem 1rem 1rem;
+  }
+
+  &__mobile-nav {
+    padding: 0;
+    margin: 1rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    &--item {
+      position: relative;
+      color: $cream;
+      font-family: Parkinsans;
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+      transition: transform 0.3s ease-in-out;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 1px; // Border thickness
+        width: 0; // Initially hidden
+        background-color: $cloud;
+        transition: width 0.3s ease-in-out; // Smooth slide-in effect
+      }
+
+      &:hover {
+        color: $cloud;
+        transform: scale(1.05);
+
+        &::after {
+          width: 100%; // Slide the border fully across the element
+        }
+      }
+    }
+
+    &--divider {
+      height: 0.75rem;
+      margin: 0;
+      border: 0.5px solid #f0e515;
+    }
   }
 }
 
 .mobile-tile {
   display: flex;
+  box-sizing: border-box;
+  padding: 0 1rem;
+  justify-content: space-between;
 
   &__content {
+    @include flex-centre;
+  }
+
+  &__label {
+    margin: 0;
+    color: $cloud;
+    font-family: Parkinsans;
+  }
+
+  &__year {
+    color: $cloud;
+    margin-left: 0.5rem;
+  }
+
+  &__links {
     display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-left: 0.5rem;
+
+    &--icon {
+      color: $cloud;
+    }
   }
 }

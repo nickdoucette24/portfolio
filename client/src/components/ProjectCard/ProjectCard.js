@@ -10,10 +10,10 @@ const ProjectCard = ({ title, description, year, browser, github }) => {
         <div className="mobile-tile">
           <div className="mobile-tile__content">
             <h5 className="mobile-tile__label">year:</h5>
-            <p3>{year}</p3>
+            <p className="mobile-tile__year">{year}</p>
           </div>
           <div className="mobile-tile__content">
-            <h5 className="mobile-tile--label">view in:</h5>
+            <h5 className="mobile-tile__label">view in:</h5>
             <div className="mobile-tile__links">
               <a className="mobile-tile__links--icon">github</a>
               <a className="mobile-tile__links--icon">browser</a>
