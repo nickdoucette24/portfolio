@@ -6,7 +6,17 @@
   flex-direction: column;
   max-width: 45rem;
 
+  @include laptop {
+    max-width: 71.5rem;
+  }
+
+  @include desktop {
+    max-width: 85rem;
+    min-width: 70rem;
+  }
+
   &__heading {
+    @include h2;
     color: $cloud;
     margin: 1rem 0 0 0;
   }
@@ -15,6 +25,18 @@
     width: 8rem;
     margin: 0.5rem 0;
     border: 1px solid $cloud;
+
+    @include mobile {
+      width: 8.5rem;
+    }
+
+    @include tablet {
+      width: 10rem;
+    }
+
+    @include laptop {
+      width: 11.5rem;
+    }
   }
 }
 
@@ -23,4 +45,22 @@
   margin-top: 1rem;
   gap: 1rem;
   flex-direction: column;
+
+  @include mobile {
+    margin-top: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  @include laptop {
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: 56rem;
+    max-width: 71.5rem;
+  }
+
+  @include desktop {
+    justify-content: center;
+    min-width: 70rem;
+    max-width: 85rem;
+  }
 }

@@ -9,7 +9,7 @@ const ProjectsSection = () => {
       title: "Portfolio",
       year: "2025",
       description:
-        "My personal portfolio showcasing my current work, abilities, and allowing potential employers and clients a space to get in contact.",
+        "A personal portfolio showcasing my ability to design and build from scratch. No templates, no CSS frameworks, no tomfoolery.",
       features: [
         "Authentication",
         "user Login",

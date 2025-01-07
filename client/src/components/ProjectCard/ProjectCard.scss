@@ -6,6 +6,26 @@
   flex-direction: column;
   border: 1px solid $cloud;
   border-radius: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+
+  @include laptop {
+    width: 27rem;
+    max-width: 35rem;
+  }
+
+  @include desktop {
+    width: 27.2rem;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: $cloud 0px 4px 8px;
+  }
+
+  &:active {
+    transform: scale(1.01);
+  }
 
   &__info {
     display: flex;
@@ -14,23 +34,23 @@
 
   &__title {
     font-family: Zing Lines;
-    color: #f0e515;
+    color: $superhero;
     font-weight: 100;
-    margin: 0.5rem 0 0 1rem;
+    margin: 0.5rem 1rem 0 1rem;
     font-size: 3.5rem;
   }
 
   &__divider {
-    border: 1px solid #f0e515;
+    border: 1px solid $superhero;
     margin: 0 1rem 1rem 1rem;
   }
 
   &__label {
     margin: 0 0 0.5rem 0;
     width: fit-content;
-    color: $cloud;
+    color: $superhero;
     font-family: Parkinsans;
-    border-bottom: 1px solid #f0e515;
+    border-bottom: 1px solid $superhero;
     padding-bottom: 0.125rem;
   }
 
@@ -55,7 +75,7 @@
 
     &--item {
       position: relative;
-      color: $cream;
+      color: $cloud;
       font-family: Parkinsans;
       text-decoration: none;
       cursor: pointer;
@@ -67,15 +87,14 @@
         position: absolute;
         left: 0;
         bottom: 0;
-        height: 1px; // Border thickness
-        width: 0; // Initially hidden
+        height: 1px;
+        width: 0;
         background-color: $cloud;
         transition: width 0.3s ease-in-out; // Smooth slide-in effect
       }
 
       &:hover {
         color: $cloud;
-        transform: scale(1.05);
 
         &::after {
           width: 100%; // Slide the border fully across the element
@@ -86,9 +105,13 @@
     &--divider {
       height: 0.75rem;
       margin: 0;
-      border: 0.5px solid #f0e515;
+      border: 0.5px solid $superhero;
     }
   }
+}
+
+.card-hover {
+  font-family: Zing Base;
 }
 
 .mobile-tile {
@@ -103,7 +126,7 @@
 
   &__label {
     margin: 0;
-    color: $cloud;
+    color: $superhero;
     font-family: Parkinsans;
   }
 
