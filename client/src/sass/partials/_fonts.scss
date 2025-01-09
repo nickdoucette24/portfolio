@@ -31,3 +31,16 @@
   font-weight: 400;
   font-style: italic;
 }
+
+// Zing Rust Lines
+@font-face {
+  font-family: Zing Lines;
+  src: url("../../assets/fonts/Zing_Rust/zing_rust-lines.otf")
+    format("opentype");
+}
+
+// Zing Rust Lines
+@font-face {
+  font-family: Zing Base;
+  src: url("../../assets/fonts/Zing_Rust/zing_rust-fill.otf") format("opentype");
+}

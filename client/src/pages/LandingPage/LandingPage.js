@@ -1,6 +1,7 @@
 // import { useState, useEffect } from "react";
 import { useState, useEffect, useRef } from "react";
 import AboutSection from "../../components/AboutSection/AboutSection";
+import ProjectsSection from "../../components/ProjectsSection/ProjectsSection";
 import "./LandingPage.scss";
 
 const LandingPage = () => {
@@ -77,6 +78,11 @@ const LandingPage = () => {
           }`}
         >
           <AboutSection />
+        </div>
+      </div>
+      <div className="projects-section">
+        <div className="projects-wrapper">
+          <ProjectsSection />
         </div>
       </div>
     </div>

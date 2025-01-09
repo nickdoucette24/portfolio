@@ -370,6 +370,53 @@
   }
 }
 
+.projects-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $deep;
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+
+  @include mobile {
+    padding: 1.75rem;
+  }
+
+  @include tablet {
+    padding: 2.25rem 0;
+  }
+
+  @include laptop {
+    padding-top: 2.75rem;
+  }
+
+  @include desktop {
+    padding: 2.75rem 3rem;
+  }
+}
+
+.projects-wrapper {
+  display: flex;
+  align-items: center;
+
+  @include tablet {
+    max-width: 45rem;
+    margin: auto;
+  }
+
+  @include laptop {
+    margin: 0;
+    justify-content: center;
+    max-width: 56rem;
+  }
+
+  @include desktop {
+    max-width: 85rem;
+    min-width: 70rem;
+  }
+}
+
 // ! Keyframes
 // Cube Rotation
 @keyframes rotateCube {
