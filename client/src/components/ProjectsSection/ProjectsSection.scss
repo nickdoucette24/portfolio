@@ -38,6 +38,53 @@
       width: 11.5rem;
     }
   }
+
+  &__toggle {
+    position: relative;
+    margin: 1.5rem auto 0;
+    padding: 0.5rem 0;
+    font-family: Parkinsans;
+    font-size: 1rem;
+    font-weight: 300;
+    color: $cloud;
+    background-color: transparent;
+    cursor: pointer;
+    overflow: hidden; // Ensure ::after stays within the button bounds
+    transition: transform 0.2s ease, color 0.3s ease-in-out,
+      font-weight 0.3s ease-in-out;
+    border: none;
+
+    @include laptop {
+      margin-top: 2rem;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      width: 0;
+      background-color: $superhero;
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover {
+      color: $superhero;
+      font-weight: 600;
+      &::after {
+        width: 100%; // Expand border to the full width of the button
+      }
+    }
+
+    &:active {
+      transform: scale(1);
+
+      &::after {
+        width: 100%; // Ensure border stays full width on active
+      }
+    }
+  }
 }
 
 .projects-container {
