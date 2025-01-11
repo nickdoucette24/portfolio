@@ -29,7 +29,7 @@ const ProjectsSection = () => {
       title: "Spectra",
       year: "2024",
       description:
-        "Winning 1st place, Spectra is a comprehensive dashboard built for Dell Technologies via the Dell Canada & BrainStation hackathon. It allows Dell to track competitor pricings for each product against their own MSRP and view offenders. This is a fullstack application where the frontend, backend, and API were all constructed from scratch.",
+        "Winning 1st place, Spectra is a comprehensive dashboard built for Dell Technologies via the Dell Canada & BrainStation hackathon. It allows the user to track competitor pricings for each product against your own MSRP, then view and contact offenders. This is a fullstack application where the frontend, backend, and API were all constructed from scratch.",
       features: [
         "Authentication",
         "user Login",

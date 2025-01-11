@@ -19,20 +19,24 @@
     display: flex;
     align-items: flex-start;
     position: absolute;
-    top: 33rem;
+    top: 31.5rem;
     left: 50vw;
     z-index: 0;
 
+    @include mobile {
+      top: 32rem;
+    }
+
     @include tablet {
-      top: 38rem;
+      top: 36rem;
     }
 
     @include laptop {
-      top: 42rem;
+      top: 41rem;
     }
 
     @include desktop {
-      top: 43.5rem;
+      top: 42.5rem;
     }
 
     &--title {
@@ -79,61 +83,6 @@
     margin-top: 8rem;
   }
 
-  // &__headshot {
-  //   @include flex-centre;
-  //   opacity: 0;
-  //   margin-top: 20rem;
-  //   cursor: default;
-  //   position: relative;
-  //   transform: translateY(2rem);
-  //   display: hidden;
-  //   gap: 2rem;
-  //   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-
-  //   @include tablet {
-  //     margin-top: 0;
-  //   }
-
-  //   &--img {
-  //     width: 10rem;
-  //     border-radius: 0.3rem;
-  //     opacity: 0;
-  //     transform: translateY(2rem);
-  //     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-
-  //     @include mobile {
-  //       width: 11rem;
-  //     }
-
-  //     @include tablet {
-  //       width: 13.5rem;
-  //       margin-top: 0;
-  //     }
-
-  //     @include laptop {
-  //       width: 18rem;
-  //     }
-
-  //     &.fade-in {
-  //       opacity: 1;
-  //       transform: translateY(0);
-  //     }
-  //   }
-
-  //   &.fade-in {
-  //     opacity: 1;
-  //     transform: translateY(0);
-  //   }
-
-  //   &--text {
-  //     font-family: Parkinsans;
-  //     width: 6.8rem;
-  //     text-align: center;
-  //     font-size: 0.75rem;
-  //     transform: rotate(-20deg);
-  //   }
-  // }
-
   &__text {
     display: flex;
     flex-direction: column;
@@ -159,6 +108,7 @@
 
       @include laptop {
         margin-top: 7rem;
+        margin-bottom: 2rem;
       }
 
       @include desktop {
@@ -168,7 +118,7 @@
 
     &--h2 {
       @include h2;
-      margin: 0.5rem 0;
+      margin: 0.5rem 0 2rem 0;
     }
 
     &--h3 {
@@ -180,6 +130,12 @@
       text-wrap: nowrap;
       @include h4;
       font-size: 2rem;
+      margin: 1rem 0;
+      color: $brunswick;
+
+      @include tablet {
+        font-size: 2rem;
+      }
     }
 
     &--highlight {
@@ -223,7 +179,6 @@
     @include flex-centre;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    margin-bottom: 1rem;
     gap: 1rem;
 
     @include mobile {
@@ -351,10 +306,18 @@
   @include flex-centre;
   background-color: $cloud;
   width: 100vw;
-  margin-top: 18.5rem;
+  margin-top: 23.5rem;
 
   @include tablet {
-    margin-top: 20.5rem;
+    margin-top: 24rem;
+  }
+
+  @include laptop {
+    margin-top: 23rem;
+  }
+
+  @include desktop {
+    margin-top: 23rem;
   }
 }
 
