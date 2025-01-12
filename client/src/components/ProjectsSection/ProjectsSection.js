@@ -110,7 +110,7 @@ const ProjectsSection = () => {
 
   return (
     <div className="projects">
-      <h2 className="projects__heading">My Work</h2>
+      <h2 className="projects__heading">My Work.</h2>
       <hr className="projects__divider" />
       <div className="projects-container">
         {displayed.map((project) => (

@@ -1,0 +1,94 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  margin: 2.5rem 1.5rem;
+
+  @include mobile {
+    margin: 2.75rem 1.75rem;
+  }
+
+  @include tablet {
+    margin: 2.25rem 2.75rem;
+  }
+
+  @include laptop {
+    margin: 2.75rem 3rem;
+  }
+
+  &__heading {
+    @include h2;
+    color: $deep;
+    margin: 0;
+  }
+
+  &__divider {
+    border: 1px solid $superhero;
+    width: 17rem;
+    margin: 0.25rem 0 1.5rem 0;
+
+    @include mobile {
+      width: 18.25rem;
+    }
+
+    @include tablet {
+      width: 21.5rem;
+    }
+
+    @include laptop {
+      width: 24.5rem;
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    @include laptop {
+      gap: 1.5rem;
+    }
+  }
+
+  &__tile {
+    @include contact-tile;
+
+    &--heading {
+      font-family: Parkinsans;
+      margin: 0 0 1rem 0;
+
+      @include tablet {
+        font-size: 1.2rem;
+      }
+
+      @include laptop {
+        font-size: 1.4rem;
+      }
+    }
+
+    &--description {
+      font-style: italic;
+      font-size: 0.85rem;
+      text-align: center;
+
+      @include tablet {
+        font-size: 0.9rem;
+      }
+
+      @include laptop {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.tile-hovered {
+  color: $cloud;
+}

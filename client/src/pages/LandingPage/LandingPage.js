@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import AboutSection from "../../components/AboutSection/AboutSection";
 import ProjectsSection from "../../components/ProjectsSection/ProjectsSection";
+import ContactSection from "../../components/ContactSection/ContactSection";
 import "./LandingPage.scss";
 
 const LandingPage = () => {
@@ -83,6 +84,11 @@ const LandingPage = () => {
       <div className="projects-section">
         <div className="projects-wrapper">
           <ProjectsSection />
+        </div>
+      </div>
+      <div className="contact-section">
+        <div className="contact-wrapper">
+          <ContactSection />
         </div>
       </div>
     </div>
