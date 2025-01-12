@@ -1,0 +1,148 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $cloud;
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+
+  @include laptop {
+    width: 27rem;
+    max-width: 35rem;
+  }
+
+  @include desktop {
+    width: 27.2rem;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: $cloud 0px 4px 8px;
+  }
+
+  &:active {
+    transform: scale(1.01);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-family: Zing Lines;
+    color: $superhero;
+    font-weight: 100;
+    margin: 0.5rem 1rem 0 1rem;
+    font-size: 3.5rem;
+  }
+
+  &__divider {
+    border: 1px solid $superhero;
+    margin: 0 1rem 1rem 1rem;
+  }
+
+  &__label {
+    margin: 0 0 0.5rem 0;
+    width: fit-content;
+    color: $superhero;
+    font-family: Parkinsans;
+    border-bottom: 1px solid $superhero;
+    padding-bottom: 0.125rem;
+  }
+
+  &__description {
+    color: $cloud;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 1rem 1rem 1rem;
+  }
+
+  &__mobile-nav {
+    padding: 0;
+    margin: 1rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    &--item {
+      position: relative;
+      color: $cloud;
+      font-family: Parkinsans;
+      text-decoration: none;
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+      transition: transform 0.3s ease-in-out;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 1px;
+        width: 0;
+        background-color: $cloud;
+        transition: width 0.3s ease-in-out; // Smooth slide-in effect
+      }
+
+      &:hover {
+        color: $cloud;
+
+        &::after {
+          width: 100%; // Slide the border fully across the element
+        }
+      }
+    }
+
+    &--divider {
+      height: 0.75rem;
+      margin: 0;
+      border: 0.5px solid $superhero;
+    }
+  }
+}
+
+.card-hover {
+  font-family: Zing Base;
+}
+
+.mobile-tile {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 1rem;
+  justify-content: space-between;
+
+  &__content {
+    @include flex-centre;
+  }
+
+  &__label {
+    margin: 0;
+    color: $superhero;
+    font-family: Parkinsans;
+  }
+
+  &__year {
+    color: $cloud;
+    margin-left: 0.5rem;
+  }
+
+  &__links {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-left: 0.5rem;
+
+    &--icon {
+      color: $cloud;
+    }
+  }
+}

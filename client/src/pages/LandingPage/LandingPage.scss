@@ -1,0 +1,422 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+// ! Main Styling
+.landing-page {
+  @include flex-centre;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  color: $brunswick;
+  position: relative;
+
+  &__rotating-cube {
+    perspective: 1000px;
+    display: inline-block;
+  }
+
+  &__line-container {
+    display: flex;
+    align-items: flex-start;
+    position: absolute;
+    top: 31.5rem;
+    left: 50vw;
+    z-index: 0;
+
+    @include mobile {
+      top: 32rem;
+    }
+
+    @include tablet {
+      top: 36rem;
+    }
+
+    @include laptop {
+      top: 41rem;
+    }
+
+    @include desktop {
+      top: 42.5rem;
+    }
+
+    &--title {
+      writing-mode: vertical-rl;
+      text-orientation: sideways;
+      transform: rotate(180deg);
+      color: $cloud;
+      cursor: default;
+      margin: 0.25rem;
+      transition: color 0.1s ease-in-out;
+
+      &:hover {
+        color: $deep;
+      }
+    }
+
+    &--line {
+      width: 1px;
+      height: 16rem;
+      background: $cloud;
+      transition: background 0.1s ease-in-out;
+
+      &:hover {
+        background: $deep;
+      }
+    }
+  }
+}
+
+.hero-wrapper {
+  display: flex;
+  width: 100%;
+  margin-top: 6rem;
+  flex-direction: column-reverse;
+  align-items: center;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: center;
+    gap: 7%;
+  }
+
+  @include laptop {
+    margin-top: 8rem;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include laptop {
+      align-items: baseline;
+    }
+
+    &--hello {
+      @include h1;
+      text-align: center;
+      margin: 2.5rem 0 0 0;
+
+      @include tablet {
+        margin-top: 4rem;
+      }
+
+      @include laptop {
+        margin-top: 7rem;
+        margin-bottom: 2rem;
+      }
+
+      @include desktop {
+        margin-top: 8.5rem;
+      }
+    }
+
+    &--h2 {
+      @include h2;
+      margin: 0.5rem 0 2rem 0;
+    }
+
+    &--h3 {
+      @include h3;
+      margin: 1rem 0;
+    }
+
+    &--h4 {
+      text-wrap: nowrap;
+      @include h4;
+      font-size: 2rem;
+      margin: 1rem 0;
+      color: $brunswick;
+
+      @include tablet {
+        font-size: 2rem;
+      }
+    }
+
+    &--highlight {
+      color: $superhero;
+      font-size: 4.75rem;
+
+      @include mobile {
+        font-size: 5rem;
+      }
+
+      @include tablet {
+        font-size: 5.25rem;
+      }
+
+      @include laptop {
+        font-size: 5.5rem;
+      }
+    }
+
+    &--group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include laptop {
+        flex-direction: row;
+        text-wrap: nowrap;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: baseline;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  &__rotating-cube {
+    width: 100%;
+  }
+
+  &__cube-container {
+    @include flex-centre;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 1rem;
+
+    @include mobile {
+      gap: 1.25rem;
+    }
+
+    @include tablet {
+      gap: 1.5rem;
+      width: 100%;
+    }
+  }
+}
+
+// ! About Section Styling
+.about-section {
+  @include flex-centre;
+  background-color: $cloud;
+  width: 100%;
+  margin-top: 23.5rem;
+
+  @include tablet {
+    margin-top: 24rem;
+  }
+
+  @include laptop {
+    margin-top: 23rem;
+  }
+
+  @include desktop {
+    margin-top: 23rem;
+  }
+}
+
+.about-wrapper {
+  @include flex-centre;
+  opacity: 0;
+  transform: translateY(3rem);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+
+  &__visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ! Projects Section Styling
+.projects-section {
+  @include flex-centre;
+  background-color: $deep;
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+
+  @include mobile {
+    padding: 1.75rem;
+  }
+
+  @include tablet {
+    padding: 2.25rem 0;
+  }
+
+  @include laptop {
+    padding-top: 2.75rem;
+  }
+
+  @include desktop {
+    padding: 2.75rem 3rem;
+  }
+}
+
+.projects-wrapper {
+  display: flex;
+  align-items: center;
+
+  @include tablet {
+    max-width: 45rem;
+    margin: auto;
+  }
+
+  @include laptop {
+    margin: 0;
+    justify-content: center;
+    max-width: 56rem;
+  }
+
+  @include desktop {
+    max-width: 85rem;
+    min-width: 70rem;
+  }
+}
+
+// ! Contact Section Styling
+.contact-section {
+  background-color: $cloud;
+  width: 100%;
+  @include flex-centre;
+}
+
+.contact-wrapper {
+  @include flex-centre;
+}
+
+// ! Rotating Cube Styling
+// Cube container
+.cube {
+  width: 10rem;
+  height: 2.25rem;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCube 14s infinite ease-in-out;
+
+  @include laptop {
+    height: 3.25rem;
+  }
+}
+
+// Face styling
+.face {
+  position: absolute;
+  width: 11rem;
+  height: 2.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  text-wrap: nowrap;
+  border: 2px solid $cloud;
+  color: white;
+  font-size: 1rem;
+  box-sizing: border-box;
+  border-radius: 1px;
+
+  @include mobile {
+    width: 12rem;
+    font-size: 1.1rem;
+  }
+
+  @include tablet {
+    width: 15rem;
+    font-size: 1.35rem;
+    padding: 1.25rem 1rem;
+  }
+
+  @include laptop {
+    width: 34rem;
+    height: 3.25rem;
+    font-size: 2rem;
+    padding: 1.5rem;
+  }
+
+  &__period {
+    color: $cloud;
+  }
+}
+
+// Positionings for each face
+.front {
+  transform: rotateX(0deg) translateZ(1.12rem);
+  background-color: $deep;
+  color: $cloud;
+
+  @include tablet {
+    transform: rotateX(0deg) translateZ(1.365rem);
+  }
+
+  @include laptop {
+    transform: rotateX(0deg) translateZ(1.6rem);
+  }
+}
+
+.bottom {
+  transform: rotateX(270deg) translateZ(1.12rem);
+  background-color: $superhero;
+  color: $cloud;
+
+  @include tablet {
+    transform: rotateX(270deg) translateZ(1.365rem);
+  }
+
+  @include laptop {
+    transform: rotateX(270deg) translateZ(1.6rem);
+  }
+}
+
+.back {
+  transform: rotateX(180deg) translateZ(1.12rem);
+  background-color: $deep;
+  color: $cloud;
+
+  @include tablet {
+    transform: rotateX(180deg) translateZ(1.365rem);
+  }
+
+  @include laptop {
+    transform: rotateX(180deg) translateZ(1.6rem);
+  }
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(1.12rem);
+  background-color: $superhero;
+  color: $cloud;
+
+  @include tablet {
+    transform: rotateX(90deg) translateZ(1.365rem);
+  }
+
+  @include laptop {
+    transform: rotateX(90deg) translateZ(1.6rem);
+  }
+}
+
+// ! Keyframes
+// Cube Rotation
+@keyframes rotateCube {
+  0%,
+  100% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: rotateX(90deg) rotateY(0deg);
+  }
+  50% {
+    transform: rotateX(180deg) rotateY(0deg);
+  }
+  75% {
+    transform: rotateX(270deg) rotateY(0deg);
+  }
+}
+
+// Fade-In from Bottom
+@keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

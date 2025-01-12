@@ -1,0 +1,176 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  max-width: 67.5rem;
+  margin: auto;
+
+  @include mobile {
+    padding: 1.75rem;
+  }
+
+  @include tablet {
+    padding: 2.25rem;
+    align-items: flex-start;
+  }
+
+  @include laptop {
+    padding: 2.75rem;
+  }
+
+  &__link {
+    @include body-cta;
+    width: auto;
+    margin: 1.5rem 0 1rem 0;
+
+    @include mobile {
+      margin-top: 1.5rem;
+    }
+
+    @include tablet {
+      margin-top: 1.75rem;
+    }
+  }
+
+  &__text {
+    color: $deep;
+    @include p2;
+
+    @include tablet {
+      max-width: 35rem;
+    }
+
+    @include laptop {
+      max-width: 45rem;
+    }
+
+    &--tablet {
+      display: none;
+
+      @include tablet {
+        display: block;
+        margin-top: 1rem;
+        color: $deep;
+        max-width: 40rem;
+        @include p2;
+      }
+
+      @include laptop {
+        max-width: 45rem;
+      }
+    }
+
+    &--bold {
+      font-weight: 600;
+      text-wrap: nowrap;
+    }
+
+    &--little {
+      text-wrap: nowrap;
+      display: inline-block;
+      font-family: Parkinsans;
+      font-weight: 400;
+      transition: transform 0.1s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(0.75);
+        color: $superhero;
+      }
+
+      &:active {
+        transform: scale(0.5);
+      }
+    }
+  }
+}
+
+.heading-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &__small {
+    @include h2;
+    color: $deep;
+    margin: 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid $superhero;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__mobile {
+    display: none;
+    color: $deep;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid $superhero;
+
+    @include mobile {
+      @include h2;
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__tablet {
+    @include h2;
+    display: none;
+    color: $deep;
+    margin: 1rem 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid $superhero;
+
+    @include tablet {
+      display: flex;
+    }
+
+    @include laptop {
+      display: none;
+    }
+  }
+
+  &__laptop {
+    display: none;
+
+    @include laptop {
+      @include h2;
+      display: flex;
+      color: $deep;
+      margin: 1rem 0 1.5rem 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid $superhero;
+    }
+  }
+}
+
+.rotating-word {
+  display: inline-block;
+  text-align: center;
+  transition: opacity 0.85s ease-out, filter 0.85s ease-out;
+  opacity: 1;
+  font-weight: 600;
+  font-family: Parkinsans;
+  width: 4.5rem;
+  color: $superhero;
+  filter: blur(0);
+
+  @include tablet {
+    font-size: 1.1rem;
+    width: 5rem;
+  }
+}
+
+.fading {
+  opacity: 0;
+  filter: blur(0.25rem);
+}

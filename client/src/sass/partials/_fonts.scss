@@ -1,0 +1,46 @@
+// Parkinsans
+@font-face {
+  font-family: "Parkinsans";
+  src: url("../../assets/fonts/Parkinsans/Parkinsans-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 300 800;
+  font-style: normal;
+}
+
+// Lexend Deca
+@font-face {
+  font-family: "Lexend";
+  src: url("../../assets/fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+// Sanchez Regular
+@font-face {
+  font-family: "Sanchez Regular";
+  src: url("../../assets/fonts/Sanchez/Sanchez-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+// Sanchez Italic
+@font-face {
+  font-family: "Sanchez Italic";
+  src: url("../../assets/fonts/Sanchez/Sanchez-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+// Zing Rust Lines
+@font-face {
+  font-family: Zing Lines;
+  src: url("../../assets/fonts/Zing_Rust/zing_rust-lines.otf")
+    format("opentype");
+}
+
+// Zing Rust Lines
+@font-face {
+  font-family: Zing Base;
+  src: url("../../assets/fonts/Zing_Rust/zing_rust-fill.otf") format("opentype");
+}

@@ -1,0 +1,309 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+// ! Main Styling
+.header {
+  position: fixed;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 100;
+  padding: 1rem 1.5rem;
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  @include mobile {
+    padding: 1.25rem 1.75rem;
+  }
+
+  @include tablet {
+    padding: 1.5rem 2.25rem;
+  }
+  @include laptop {
+    padding: 2rem 2.5rem 2rem 1.75rem;
+    height: 9rem;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @include desktop {
+    height: 10rem;
+    padding: 2rem 2.75rem 2rem 2rem;
+  }
+
+  &__navs {
+    display: none;
+
+    @include laptop {
+      display: flex;
+      z-index: 1;
+      gap: 1rem;
+    }
+  }
+
+  &__home {
+    display: flex;
+    justify-content: space-between;
+
+    @include laptop {
+      @include flex-centre;
+      width: 100%;
+      position: absolute;
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    @include mobile {
+      gap: 1.5rem;
+    }
+
+    @include tablet {
+      gap: 2rem;
+    }
+
+    &--icon {
+      height: 1.7rem;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+      filter: invert(91%) sepia(40%) saturate(3340%) hue-rotate(192deg)
+        brightness(82%) contrast(90%);
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--iconScrolled {
+      filter: none;
+    }
+
+    &--hamburger {
+      @include flex-centre;
+
+      @include laptop {
+        display: none;
+      }
+    }
+
+    &--link {
+      display: none;
+
+      @include tablet {
+        @include flex-centre;
+        @include work-together;
+      }
+
+      @include laptop {
+        display: none;
+      }
+    }
+  }
+
+  &__links {
+    display: none;
+    @include laptop {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    @include desktop {
+      gap: 2rem;
+    }
+  }
+
+  &__logo {
+    width: 10rem;
+    transition: filter 0.3s ease-in-out, transform 0.1s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    &:active {
+      transform: scale(0.99);
+    }
+
+    @include mobile {
+      width: 10.25rem;
+    }
+
+    @include tablet {
+      width: 12rem;
+    }
+
+    @include laptop {
+      @include flex-centre;
+      width: 15rem;
+      margin: 0 auto;
+    }
+
+    @include desktop {
+      width: 16rem;
+    }
+
+    &--scrolled {
+      filter: brightness(1000%) contrast(200%);
+    }
+  }
+
+  &__cta {
+    display: none;
+
+    @include laptop {
+      @include flex-centre;
+      @include work-together;
+      z-index: 0;
+    }
+  }
+
+  &__z {
+    @include laptop {
+      width: 2.5rem;
+      z-index: 1;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        animation: heartbeat 1s infinite;
+      }
+
+      &:active {
+        transform: scale(1);
+        animation: none;
+      }
+    }
+
+    @include desktop {
+      width: 2.25rem;
+    }
+
+    &--link {
+      @include flex-centre;
+    }
+  }
+
+  &--scrolled {
+    background-color: $brunswick;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.nav-container {
+  @include flex-centre;
+
+  &__list {
+    @include nav-list;
+  }
+
+  &__item {
+    @include nav-link;
+
+    &--button {
+      @include nav-button;
+    }
+  }
+}
+
+// ! Extra Scroll Effect Classes
+
+.cta-scrolled {
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: $cloud;
+  color: $superhero;
+  border-color: $cloud;
+
+  &:hover {
+    background-color: $superhero;
+    transform: scale(1.03);
+    color: $cloud;
+    border-color: $superhero;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+      rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  }
+
+  &:active {
+    transform: scale(1);
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 1px 1px,
+      rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 8px 8px;
+  }
+}
+
+.nav-link__scrolled {
+  color: $cloud;
+  transition: background-color 0.2s ease-in-out;
+  border: 1px solid transparent;
+  border-radius: 0.2rem;
+
+  &:hover {
+    background-color: #00000030;
+    border: 1px solid $cloud;
+  }
+}
+
+// ! Third Party Styling Edits
+.hamburger {
+  padding: 0;
+}
+
+.hamburger-box {
+  width: 2.25rem;
+  @include flex-centre;
+}
+
+.hamburger-inner {
+  width: 2rem;
+  height: 0.2rem;
+  filter: invert(15%) sepia(54%) saturate(656%) hue-rotate(186deg)
+    brightness(85%) contrast(85%);
+
+  &::before {
+    width: 2rem;
+    height: 0.2rem;
+  }
+
+  &::after {
+    width: 2rem;
+    height: 0.2rem;
+  }
+}
+
+.hamburger-scrolled {
+  filter: invert(1) brightness(2);
+}
+
+// ? Keyframe Animations
+// Heartbeat animation for the /forthedogs link icon
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.1);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
