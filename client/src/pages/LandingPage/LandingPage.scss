@@ -192,6 +192,95 @@
   }
 }
 
+// ! About Section Styling
+.about-section {
+  @include flex-centre;
+  background-color: $cloud;
+  width: 100%;
+  margin-top: 23.5rem;
+
+  @include tablet {
+    margin-top: 24rem;
+  }
+
+  @include laptop {
+    margin-top: 23rem;
+  }
+
+  @include desktop {
+    margin-top: 23rem;
+  }
+}
+
+.about-wrapper {
+  @include flex-centre;
+  opacity: 0;
+  transform: translateY(3rem);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+
+  &__visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ! Projects Section Styling
+.projects-section {
+  @include flex-centre;
+  background-color: $deep;
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+
+  @include mobile {
+    padding: 1.75rem;
+  }
+
+  @include tablet {
+    padding: 2.25rem 0;
+  }
+
+  @include laptop {
+    padding-top: 2.75rem;
+  }
+
+  @include desktop {
+    padding: 2.75rem 3rem;
+  }
+}
+
+.projects-wrapper {
+  display: flex;
+  align-items: center;
+
+  @include tablet {
+    max-width: 45rem;
+    margin: auto;
+  }
+
+  @include laptop {
+    margin: 0;
+    justify-content: center;
+    max-width: 56rem;
+  }
+
+  @include desktop {
+    max-width: 85rem;
+    min-width: 70rem;
+  }
+}
+
+// ! Contact Section Styling
+.contact-section {
+  background-color: $cloud;
+  width: 100%;
+  @include flex-centre;
+}
+
+.contact-wrapper {
+  @include flex-centre;
+}
+
 // ! Rotating Cube Styling
 // Cube container
 .cube {
@@ -299,84 +388,6 @@
 
   @include laptop {
     transform: rotateX(90deg) translateZ(1.6rem);
-  }
-}
-
-.about-section {
-  @include flex-centre;
-  background-color: $cloud;
-  width: 100vw;
-  margin-top: 23.5rem;
-
-  @include tablet {
-    margin-top: 24rem;
-  }
-
-  @include laptop {
-    margin-top: 23rem;
-  }
-
-  @include desktop {
-    margin-top: 23rem;
-  }
-}
-
-.about-wrapper {
-  @include flex-centre;
-  opacity: 0;
-  transform: translateY(3rem);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-
-  &__visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.projects-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: $deep;
-  width: 100%;
-  padding: 1.5rem;
-  box-sizing: border-box;
-
-  @include mobile {
-    padding: 1.75rem;
-  }
-
-  @include tablet {
-    padding: 2.25rem 0;
-  }
-
-  @include laptop {
-    padding-top: 2.75rem;
-  }
-
-  @include desktop {
-    padding: 2.75rem 3rem;
-  }
-}
-
-.projects-wrapper {
-  display: flex;
-  align-items: center;
-
-  @include tablet {
-    max-width: 45rem;
-    margin: auto;
-  }
-
-  @include laptop {
-    margin: 0;
-    justify-content: center;
-    max-width: 56rem;
-  }
-
-  @include desktop {
-    max-width: 85rem;
-    min-width: 70rem;
   }
 }
 
