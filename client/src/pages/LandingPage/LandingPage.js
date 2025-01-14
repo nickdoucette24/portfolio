@@ -47,7 +47,7 @@ const LandingPage = () => {
             </h2>
           </div>
           <div className="hero-wrapper__cube-container">
-            <h4 className="hero-wrapper__text--h4">I'm a</h4>
+            <h4 className="hero-wrapper__text--h4">I am a</h4>
             <div className="hero-wrapper__rotating-cube">
               <div className="cube">
                 <div className="face front">
