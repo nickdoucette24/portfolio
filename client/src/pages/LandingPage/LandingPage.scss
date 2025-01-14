@@ -86,7 +86,7 @@
   &__text {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 
     @include tablet {
       display: flex;
@@ -99,7 +99,9 @@
 
     &--hello {
       @include h1;
+      color: $cloud;
       text-align: center;
+      font-family: Parkinsans;
       margin: 2.5rem 0 0 0;
 
       @include tablet {
@@ -118,6 +120,7 @@
 
     &--h2 {
       @include h2;
+      color: $cloud;
       margin: 0.5rem 0 2rem 0;
     }
 
@@ -131,7 +134,7 @@
       @include h4;
       font-size: 2rem;
       margin: 1rem 0;
-      color: $brunswick;
+      color: $cloud;
 
       @include tablet {
         font-size: 2rem;
@@ -140,7 +143,7 @@
 
     &--highlight {
       color: $superhero;
-      font-size: 4.75rem;
+      font-size: 4rem;
 
       @include mobile {
         font-size: 5rem;
@@ -157,8 +160,9 @@
 
     &--group {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-top: 1rem;
 
       @include laptop {
         flex-direction: row;
@@ -337,7 +341,7 @@
 // Positionings for each face
 .front {
   transform: rotateX(0deg) translateZ(1.12rem);
-  background-color: $deep;
+  background-color: $superhero;
   color: $cloud;
 
   @include tablet {
@@ -351,7 +355,7 @@
 
 .bottom {
   transform: rotateX(270deg) translateZ(1.12rem);
-  background-color: $superhero;
+  background-color: $orange;
   color: $cloud;
 
   @include tablet {
@@ -365,7 +369,7 @@
 
 .back {
   transform: rotateX(180deg) translateZ(1.12rem);
-  background-color: $deep;
+  background-color: $superhero;
   color: $cloud;
 
   @include tablet {
@@ -379,7 +383,7 @@
 
 .top {
   transform: rotateX(90deg) translateZ(1.12rem);
-  background-color: $superhero;
+  background-color: $orange;
   color: $cloud;
 
   @include tablet {
