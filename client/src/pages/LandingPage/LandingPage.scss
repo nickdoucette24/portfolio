@@ -1,7 +1,7 @@
 @use "../../sass/partials/variables" as *;
 @use "../../sass/partials/mixins" as *;
 
-// ! Main Styling
+// ! Landing Page Styling
 .landing-page {
   @include flex-centre;
   flex-direction: column;
@@ -14,59 +14,65 @@
     perspective: 1000px;
     display: inline-block;
   }
+}
 
-  &__line-container {
-    display: flex;
-    align-items: flex-start;
-    position: absolute;
-    top: 31.5rem;
-    left: 50vw;
-    z-index: 0;
+// ! Line Container
+.line-container {
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+  top: 24rem;
+  left: 50vw;
+  z-index: 0;
 
-    @include mobile {
-      top: 32rem;
+  @include mobile {
+    top: 24rem;
+  }
+
+  @include tablet {
+    top: 35rem;
+  }
+
+  @include laptop {
+    top: 41rem;
+  }
+
+  @include desktop {
+    top: 42.5rem;
+  }
+
+  &__title {
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    transform: rotate(180deg);
+    color: $cloud;
+    cursor: default;
+    margin: 0.25rem;
+    transition: color 0.1s ease-in-out;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+
+  &__line {
+    width: 1px;
+    height: 18rem;
+    background: $cloud;
+    transition: background 0.1s ease-in-out;
+
+    &:hover {
+      background: $orange;
     }
 
     @include tablet {
-      top: 36rem;
-    }
-
-    @include laptop {
-      top: 41rem;
-    }
-
-    @include desktop {
-      top: 42.5rem;
-    }
-
-    &--title {
-      writing-mode: vertical-rl;
-      text-orientation: sideways;
-      transform: rotate(180deg);
-      color: $cloud;
-      cursor: default;
-      margin: 0.25rem;
-      transition: color 0.1s ease-in-out;
-
-      &:hover {
-        color: $deep;
-      }
-    }
-
-    &--line {
-      width: 1px;
-      height: 16rem;
-      background: $cloud;
-      transition: background 0.1s ease-in-out;
-
-      &:hover {
-        background: $deep;
-      }
+      height: 22rem;
     }
   }
 }
 
-.hero-wrapper {
+// ! Hero Section Styling
+.hero-section {
   display: flex;
   width: 100%;
   margin-top: 6rem;
@@ -82,118 +88,10 @@
   @include laptop {
     margin-top: 8rem;
   }
+}
 
-  &__text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    @include tablet {
-      display: flex;
-      flex-direction: column;
-    }
-
-    @include laptop {
-      align-items: baseline;
-    }
-
-    &--hello {
-      @include h1;
-      color: $cloud;
-      text-align: center;
-      font-family: Parkinsans;
-      margin: 2.5rem 0 0 0;
-
-      @include tablet {
-        margin-top: 4rem;
-      }
-
-      @include laptop {
-        margin-top: 7rem;
-        margin-bottom: 2rem;
-      }
-
-      @include desktop {
-        margin-top: 8.5rem;
-      }
-    }
-
-    &--h2 {
-      @include h2;
-      color: $cloud;
-      margin: 0.5rem 0 2rem 0;
-    }
-
-    &--h3 {
-      @include h3;
-      margin: 1rem 0;
-    }
-
-    &--h4 {
-      text-wrap: nowrap;
-      @include h4;
-      font-size: 2rem;
-      margin: 1rem 0;
-      color: $cloud;
-
-      @include tablet {
-        font-size: 2rem;
-      }
-    }
-
-    &--highlight {
-      color: $superhero;
-      font-size: 4rem;
-
-      @include mobile {
-        font-size: 5rem;
-      }
-
-      @include tablet {
-        font-size: 5.25rem;
-      }
-
-      @include laptop {
-        font-size: 5.5rem;
-      }
-    }
-
-    &--group {
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-      margin-top: 1rem;
-
-      @include laptop {
-        flex-direction: row;
-        text-wrap: nowrap;
-        gap: 1.5rem;
-        justify-content: center;
-        align-items: baseline;
-        margin-bottom: 1rem;
-      }
-    }
-  }
-
-  &__rotating-cube {
-    width: 100%;
-  }
-
-  &__cube-container {
-    @include flex-centre;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: 1rem;
-
-    @include mobile {
-      gap: 1.25rem;
-    }
-
-    @include tablet {
-      gap: 1.5rem;
-      width: 100%;
-    }
-  }
+.hero-wrapper {
+  @include flex-centre;
 }
 
 // ! About Section Styling
@@ -283,144 +181,4 @@
 
 .contact-wrapper {
   @include flex-centre;
-}
-
-// ! Rotating Cube Styling
-// Cube container
-.cube {
-  width: 10rem;
-  height: 2.25rem;
-  position: relative;
-  transform-style: preserve-3d;
-  animation: rotateCube 14s infinite ease-in-out;
-
-  @include laptop {
-    height: 3.25rem;
-  }
-}
-
-// Face styling
-.face {
-  position: absolute;
-  width: 11rem;
-  height: 2.25rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 800;
-  text-wrap: nowrap;
-  border: 2px solid $cloud;
-  color: white;
-  font-size: 1rem;
-  box-sizing: border-box;
-  border-radius: 1px;
-
-  @include mobile {
-    width: 12rem;
-    font-size: 1.1rem;
-  }
-
-  @include tablet {
-    width: 15rem;
-    font-size: 1.35rem;
-    padding: 1.25rem 1rem;
-  }
-
-  @include laptop {
-    width: 34rem;
-    height: 3.25rem;
-    font-size: 2rem;
-    padding: 1.5rem;
-  }
-
-  &__period {
-    color: $cloud;
-  }
-}
-
-// Positionings for each face
-.front {
-  transform: rotateX(0deg) translateZ(1.12rem);
-  background-color: $superhero;
-  color: $cloud;
-
-  @include tablet {
-    transform: rotateX(0deg) translateZ(1.365rem);
-  }
-
-  @include laptop {
-    transform: rotateX(0deg) translateZ(1.6rem);
-  }
-}
-
-.bottom {
-  transform: rotateX(270deg) translateZ(1.12rem);
-  background-color: $orange;
-  color: $cloud;
-
-  @include tablet {
-    transform: rotateX(270deg) translateZ(1.365rem);
-  }
-
-  @include laptop {
-    transform: rotateX(270deg) translateZ(1.6rem);
-  }
-}
-
-.back {
-  transform: rotateX(180deg) translateZ(1.12rem);
-  background-color: $superhero;
-  color: $cloud;
-
-  @include tablet {
-    transform: rotateX(180deg) translateZ(1.365rem);
-  }
-
-  @include laptop {
-    transform: rotateX(180deg) translateZ(1.6rem);
-  }
-}
-
-.top {
-  transform: rotateX(90deg) translateZ(1.12rem);
-  background-color: $orange;
-  color: $cloud;
-
-  @include tablet {
-    transform: rotateX(90deg) translateZ(1.365rem);
-  }
-
-  @include laptop {
-    transform: rotateX(90deg) translateZ(1.6rem);
-  }
-}
-
-// ! Keyframes
-// Cube Rotation
-@keyframes rotateCube {
-  0%,
-  100% {
-    transform: rotateX(0deg) rotateY(0deg);
-  }
-  25% {
-    transform: rotateX(90deg) rotateY(0deg);
-  }
-  50% {
-    transform: rotateX(180deg) rotateY(0deg);
-  }
-  75% {
-    transform: rotateX(270deg) rotateY(0deg);
-  }
-}
-
-// Fade-In from Bottom
-@keyframes fadeInFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
