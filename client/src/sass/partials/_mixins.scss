@@ -18,24 +18,24 @@
 }
 
 @mixin h2 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   margin: 1rem 0 0 0;
-  line-height: 2rem;
+  line-height: 2.4rem;
   font-weight: 800;
 
   @include mobile {
-    font-size: 1.5rem;
-    line-height: 2.25rem;
+    font-size: 1.65rem;
+    line-height: 2.5rem;
   }
 
   @include tablet {
-    font-size: 1.75rem;
-    line-height: 2.625rem;
+    font-size: 2rem;
+    line-height: 3rem;
   }
 
   @include laptop {
-    font-size: 2rem;
-    line-height: 3rem;
+    font-size: 2.2rem;
+    line-height: 3.3rem;
   }
 }
 
