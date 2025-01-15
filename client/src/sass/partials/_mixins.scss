@@ -59,7 +59,7 @@
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 600;
-  font-family: Parkinsans;
+  font-family: Lexend;
   color: $superhero;
 
   @include tablet {
@@ -123,7 +123,7 @@
 // ! CTA Mixins
 @mixin work-together {
   @include h4;
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 1rem;
   background-color: transparent;
   border-radius: 0.2rem;
   border: 2px solid $superhero;

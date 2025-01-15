@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./ContactSection.scss";
 
 const ContactSection = () => {
@@ -6,20 +6,33 @@ const ContactSection = () => {
   const [selectedSecondTile, setSelectedSecondTile] = useState(null);
   const [selectedThirdTile, setSelectedThirdTile] = useState(null);
   const [subject, setSubject] = useState("");
+  const bottomRef = useRef(null); // Ref for scrolling to the bottom
 
   const handleSelect = (tile) => {
     setSelectedTile(tile);
     setSelectedSecondTile(null);
     setSelectedThirdTile(null);
+    scrollToBottom();
   };
 
   const handleSecondSelect = (tile) => {
     setSelectedSecondTile(tile);
     setSelectedThirdTile(null);
+    scrollToBottom();
   };
 
   const handleThirdSelect = (tile) => {
     setSelectedThirdTile(tile);
+    scrollToBottom();
+  };
+
+  const scrollToBottom = () => {
+    // Use setTimeout to ensure DOM updates before scrolling
+    setTimeout(() => {
+      if (bottomRef.current) {
+        bottomRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 0);
   };
 
   useEffect(() => {
@@ -263,6 +276,7 @@ const ContactSection = () => {
           </>
         )}
       </div>
+      <div ref={bottomRef} />
     </div>
   );
 };

@@ -123,7 +123,7 @@ const Header = () => {
       </div>
       <div className="header__links">
         <button className={`header__cta ${isScrolled ? "cta-scrolled" : ""}`}>
-          Work Together
+          Hire Me
         </button>
         <Link to={"/forthedogs"} className="header__z--link">
           <img

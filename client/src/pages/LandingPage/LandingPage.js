@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import AboutSection from "../../components/AboutSection/AboutSection";
 import ProjectsSection from "../../components/ProjectsSection/ProjectsSection";
 import ContactSection from "../../components/ContactSection/ContactSection";
+import HeroCanvas from "../../components/HeroCanvas/HeroCanvas";
+import HeroSection from "../../components/HeroSection/HeroSection";
 import "./LandingPage.scss";
 
 const LandingPage = () => {
@@ -37,41 +39,17 @@ const LandingPage = () => {
 
   return (
     <div className="landing-page">
-      <section className="hero-wrapper">
-        <div className="hero-wrapper__text">
-          <h1 className="hero-wrapper__text--hello">Hello,</h1>
-          <div className="hero-wrapper__text--group">
-            <h2 className="hero-wrapper__text--h2">my name is</h2>
-            <h2 className="hero-wrapper__text--h2">
-              <span className="hero-wrapper__text--highlight">Nick</span>.
-            </h2>
-          </div>
-          <div className="hero-wrapper__cube-container">
-            <h4 className="hero-wrapper__text--h4">I am a</h4>
-            <div className="hero-wrapper__rotating-cube">
-              <div className="cube">
-                <div className="face front">
-                  software engineer<span className="face__period">.</span>
-                </div>
-                <div className="face bottom">
-                  web developer<span className="face__period">.</span>
-                </div>
-                <div className="face back">
-                  UX designer<span className="face__period">.</span>
-                </div>
-                <div className="face top">
-                  creative<span className="face__period">.</span>
-                </div>
-              </div>
-            </div>
-          </div>
+      <section className="hero-section">
+        <div className="hero-wrapper">
+          <HeroCanvas />
+          <HeroSection />
         </div>
       </section>
-      <div className="landing-page__line-container">
-        <p className="landing-page__line-container--title">this way</p>
-        <div className="landing-page__line-container--line"></div>
+      <div className="line-container">
+        <p className="line-container__title">this way</p>
+        <div className="line-container__line"></div>
       </div>
-      <div className="about-section">
+      <section className="about-section">
         <div
           ref={aboutSectionRef}
           className={`about-wrapper ${
@@ -80,17 +58,17 @@ const LandingPage = () => {
         >
           <AboutSection />
         </div>
-      </div>
-      <div className="projects-section">
+      </section>
+      <section className="projects-section">
         <div className="projects-wrapper">
           <ProjectsSection />
         </div>
-      </div>
-      <div className="contact-section">
+      </section>
+      <section className="contact-section">
         <div className="contact-wrapper">
           <ContactSection />
         </div>
-      </div>
+      </section>
     </div>
   );
 };
