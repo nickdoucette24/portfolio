@@ -9,26 +9,24 @@
   z-index: 100;
   padding: 1rem 1.5rem;
   background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
   @include mobile {
-    padding: 1.25rem 1.75rem;
+    padding: 1rem 1.75rem;
   }
 
   @include tablet {
-    padding: 1.5rem 2.25rem;
+    padding: 1rem 2.25rem;
   }
   @include laptop {
-    padding: 2rem 2.5rem 2rem 1.75rem;
-    height: 9rem;
+    padding: 2.5rem 2.5rem 2.5rem 1.75rem;
     max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
   @include desktop {
-    height: 10rem;
-    padding: 2rem 2.75rem 2rem 2rem;
+    padding: 2.5rem 2.75rem 2.5rem 2rem;
   }
 
   &__navs {
@@ -52,6 +50,114 @@
     }
   }
 
+  &__cta {
+    z-index: 1;
+  }
+
+  &__logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet {
+      gap: 0.5rem;
+    }
+
+    @include laptop {
+      gap: 0.75rem;
+    }
+  }
+
+  &__logo-name {
+    display: none;
+
+    @include tablet {
+      display: block;
+      transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+      cursor: pointer;
+      width: 10rem;
+      filter: brightness(1000%) contrast(200%);
+    }
+
+    @include laptop {
+      width: 14rem;
+    }
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    &:active {
+      transform: scale(0.99);
+    }
+
+    &--scrolled {
+      filter: none;
+    }
+  }
+
+  &__logo-cloud {
+    transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+    cursor: pointer;
+    width: 4.5rem;
+    filter: brightness(1000%) contrast(200%);
+
+    @include laptop {
+      width: 5.5rem;
+    }
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    &:active {
+      transform: scale(0.99);
+    }
+
+    &--scrolled {
+      filter: none;
+    }
+  }
+
+  &__hire {
+    @include flex-centre;
+    @include work-together;
+    border-color: $cloud;
+    box-sizing: border-box;
+    border-radius: 0.2rem;
+    margin: 0.25rem 0;
+    font-weight: 400;
+    color: $cloud;
+    padding: 0.25rem 0.5rem;
+
+    @include tablet {
+      padding: 0.25rem 1rem;
+    }
+
+    @include laptop {
+      padding: 0.25rem 1.5rem;
+    }
+
+    &:hover {
+      border-color: $superhero;
+      background-color: $superhero;
+      color: $cloud;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
+        transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    &--scrolled {
+      border-color: $deep;
+      color: $deep;
+
+      &:hover {
+        border-color: $deep;
+        background-color: $deep;
+        color: $cloud;
+      }
+    }
+  }
+
   &__container {
     display: flex;
     align-items: center;
@@ -66,11 +172,10 @@
     }
 
     &--icon {
-      height: 1.7rem;
+      height: 1.4rem;
       cursor: pointer;
       transition: transform 0.2s ease-in-out;
-      filter: invert(91%) sepia(40%) saturate(3340%) hue-rotate(192deg)
-        brightness(82%) contrast(90%);
+      filter: none;
 
       &:active {
         transform: scale(0.95);
@@ -82,7 +187,7 @@
     }
 
     &--iconScrolled {
-      filter: none;
+      filter: invert(40%);
     }
 
     &--hamburger {
@@ -107,95 +212,11 @@
     }
   }
 
-  &__links {
-    display: none;
-    @include laptop {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    @include desktop {
-      gap: 2rem;
-    }
-  }
-
-  &__logo {
-    width: 10rem;
-    transition: filter 0.3s ease-in-out, transform 0.1s ease-in-out;
-    cursor: pointer;
-
-    &:hover {
-      transform: scale(1.01);
-    }
-
-    &:active {
-      transform: scale(0.99);
-    }
-
-    @include mobile {
-      width: 10.25rem;
-    }
-
-    @include tablet {
-      width: 12rem;
-    }
-
-    @include laptop {
-      @include flex-centre;
-      width: 15rem;
-      margin: 0 auto;
-    }
-
-    @include desktop {
-      width: 16rem;
-    }
-
-    &--scrolled {
-      filter: brightness(1000%) contrast(200%);
-    }
-  }
-
-  &__cta {
-    display: none;
-
-    @include laptop {
-      @include flex-centre;
-      @include work-together;
-      z-index: 0;
-    }
-  }
-
-  &__z {
-    @include laptop {
-      width: 2.5rem;
-      z-index: 1;
-      transition: transform 0.2s ease-in-out;
-
-      &:hover {
-        animation: heartbeat 1s infinite;
-      }
-
-      &:active {
-        transform: scale(1);
-        animation: none;
-      }
-    }
-
-    @include desktop {
-      width: 2.25rem;
-    }
-
-    &--link {
-      @include flex-centre;
-    }
-  }
-
   &--scrolled {
-    background-color: $brunswick;
+    background-color: $cloud;
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 0.125rem 0.125rem;
+    border-bottom: 4px solid $superhero;
   }
 }
 
@@ -215,20 +236,44 @@
   }
 }
 
+.nav-link__scrolled {
+  color: $deep;
+
+  &:hover {
+    font-weight: 600;
+    color: $deep;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px; // Adjust thickness as needed
+    background-color: $deep; // White border color
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
 // ! Extra Scroll Effect Classes
 
 .cta-scrolled {
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
     transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   background-color: $cloud;
-  color: $superhero;
+  color: $deep;
   border-color: $cloud;
 
   &:hover {
-    background-color: $superhero;
+    background-color: $deep;
     transform: scale(1.03);
     color: $cloud;
-    border-color: $superhero;
+    border-color: $deep;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
       rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
       rgba(0, 0, 0, 0.07) 0px 16px 16px;
@@ -242,47 +287,35 @@
   }
 }
 
-.nav-link__scrolled {
-  color: $cloud;
-  transition: background-color 0.2s ease-in-out;
-  border: 1px solid transparent;
-  border-radius: 0.2rem;
-
-  &:hover {
-    background-color: #00000030;
-    border: 1px solid $cloud;
-  }
-}
-
 // ! Third Party Styling Edits
 .hamburger {
   padding: 0;
 }
 
 .hamburger-box {
-  width: 2.25rem;
+  width: 1.5rem;
   @include flex-centre;
 }
 
 .hamburger-inner {
-  width: 2rem;
-  height: 0.2rem;
-  filter: invert(15%) sepia(54%) saturate(656%) hue-rotate(186deg)
-    brightness(85%) contrast(85%);
+  width: 1.5rem;
+  height: 0.15rem;
+  filter: invert(100%);
 
   &::before {
-    width: 2rem;
-    height: 0.2rem;
+    width: 1.5rem;
+    height: 0.15rem;
   }
 
   &::after {
-    width: 2rem;
-    height: 0.2rem;
+    width: 1.5rem;
+    height: 0.15rem;
   }
 }
 
 .hamburger-scrolled {
-  filter: invert(1) brightness(2);
+  filter: invert(52%) sepia(86%) saturate(3741%) hue-rotate(204deg)
+    brightness(91%) contrast(92%);
 }
 
 // ? Keyframe Animations

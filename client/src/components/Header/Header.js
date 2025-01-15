@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.scss";
-import logo from "../../assets/images/logo.svg";
+import logoCloud from "../../assets/images/logo-cloud.png";
+import logoName from "../../assets/images/logo-name.png";
 import heartIcon from "../../assets/icons/headerHeart.svg";
-import workTogetherIcon from "../../assets/icons/work-together.svg";
+import hireIcon from "../../assets/icons/work-together.svg";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -70,37 +71,35 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <nav className="nav-container">
-          <ul className="nav-container__list">
-            <li className="nav-container__item"></li>
-            <li className="nav-container__item"></li>
-            <li className="nav-container__item"></li>
-            <li className="nav-container__item"></li>
-          </ul>
-        </nav>
       </div>
       <div className="header__home">
-        <img
-          className={`header__logo ${
-            isScrolled ? "header__logo--scrolled" : ""
-          }`}
-          src={logo}
-          alt="nickd development logo and link to the home page"
-          onClick={handleNavigateHome}
-        />
-        <div className="header__container">
+        <div className="header__logo-container">
           <img
-            className={`header__container--icon ${
-              isScrolled ? "header__container--iconScrolled" : ""
+            className={`header__logo-cloud ${
+              isScrolled ? "header__logo-cloud--scrolled" : ""
             }`}
-            src={workTogetherIcon}
+            src={logoCloud}
+            alt="cloud logo and link to the home page"
+            onClick={handleNavigateHome}
           />
+          <img
+            className={`header__logo-name ${
+              isScrolled ? "header__logo-name--scrolled" : ""
+            }`}
+            src={logoName}
+            alt="first and last name link to the home page"
+            onClick={handleNavigateHome}
+          />
+        </div>
+      </div>
+      <div className="header__cta">
+        <div className="header__container">
           <Link
-            className={`header__container--link ${
-              isScrolled ? "cta-scrolled" : ""
+            className={`header__hire ${
+              isScrolled ? "header__hire--scrolled" : ""
             }`}
           >
-            Work Together
+            Let's Talk
           </Link>
           <div className="header__container--hamburger">
             <button
@@ -120,18 +119,6 @@ const Header = () => {
             </button>
           </div>
         </div>
-      </div>
-      <div className="header__links">
-        <button className={`header__cta ${isScrolled ? "cta-scrolled" : ""}`}>
-          Work Together
-        </button>
-        <Link to={"/forthedogs"} className="header__z--link">
-          <img
-            className="header__z"
-            src={heartIcon}
-            alt="heart icon and link to the for the dogs page"
-          />
-        </Link>
       </div>
     </header>
   );
