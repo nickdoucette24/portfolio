@@ -6,7 +6,7 @@ const HeroCanvas = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    const speedMultiplier = 0.25; // Adjust this value to control speed (e.g., 1.5 for faster, 0.5 for slower)
+    const speedMultiplier = 0.5; // Dot movement speed around the screen
     let animationFrameId;
     let width, height;
     let dots = [];
@@ -58,8 +58,8 @@ const HeroCanvas = () => {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < mouse.radius) {
-            this.x += (dx / distance) * 0.5;
-            this.y += (dy / distance) * 0.5;
+            this.x += (dx / distance) * 1; // how fast the dots move towards the mouse
+            this.y += (dy / distance) * 1; // how fast the dots move towards the mouse
           }
         }
       }

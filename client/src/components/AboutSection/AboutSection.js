@@ -37,6 +37,7 @@ const AboutSection = () => {
         <h2 className="heading-container__laptop">
           Let's build something together.
         </h2>
+        <hr className="heading-container__divider" />
       </div>
       <p className="about-container__text">
         I’m a full-stack software engineer based in Ontario, Canada. I craft{" "}
@@ -52,7 +53,7 @@ const AboutSection = () => {
         </span>{" "}
         to dynamic{" "}
         <span className="about-container__text--bold">multi-page websites</span>
-        , or even full-scale frontend + backend{" "}
+        , or even fullstack{" "}
         <span className="about-container__text--bold">software systems</span>,
         what you'll find about me is that I always sweat the{" "}
         <span className="about-container__text--little">little</span> details

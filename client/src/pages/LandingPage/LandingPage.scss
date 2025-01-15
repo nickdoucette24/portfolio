@@ -57,7 +57,7 @@
 
   &__line {
     width: 1px;
-    height: 18rem;
+    height: 21rem;
     background: $cloud;
     transition: background 0.1s ease-in-out;
 
@@ -66,7 +66,11 @@
     }
 
     @include tablet {
-      height: 22rem;
+      height: 23rem;
+    }
+
+    @include laptop {
+      height: 25rem;
     }
   }
 }
@@ -99,18 +103,18 @@
   @include flex-centre;
   background-color: $cloud;
   width: 100%;
-  margin-top: 23.5rem;
+  margin-top: 27rem;
 
   @include tablet {
-    margin-top: 24rem;
+    margin-top: 30rem;
   }
 
   @include laptop {
-    margin-top: 23rem;
+    margin-top: 32rem;
   }
 
   @include desktop {
-    margin-top: 23rem;
+    margin-top: 32rem;
   }
 }
 
