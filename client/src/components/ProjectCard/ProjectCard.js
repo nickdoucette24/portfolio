@@ -41,9 +41,9 @@ const ProjectCard = ({ title, description, year, browser, github }) => {
           <h5 className="project-card__label">Description:</h5>
           <p className="project-card__description">{description}</p>
           <ul className="project-card__mobile-nav">
-            <li className="project-card__mobile-nav--item">Features</li>
-            <hr className="project-card__mobile-nav--divider" />
             <li className="project-card__mobile-nav--item">Overview</li>
+            <hr className="project-card__mobile-nav--divider" />
+            <li className="project-card__mobile-nav--item">Features</li>
             <hr className="project-card__mobile-nav--divider" />
             <li className="project-card__mobile-nav--item">Stack</li>
           </ul>
