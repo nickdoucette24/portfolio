@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.scss";
-import logoCloud from "../../assets/images/logo-cloud.png";
-import logoName from "../../assets/images/logo-name.png";
+import logoCloud from "../../assets/images/cloud-logo.png";
+import logoName from "../../assets/images/name-logo.png";
 import heartIcon from "../../assets/icons/headerHeart.svg";
 import hireIcon from "../../assets/icons/work-together.svg";
 
