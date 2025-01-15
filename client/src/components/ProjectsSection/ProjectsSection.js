@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import "./ProjectsSection.scss";
 
 const ProjectsSection = () => {
   const [showAll, setShowAll] = useState(false);
+  const containerRef = useRef(null);
   const projects = [
     {
       id: 1,
@@ -104,14 +105,32 @@ const ProjectsSection = () => {
 
   const handleShowMore = () => {
     setShowAll((prevState) => !prevState);
+    scrollToBottom();
   };
 
   const displayed = showAll ? projects : projects.slice(0, 3);
 
+  const scrollToBottom = () => {
+    // Use setTimeout to ensure DOM updates before scrolling
+    setTimeout(() => {
+      if (containerRef.current) {
+        const offsetTop = containerRef.current.offsetTop;
+        const containerHeight = containerRef.current.offsetHeight;
+
+        window.scrollTo({
+          top: offsetTop + containerHeight - window.innerHeight + 48,
+          behavior: "smooth",
+        });
+      }
+    }, 0);
+  };
+
   return (
-    <div className="projects">
-      <h2 className="projects__heading">My Work.</h2>
-      <hr className="projects__divider" />
+    <div className="projects" ref={containerRef}>
+      <div className="projects__heading-container">
+        <h2 className="projects__heading">My Work.</h2>
+        <hr className="projects__divider" />
+      </div>
       <div className="projects-container">
         {displayed.map((project) => (
           <ProjectCard
