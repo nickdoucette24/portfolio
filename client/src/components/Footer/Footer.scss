@@ -1,2 +1,81 @@
 @use "../../sass/partials/variables" as *;
 @use "../../sass/partials/mixins" as *;
+
+.footer {
+  background-color: $cloud;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__divider {
+    border: none;
+    border-top: 1px solid rgb(227, 227, 227);
+    width: 100%;
+  }
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__icons {
+    margin: 3rem 0 1rem 0;
+  }
+
+  &__copyright {
+    @include p3;
+    font-family: Europa Light;
+  }
+
+  &__outro {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 4rem 0;
+  }
+
+  &__made-with {
+    @include p3;
+    font-family: Europa Light;
+  }
+
+  &__heart-icon {
+    width: 2rem;
+    margin: 0 0.25rem;
+    cursor: pointer;
+    transition: animation 0.3s ease;
+
+    &:hover {
+      animation: heartbeat 0.9s infinite;
+    }
+  }
+
+  &__love {
+    @include p2;
+    font-family: Europa bold;
+  }
+}
+
+// ? Keyframe Animations
+// Heartbeat animation for the /forthedogs link icon
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.15);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

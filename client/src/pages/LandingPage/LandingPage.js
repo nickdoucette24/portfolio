@@ -5,34 +5,70 @@ import ProjectsSection from "../../components/ProjectsSection/ProjectsSection";
 import ContactSection from "../../components/ContactSection/ContactSection";
 import HeroCanvas from "../../components/HeroCanvas/HeroCanvas";
 import HeroSection from "../../components/HeroSection/HeroSection";
+import Footer from "../../components/Footer/Footer";
 import "./LandingPage.scss";
 
 const LandingPage = () => {
   const [isAboutVisible, setIsAboutVisible] = useState(false);
+  const [isProjectsVisible, setIsProjectsVisible] = useState(false);
+  const [isContactVisible, setIsContactVisible] = useState(false);
   const aboutSectionRef = useRef(null);
+  const projectsSectionRef = useRef(null);
+  const contactSectionRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.intersectionRatio >= 0.2) {
+    const observerCallback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.target === aboutSectionRef.current && entry.isIntersecting) {
           setIsAboutVisible(true);
+          observer.unobserve(entry.target); // Stop observing once visible
         }
-      },
-      {
-        root: null,
-        threshold: 0.2,
-      }
+        if (
+          entry.target === projectsSectionRef.current &&
+          entry.isIntersecting
+        ) {
+          setIsProjectsVisible(true);
+          observer.unobserve(entry.target); // Stop observing once visible
+        }
+        if (
+          entry.target === contactSectionRef.current &&
+          entry.isIntersecting
+        ) {
+          setIsContactVisible(true);
+          observer.unobserve(entry.target); // Stop observing once visible
+        }
+      });
+    };
+
+    const observerOptions = {
+      root: null,
+      threshold: 0.2, // Trigger when 20% of the section is visible
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
     );
 
-    const currentRef = aboutSectionRef.current;
-
-    if (currentRef) {
-      observer.observe(currentRef);
+    if (aboutSectionRef.current) {
+      observer.observe(aboutSectionRef.current);
+    }
+    if (projectsSectionRef.current) {
+      observer.observe(projectsSectionRef.current);
+    }
+    if (contactSectionRef.current) {
+      observer.observe(contactSectionRef.current);
     }
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
+      if (aboutSectionRef.current) {
+        observer.unobserve(aboutSectionRef.current);
+      }
+      if (projectsSectionRef.current) {
+        observer.unobserve(projectsSectionRef.current);
+      }
+      if (contactSectionRef.current) {
+        observer.unobserve(contactSectionRef.current);
       }
     };
   }, []);
@@ -60,15 +96,26 @@ const LandingPage = () => {
         </div>
       </section>
       <section className="projects-section">
-        <div className="projects-wrapper">
-          <ProjectsSection />
+        <div
+          ref={projectsSectionRef}
+          className={`projects-wrapper ${
+            isProjectsVisible ? "projects-wrapper__visible" : ""
+          }`}
+        >
+          <ProjectsSection isVisible={isProjectsVisible} />
         </div>
       </section>
       <section className="contact-section">
-        <div className="contact-wrapper">
+        <div
+          ref={contactSectionRef}
+          className={`contact-wrapper ${
+            isContactVisible ? "contact-wrapper__visible" : ""
+          }`}
+        >
           <ContactSection />
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
