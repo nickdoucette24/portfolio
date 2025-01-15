@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.scss";
-import logo from "../../assets/images/logo.svg";
+import logoCloud from "../../assets/images/logo-cloud.png";
+import logoName from "../../assets/images/logo-name.png";
 import heartIcon from "../../assets/icons/headerHeart.svg";
-import workTogetherIcon from "../../assets/icons/work-together.svg";
+import hireIcon from "../../assets/icons/work-together.svg";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
@@ -80,28 +81,38 @@ const Header = () => {
         </nav>
       </div>
       <div className="header__home">
-        <img
-          className={`header__logo ${
-            isScrolled ? "header__logo--scrolled" : ""
-          }`}
-          src={logo}
-          alt="nickd development logo and link to the home page"
-          onClick={handleNavigateHome}
-        />
-        <div className="header__container">
+        <div className="header__logo-container">
           <img
-            className={`header__container--icon ${
-              isScrolled ? "header__container--iconScrolled" : ""
+            className={`header__logo-cloud ${
+              isScrolled ? "header__logo-cloud--scrolled" : ""
             }`}
-            src={workTogetherIcon}
+            src={logoCloud}
+            alt="cloud logo and link to the home page"
+            onClick={handleNavigateHome}
           />
-          <Link
-            className={`header__container--link ${
-              isScrolled ? "cta-scrolled" : ""
+          <img
+            className={`header__logo-name ${
+              isScrolled ? "header__logo-name--scrolled" : ""
+            }`}
+            src={logoName}
+            alt="first and last name link to the home page"
+            onClick={handleNavigateHome}
+          />
+        </div>
+        <div className="header__container">
+          <div
+            className={`header__hire ${
+              isScrolled ? "header__hire--scrolled" : ""
             }`}
           >
-            Work Together
-          </Link>
+            <h4
+              className={`header__hire-tag ${
+                isScrolled ? "header__hire-tag--scrolled" : ""
+              }`}
+            >
+              Let's Talk
+            </h4>
+          </div>
           <div className="header__container--hamburger">
             <button
               className={`hamburger hamburger--spring ${
@@ -121,18 +132,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="header__links">
-        <button className={`header__cta ${isScrolled ? "cta-scrolled" : ""}`}>
-          Hire Me
-        </button>
-        <Link to={"/forthedogs"} className="header__z--link">
-          <img
-            className="header__z"
-            src={heartIcon}
-            alt="heart icon and link to the for the dogs page"
-          />
-        </Link>
-      </div>
+      <div className="header__links"></div>
     </header>
   );
 };

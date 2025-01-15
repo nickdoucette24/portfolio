@@ -4,6 +4,7 @@
 .project-card {
   display: flex;
   flex-direction: column;
+  background-color: $deep;
   border: 1px solid $cloud;
   border-radius: 0.5rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;

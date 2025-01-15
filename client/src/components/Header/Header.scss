@@ -52,6 +52,92 @@
     }
   }
 
+  &__logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__logo-name {
+    display: none;
+
+    @include tablet {
+      display: block;
+      transition: filter 0.3s ease-in-out, transform 0.1s ease-in-out;
+      cursor: pointer;
+      width: 10rem;
+      filter: brightness(1000%) contrast(200%);
+    }
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    &:active {
+      transform: scale(0.99);
+    }
+
+    &--scrolled {
+      filter: none;
+    }
+  }
+
+  &__logo-cloud {
+    transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+    cursor: pointer;
+    width: 5rem;
+    filter: brightness(1000%) contrast(200%);
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    &:active {
+      transform: scale(0.99);
+    }
+
+    &--scrolled {
+      filter: none;
+    }
+  }
+
+  &__hire {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    @include work-together;
+    border-color: $cloud;
+    margin: 0.25rem 0;
+    padding: 0.25rem 0.5rem;
+
+    &:hover {
+      border-color: $superhero;
+    }
+
+    &--scrolled {
+      border-color: $superhero;
+
+      &:hover {
+        border-color: $superhero;
+        background-color: $superhero;
+      }
+    }
+  }
+
+  &__hire-tag {
+    color: $cloud;
+    margin: 0;
+    font-weight: 400;
+
+    &--scrolled {
+      color: $superhero;
+
+      &:hover {
+        color: $cloud;
+      }
+    }
+  }
+
   &__container {
     display: flex;
     align-items: center;
@@ -66,11 +152,10 @@
     }
 
     &--icon {
-      height: 1.7rem;
+      height: 1.4rem;
       cursor: pointer;
       transition: transform 0.2s ease-in-out;
-      filter: invert(91%) sepia(40%) saturate(3340%) hue-rotate(192deg)
-        brightness(82%) contrast(90%);
+      filter: none;
 
       &:active {
         transform: scale(0.95);
@@ -82,7 +167,7 @@
     }
 
     &--iconScrolled {
-      filter: none;
+      filter: invert(40%);
     }
 
     &--hamburger {
@@ -107,94 +192,8 @@
     }
   }
 
-  &__links {
-    display: none;
-    @include laptop {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    @include desktop {
-      gap: 2rem;
-    }
-  }
-
-  &__logo {
-    width: 10rem;
-    transition: filter 0.3s ease-in-out, transform 0.1s ease-in-out;
-    cursor: pointer;
-
-    &:hover {
-      transform: scale(1.01);
-    }
-
-    &:active {
-      transform: scale(0.99);
-    }
-
-    @include mobile {
-      width: 10.25rem;
-    }
-
-    @include tablet {
-      width: 12rem;
-    }
-
-    @include laptop {
-      @include flex-centre;
-      width: 15rem;
-      margin: 0 auto;
-    }
-
-    @include desktop {
-      width: 16rem;
-    }
-
-    &--scrolled {
-      filter: brightness(1000%) contrast(200%);
-    }
-  }
-
-  &__cta {
-    display: none;
-
-    @include laptop {
-      @include flex-centre;
-      @include work-together;
-      z-index: 0;
-    }
-  }
-
-  &__z {
-    @include laptop {
-      width: 2.5rem;
-      z-index: 1;
-      transition: transform 0.2s ease-in-out;
-
-      &:hover {
-        animation: heartbeat 1s infinite;
-      }
-
-      &:active {
-        transform: scale(1);
-        animation: none;
-      }
-    }
-
-    @include desktop {
-      width: 2.25rem;
-    }
-
-    &--link {
-      @include flex-centre;
-    }
-  }
-
   &--scrolled {
-    background-color: $superhero;
+    background-color: $cloud;
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
   }
 }
@@ -260,29 +259,29 @@
 }
 
 .hamburger-box {
-  width: 2.25rem;
+  width: 1.5rem;
   @include flex-centre;
 }
 
 .hamburger-inner {
-  width: 2rem;
-  height: 0.2rem;
-  filter: invert(15%) sepia(54%) saturate(656%) hue-rotate(186deg)
-    brightness(85%) contrast(85%);
+  width: 1.5rem;
+  height: 0.15rem;
+  filter: invert(100%);
 
   &::before {
-    width: 2rem;
-    height: 0.2rem;
+    width: 1.5rem;
+    height: 0.15rem;
   }
 
   &::after {
-    width: 2rem;
-    height: 0.2rem;
+    width: 1.5rem;
+    height: 0.15rem;
   }
 }
 
 .hamburger-scrolled {
-  filter: invert(1) brightness(2);
+  filter: invert(52%) sepia(86%) saturate(3741%) hue-rotate(204deg)
+    brightness(91%) contrast(92%);
 }
 
 // ? Keyframe Animations

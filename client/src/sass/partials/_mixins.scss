@@ -125,13 +125,13 @@
   @include h4;
   padding: 0.25rem 1rem;
   background-color: transparent;
-  border-radius: 0.2rem;
-  border: 2px solid $superhero;
+  // border-radius: 0.2rem;
+  border: 1.5px solid $superhero;
   text-decoration: none;
   text-wrap: nowrap;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease,
-    color 0.2s ease, box-shadow 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
   &:hover {
     transform: scale(1.03);
