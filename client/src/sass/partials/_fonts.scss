@@ -32,6 +32,24 @@
   font-style: italic;
 }
 
+// Europa Regular
+@font-face {
+  font-family: Europa Regular;
+  src: url("../../assets/fonts/Europa/Europa_Regular.otf") format("opentype");
+}
+
+// Europa Light
+@font-face {
+  font-family: Europa Light;
+  src: url("../../assets/fonts/Europa/Europa_Light.otf") format("opentype");
+}
+
+// Europa Bold
+@font-face {
+  font-family: Europa Bold;
+  src: url("../../assets/fonts/Europa/Europa_Bold.otf") format("opentype");
+}
+
 // Zing Rust Lines
 @font-face {
   font-family: Zing Lines;

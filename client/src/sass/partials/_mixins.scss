@@ -58,8 +58,8 @@
 @mixin h4 {
   font-size: 1rem;
   line-height: 1.5rem;
-  font-weight: 600;
-  font-family: Lexend;
+  font-family: Europa Bold;
+  letter-spacing: 1px;
   color: $superhero;
 
   @include tablet {
@@ -158,7 +158,8 @@
   background-color: transparent;
   border-radius: 0.2rem;
   border: 2px solid $superhero;
-  font-family: Parkinsans;
+  font-family: Europa Bold;
+  letter-spacing: 1px;
   font-weight: 600;
   color: $superhero;
   text-decoration: none;
@@ -217,7 +218,7 @@
   position: relative;
   display: inline-block;
   background: none;
-  font-family: Parkinsans;
+  font-family: Europa Bold;
   font-weight: 400;
   font-size: 0.8rem;
   color: $cloud;

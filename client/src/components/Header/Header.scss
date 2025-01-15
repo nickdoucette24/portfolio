@@ -76,7 +76,7 @@
       transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
       cursor: pointer;
       width: 10rem;
-      filter: brightness(1000%) contrast(200%);
+      filter: invert(100%) brightness(250%) saturate(0%);
     }
 
     @include laptop {
@@ -100,7 +100,7 @@
     transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
     cursor: pointer;
     width: 4.5rem;
-    filter: brightness(1000%) contrast(200%);
+    filter: invert(100%) brightness(250%) saturate(0%);
 
     @include laptop {
       width: 5.5rem;
@@ -126,7 +126,6 @@
     box-sizing: border-box;
     border-radius: 0.2rem;
     margin: 0.25rem 0;
-    font-weight: 400;
     color: $cloud;
     padding: 0.25rem 0.5rem;
 
@@ -135,7 +134,7 @@
     }
 
     @include laptop {
-      padding: 0.25rem 1.5rem;
+      padding: 0.25rem 1.5rem 0 1.5rem;
     }
 
     &:hover {
