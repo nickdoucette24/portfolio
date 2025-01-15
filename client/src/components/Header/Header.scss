@@ -9,26 +9,24 @@
   z-index: 100;
   padding: 1rem 1.5rem;
   background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
   @include mobile {
-    padding: 1.25rem 1.75rem;
+    padding: 1rem 1.75rem;
   }
 
   @include tablet {
-    padding: 1.5rem 2.25rem;
+    padding: 1rem 2.25rem;
   }
   @include laptop {
-    padding: 2rem 2.5rem 2rem 1.75rem;
-    height: 9rem;
+    padding: 2.5rem 2.5rem 2.5rem 1.75rem;
     max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
   @include desktop {
-    height: 10rem;
-    padding: 2rem 2.75rem 2rem 2rem;
+    padding: 2.5rem 2.75rem 2.5rem 2rem;
   }
 
   &__navs {
@@ -52,10 +50,22 @@
     }
   }
 
+  &__cta {
+    z-index: 1;
+  }
+
   &__logo-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @include tablet {
+      gap: 0.5rem;
+    }
+
+    @include laptop {
+      gap: 0.75rem;
+    }
   }
 
   &__logo-name {
@@ -63,10 +73,14 @@
 
     @include tablet {
       display: block;
-      transition: filter 0.3s ease-in-out, transform 0.1s ease-in-out;
+      transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
       cursor: pointer;
       width: 10rem;
       filter: brightness(1000%) contrast(200%);
+    }
+
+    @include laptop {
+      width: 14rem;
     }
 
     &:hover {
@@ -85,8 +99,12 @@
   &__logo-cloud {
     transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
     cursor: pointer;
-    width: 5rem;
+    width: 4.5rem;
     filter: brightness(1000%) contrast(200%);
+
+    @include laptop {
+      width: 5.5rem;
+    }
 
     &:hover {
       transform: scale(1.01);
@@ -102,37 +120,39 @@
   }
 
   &__hire {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    @include flex-centre;
     @include work-together;
     border-color: $cloud;
+    box-sizing: border-box;
+    border-radius: 0.2rem;
     margin: 0.25rem 0;
+    font-weight: 400;
+    color: $cloud;
     padding: 0.25rem 0.5rem;
+
+    @include tablet {
+      padding: 0.25rem 1rem;
+    }
+
+    @include laptop {
+      padding: 0.25rem 1.5rem;
+    }
 
     &:hover {
       border-color: $superhero;
+      background-color: $superhero;
+      color: $cloud;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
+        transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
 
     &--scrolled {
-      border-color: $superhero;
+      border-color: $deep;
+      color: $deep;
 
       &:hover {
-        border-color: $superhero;
-        background-color: $superhero;
-      }
-    }
-  }
-
-  &__hire-tag {
-    color: $cloud;
-    margin: 0;
-    font-weight: 400;
-
-    &--scrolled {
-      color: $superhero;
-
-      &:hover {
+        border-color: $deep;
+        background-color: $deep;
         color: $cloud;
       }
     }
@@ -195,6 +215,8 @@
   &--scrolled {
     background-color: $cloud;
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 0.125rem 0.125rem;
+    border-bottom: 4px solid $superhero;
   }
 }
 
@@ -211,6 +233,30 @@
     &--button {
       @include nav-button;
     }
+  }
+}
+
+.nav-link__scrolled {
+  color: $deep;
+
+  &:hover {
+    font-weight: 600;
+    color: $deep;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px; // Adjust thickness as needed
+    background-color: $deep; // White border color
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
   }
 }
 
@@ -238,18 +284,6 @@
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 1px 1px,
       rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
       rgba(0, 0, 0, 0.07) 0px 8px 8px;
-  }
-}
-
-.nav-link__scrolled {
-  color: $cloud;
-  transition: background-color 0.2s ease-in-out;
-  border: 1px solid transparent;
-  border-radius: 0.2rem;
-
-  &:hover {
-    background-color: #00000030;
-    border: 1px solid $cloud;
   }
 }
 

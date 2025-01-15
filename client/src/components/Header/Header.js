@@ -71,14 +71,6 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <nav className="nav-container">
-          <ul className="nav-container__list">
-            <li className="nav-container__item"></li>
-            <li className="nav-container__item"></li>
-            <li className="nav-container__item"></li>
-            <li className="nav-container__item"></li>
-          </ul>
-        </nav>
       </div>
       <div className="header__home">
         <div className="header__logo-container">
@@ -99,20 +91,16 @@ const Header = () => {
             onClick={handleNavigateHome}
           />
         </div>
+      </div>
+      <div className="header__cta">
         <div className="header__container">
-          <div
+          <Link
             className={`header__hire ${
               isScrolled ? "header__hire--scrolled" : ""
             }`}
           >
-            <h4
-              className={`header__hire-tag ${
-                isScrolled ? "header__hire-tag--scrolled" : ""
-              }`}
-            >
-              Let's Talk
-            </h4>
-          </div>
+            Let's Talk
+          </Link>
           <div className="header__container--hamburger">
             <button
               className={`hamburger hamburger--spring ${
@@ -132,7 +120,6 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="header__links"></div>
     </header>
   );
 };
