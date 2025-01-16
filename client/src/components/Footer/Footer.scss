@@ -21,7 +21,71 @@
   align-items: center;
 
   &__icons {
-    margin: 3rem 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+
+    @include mobile {
+      margin-top: 3rem;
+    }
+
+    &--github {
+      width: 2rem;
+      filter: invert(35%) brightness(210%);
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+
+      @include mobile {
+        width: 2.25rem;
+      }
+
+      @include tablet {
+        width: 2.75rem;
+      }
+
+      @include laptop {
+        width: 3rem;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        filter: none;
+      }
+
+      &:active {
+        transform: scale(1.02);
+      }
+    }
+
+    &--linkedin {
+      width: 6rem;
+      filter: invert(60%) sepia(90%) saturate(10%) hue-rotate(180deg)
+        brightness(140%) contrast(85%);
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+
+      @include mobile {
+        width: 6.5rem;
+      }
+
+      @include tablet {
+        width: 7.5rem;
+      }
+
+      @include laptop {
+        width: 8rem;
+      }
+
+      &:hover {
+        transform: scale(1.03);
+        filter: none;
+      }
+
+      &:active {
+        transform: scale(1.01);
+      }
+    }
   }
 
   &__copyright {
@@ -32,7 +96,7 @@
   &__outro {
     display: flex;
     align-items: center;
-    margin: 1rem 0 4rem 0;
+    margin: 1.5rem 0 3rem 0;
   }
 
   &__made-with {
