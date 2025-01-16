@@ -108,22 +108,23 @@ const ProjectsSection = () => {
     scrollToBottom();
   };
 
-  const displayed = showAll ? projects : projects.slice(0, 3);
-
   const scrollToBottom = () => {
-    // Use setTimeout to ensure DOM updates before scrolling
     setTimeout(() => {
       if (containerRef.current) {
-        const offsetTop = containerRef.current.offsetTop;
-        const containerHeight = containerRef.current.offsetHeight;
+        const containerBottom =
+          containerRef.current.getBoundingClientRect().bottom;
+        const scrollY =
+          window.scrollY + containerBottom - window.innerHeight + 64;
 
         window.scrollTo({
-          top: offsetTop + containerHeight - window.innerHeight + 48,
+          top: scrollY,
           behavior: "smooth",
         });
       }
     }, 0);
   };
+
+  const displayed = showAll ? projects : projects.slice(0, 3);
 
   return (
     <div className="projects" ref={containerRef}>
