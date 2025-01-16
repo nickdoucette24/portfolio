@@ -123,8 +123,9 @@
     @include flex-centre;
     @include work-together;
     border-color: $cloud;
+    font-family: Europa Light;
     box-sizing: border-box;
-    border-radius: 0.2rem;
+    // border-radius: 0.2rem;
     margin: 0.25rem 0;
     color: $cloud;
     padding: 0.25rem 0.5rem;
@@ -215,7 +216,7 @@
     background-color: $cloud;
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
     border-radius: 0 0 0.125rem 0.125rem;
-    border-bottom: 4px solid $superhero;
+    border-bottom: 4px solid $orange;
   }
 }
 
@@ -249,7 +250,7 @@
     bottom: 0;
     left: 0;
     width: 0;
-    height: 2px; // Adjust thickness as needed
+    height: 1px; // Adjust thickness as needed
     background-color: $deep; // White border color
     transition: width 0.3s ease-in-out;
   }

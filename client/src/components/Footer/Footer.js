@@ -1,6 +1,6 @@
 import heartIcon from "../../assets/icons/heart-check.svg";
 import ghLogoBlack from "../../assets/icons/gh-logo-black.svg";
-import ghNameBlack from "../../assets/icons/gh-black.png";
+// import ghNameBlack from "../../assets/icons/gh-black.png";
 import linkedInLogo from "../../assets/icons/linkedin-logo.png";
 import "./Footer.scss";
 
