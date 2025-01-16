@@ -1,33 +1,116 @@
 import { useState, useEffect, useRef } from "react";
+import emailjs from "@emailjs/browser"; // Move to form component when made
 import "./ContactSection.scss";
 
 const ContactSection = () => {
   const [selectedTile, setSelectedTile] = useState(null);
   const [selectedSecondTile, setSelectedSecondTile] = useState(null);
-  const [selectedThirdTile, setSelectedThirdTile] = useState(null);
-  const [subject, setSubject] = useState("");
-  const bottomRef = useRef(null); // Ref for scrolling to the bottom
+  const [selectedThirdTiles, setSelectedThirdTiles] = useState([]);
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    request: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState({});
+  const bottomRef = useRef(null);
+
+  const handleFieldInput = (event) => {
+    const { name, value } = event.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+    setErrors({
+      ...errors,
+      [name]: "",
+    });
+  };
+
+  const handleFormClear = (event) => {
+    event.preventDefault();
+    setFormValues({
+      name: "",
+      email: "",
+      message: "",
+    });
+    setErrors({});
+  };
+
+  const validate = () => {
+    let formErrors = {};
+    if (!formValues.name) formErrors.name = "Your Name is required.";
+    if (!formValues.email) formErrors.email = "Your Email is required.";
+    if (!formValues.request)
+      formErrors.request = "You need to select your request pathway.";
+    if (!formValues.message)
+      formErrors.message = "A quick message is required.";
+    return formErrors;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formErrors = validate();
+    setErrors(formErrors);
+    if (Object.keys(formErrors).length === 0) {
+      try {
+        const payload = {
+          name: formValues.name,
+          email: formValues.email,
+          request: formValues.request,
+          message: formValues.message,
+        };
+
+        const result = await emailjs.send(
+          "service_9g4pa2o",
+          "template_one",
+          payload,
+          "UXUxN9P8Zlf-lVhfS"
+        );
+        alert(
+          "Message Sent Successfully! I'll get back to you as soon as I can."
+        );
+        console.log("EmailJS Response: ", result.text);
+
+        handleFormClear(event);
+      } catch (error) {
+        console.error("EmailJS Error: ", error);
+        setErrors({ form: "Unable to Send Message! Please try again later." });
+      }
+    }
+  };
 
   const handleSelect = (tile) => {
     setSelectedTile(tile);
     setSelectedSecondTile(null);
-    setSelectedThirdTile(null);
+    setSelectedThirdTiles([]);
     scrollToBottom();
   };
 
   const handleSecondSelect = (tile) => {
     setSelectedSecondTile(tile);
-    setSelectedThirdTile(null);
+    setSelectedThirdTiles([]); // Clear third-row selections on second-row change
     scrollToBottom();
   };
 
   const handleThirdSelect = (tile) => {
-    setSelectedThirdTile(tile);
+    setSelectedThirdTiles((prev) => {
+      // Allow multiple selections only for "Feature Additions & Updates"
+      if (selectedSecondTile === "Feature Additions & Updates") {
+        if (prev.includes(tile)) {
+          return prev.filter((item) => item !== tile); // Deselect
+        } else if (prev.length < 3) {
+          return [...prev, tile]; // Add up to 3 selections
+        }
+        return prev;
+      } else {
+        return [tile]; // Single selection for other second-row options
+      }
+    });
     scrollToBottom();
   };
 
   const scrollToBottom = () => {
-    // Use setTimeout to ensure DOM updates before scrolling
     setTimeout(() => {
       if (bottomRef.current) {
         bottomRef.current.scrollIntoView({ behavior: "smooth" });
@@ -38,13 +121,18 @@ const ContactSection = () => {
   useEffect(() => {
     const generateSubject = () => {
       let baseSubject = selectedTile || "";
-      if (selectedSecondTile) baseSubject += ` > ${selectedSecondTile}`;
-      if (selectedThirdTile) baseSubject += ` > ${selectedThirdTile}`;
+      if (selectedSecondTile) baseSubject += ` - ${selectedSecondTile}`;
+      if (selectedThirdTiles.length > 0) {
+        baseSubject += ` - ${selectedThirdTiles.join(", ")}`;
+      }
       return baseSubject;
     };
 
-    setSubject(generateSubject());
-  }, [selectedTile, selectedSecondTile, selectedThirdTile]);
+    setFormValues((prev) => ({
+      ...prev,
+      request: generateSubject(),
+    }));
+  }, [selectedTile, selectedSecondTile, selectedThirdTiles]);
 
   const contactOptions = {
     "Websites & Web Apps": [
@@ -130,10 +218,11 @@ const ContactSection = () => {
   const thirdRowOptions =
     selectedSecondTile &&
     secondRowOptions.find((option) => option.heading === selectedSecondTile)
-      .subOptions;
+      ?.subOptions;
 
   const showContactForm =
-    selectedThirdTile || (selectedSecondTile && thirdRowOptions.length === 0);
+    (selectedThirdTiles.length > 0 && selectedSecondTile) ||
+    (selectedSecondTile && (!thirdRowOptions || thirdRowOptions.length === 0));
 
   return (
     <div className="contact">
@@ -198,7 +287,9 @@ const ContactSection = () => {
               {thirdRowOptions.map((option, index) => (
                 <div
                   className={`contact__tile ${
-                    selectedThirdTile === option.heading ? "tile-hovered" : ""
+                    selectedThirdTiles.includes(option.heading)
+                      ? "tile-hovered"
+                      : ""
                   }`}
                   key={index}
                   onClick={() => handleThirdSelect(option.heading)}
@@ -215,60 +306,69 @@ const ContactSection = () => {
         {showContactForm && (
           <>
             <hr className="contact__row--divider" />
-            <div className="contact__form">
-              <h3 className="contact__form--heading">Contact Me</h3>
-              <p className="contact__form--description">
-                Based on your selection, use one of the methods below to reach
-                out to me.
+            <div className="contact-form">
+              <h3 className="contact-form__heading">Contact Me</h3>
+              <hr className="contact-form__divider" />
+              <p className="contact-form__description">
+                Based on your selection, your message will be routed to me
+                accordingly!
               </p>
-              <form
-                className="contact__form--fields"
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  alert(`Form submitted! Subject: ${subject}`);
-                }}
-              >
-                <div className="contact__form--group">
-                  <label htmlFor="name">Your Name:</label>
+              <form className="contact-form__fields" onSubmit={handleSubmit}>
+                <div className="contact-form__info">
+                  <div className="contact-form__group">
+                    <label htmlFor="name">Your Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      onChange={handleFieldInput}
+                      value={formValues.name}
+                      placeholder="Enter your name"
+                    />
+                    {errors.name && <p className="error">{errors.name}</p>}
+                  </div>
+                  <div className="contact-form__group">
+                    <label htmlFor="email">Your Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      onChange={handleFieldInput}
+                      name="email"
+                      value={formValues.email}
+                      placeholder="Enter your email"
+                    />
+                    {errors.email && <p className="error">{errors.email}</p>}
+                  </div>
+                </div>
+                <div className="contact-form__group">
+                  <label htmlFor="request">Request</label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Enter your name"
-                    required
+                    id="request"
+                    name="request"
+                    value={formValues.request}
+                    onChange={handleFieldInput}
                   />
+                  {errors.request && <p className="error">{errors.request}</p>}
                 </div>
-                <div className="contact__form--group">
-                  <label htmlFor="email">Your Email:</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    required
-                  />
-                </div>
-                <div className="contact__form--group">
-                  <label htmlFor="subject">Subject:</label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={subject}
-                    readOnly
-                  />
-                </div>
-                <div className="contact__form--group">
-                  <label htmlFor="message">Your Message:</label>
+                <div className="contact-form__group">
+                  <label htmlFor="message">Your Message</label>
                   <textarea
                     id="message"
                     name="message"
-                    rows="5"
-                    placeholder="Write it here!"
-                    required
+                    rows="8"
+                    value={formValues.message}
+                    onChange={handleFieldInput}
+                    autoComplete="off"
+                    placeholder="Please write the details for your message here."
                   ></textarea>
+                  {errors.message && <p className="error">{errors.message}</p>}
                 </div>
-                <button type="submit" className="contact__form--submit">
+                <button
+                  type="submit"
+                  className="contact-form__submit"
+                  onSubmit={handleSubmit}
+                >
                   Send Message
                 </button>
               </form>

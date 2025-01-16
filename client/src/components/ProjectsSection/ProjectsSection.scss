@@ -39,7 +39,7 @@
   }
 
   &__divider {
-    width: 9rem;
+    width: 8.75rem;
     margin: 0.5rem 0 1.5rem 0;
     border: 1px solid $cloud;
 
@@ -48,12 +48,12 @@
     }
 
     @include tablet {
-      width: 12rem;
+      width: 11rem;
       margin-bottom: 2.5rem;
     }
 
     @include laptop {
-      width: 15rem;
+      width: 13rem;
     }
   }
 
@@ -73,8 +73,12 @@
     border: none;
     margin-top: 3rem;
 
+    @include tablet {
+      margin-top: 4rem;
+    }
+
     @include laptop {
-      margin-top: 2rem;
+      margin-top: 4rem;
     }
 
     &::after {

@@ -145,21 +145,21 @@
 
   &__divider {
     border: 1px solid $superhero;
-    width: 18rem;
+    width: 16.625rem;
     margin: 0 0 2rem 0;
 
     @include mobile {
-      width: 19rem;
+      width: 17rem;
       margin-bottom: 3rem;
     }
 
     @include tablet {
-      width: 34.5rem;
+      width: 30.5rem;
       margin-bottom: 4rem;
     }
 
     @include laptop {
-      width: 39rem;
+      width: 33.25rem;
       margin-bottom: 4rem;
     }
   }
