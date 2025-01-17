@@ -1,0 +1,26 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+.error-container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+
+  &__icon {
+    width: 1rem;
+  }
+
+  &__message {
+    color: $firered;
+    @include p3;
+
+    @include tablet {
+      font-size: 0.8rem;
+    }
+
+    @include laptop {
+      font-size: 0.9rem;
+    }
+  }
+}
