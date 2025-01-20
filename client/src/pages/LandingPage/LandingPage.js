@@ -1,4 +1,3 @@
-// import { useState, useEffect } from "react";
 import { useState, useEffect, useRef } from "react";
 import AboutSection from "../../components/AboutSection/AboutSection";
 import ProjectsSection from "../../components/ProjectsSection/ProjectsSection";
@@ -8,12 +7,11 @@ import HeroSection from "../../components/HeroSection/HeroSection";
 import Footer from "../../components/Footer/Footer";
 import "./LandingPage.scss";
 
-const LandingPage = () => {
+const LandingPage = ({ contactRef, projectsRef }) => {
   const [isAboutVisible, setIsAboutVisible] = useState(false);
   const [isProjectsVisible, setIsProjectsVisible] = useState(false);
   const [isContactVisible, setIsContactVisible] = useState(false);
   const aboutSectionRef = useRef(null);
-  const projectsSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
 
   useEffect(() => {
@@ -23,10 +21,7 @@ const LandingPage = () => {
           setIsAboutVisible(true);
           observer.unobserve(entry.target); // Stop observing once visible
         }
-        if (
-          entry.target === projectsSectionRef.current &&
-          entry.isIntersecting
-        ) {
+        if (entry.target === projectsRef.current && entry.isIntersecting) {
           setIsProjectsVisible(true);
           observer.unobserve(entry.target); // Stop observing once visible
         }
@@ -53,8 +48,8 @@ const LandingPage = () => {
     if (aboutSectionRef.current) {
       observer.observe(aboutSectionRef.current);
     }
-    if (projectsSectionRef.current) {
-      observer.observe(projectsSectionRef.current);
+    if (projectsRef.current) {
+      observer.observe(projectsRef.current);
     }
     if (contactSectionRef.current) {
       observer.observe(contactSectionRef.current);
@@ -64,8 +59,8 @@ const LandingPage = () => {
       if (aboutSectionRef.current) {
         observer.unobserve(aboutSectionRef.current);
       }
-      if (projectsSectionRef.current) {
-        observer.unobserve(projectsSectionRef.current);
+      if (projectsRef.current) {
+        observer.unobserve(projectsRef.current);
       }
       if (contactSectionRef.current) {
         observer.unobserve(contactSectionRef.current);
@@ -95,9 +90,8 @@ const LandingPage = () => {
           <AboutSection />
         </div>
       </section>
-      <section className="projects-section">
+      <section className="projects-section" ref={projectsRef}>
         <div
-          ref={projectsSectionRef}
           className={`projects-wrapper ${
             isProjectsVisible ? "projects-wrapper__visible" : ""
           }`}
@@ -105,7 +99,7 @@ const LandingPage = () => {
           <ProjectsSection isVisible={isProjectsVisible} />
         </div>
       </section>
-      <section className="contact-section">
+      <section className="contact-section" ref={contactRef}>
         <div
           ref={contactSectionRef}
           className={`contact-wrapper ${

@@ -106,7 +106,7 @@
     }
 
     &--highlight {
-      color: $superhero;
+      color: $orange;
       font-size: 2.25rem;
       transition: color 0.3s ease-in-out;
       cursor: pointer;
@@ -124,7 +124,7 @@
       }
 
       &:hover {
-        color: $orange;
+        color: $superhero;
       }
     }
 
