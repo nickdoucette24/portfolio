@@ -4,7 +4,11 @@
   "scripts": {
     "start:client": "npm start --prefix client",
     "start:server": "npm start --prefix server",
+    "build": "react-scripts build",
     "install:all": "npm install --prefix client && npm install --prefix server",
     "start": "npm run start:client & npm run start:server"
+  },
+  "dependencies": {
+    "react-scripts": "^5.0.1"
   }
 }
