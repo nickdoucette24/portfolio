@@ -113,7 +113,8 @@
 
 .tile-hovered {
   box-shadow: $cloud 0px 2px 8px 0px;
-  background-color: $deep;
+  background-color: $orange;
+  opacity: 0.5;
   color: $cloud;
   z-index: 2;
 }
@@ -222,7 +223,7 @@
     &::placeholder {
       font-family: Europa Light;
       color: rgb(202, 199, 199);
-      @include p3;
+      @include placeholder;
     }
   }
 

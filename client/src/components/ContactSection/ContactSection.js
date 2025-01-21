@@ -308,9 +308,7 @@ const ContactSection = () => {
           <>
             <hr className="contact__row--divider" />
             <div className="contact-form">
-              <h3 className="contact-form__heading">
-                Shoot me a quick message.
-              </h3>
+              <h3 className="contact-form__heading">Shoot me a message.</h3>
               <hr className="contact-form__divider" />
               <p className="contact-form__description">
                 Based on your selection, your message will be routed to me
