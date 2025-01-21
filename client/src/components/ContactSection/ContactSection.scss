@@ -121,6 +121,16 @@
 .contact-form {
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
+
+  @include tablet {
+    margin-top: 2rem;
+    width: 35rem;
+  }
+
+  @include laptop {
+    width: 40rem;
+  }
 
   &__fields {
     display: flex;
@@ -129,6 +139,12 @@
 
   &__info {
     display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 1.5rem;
+    }
   }
 
   &__heading {
@@ -138,18 +154,93 @@
 
   &__divider {
     border: 1px solid $superhero;
-    width: 10rem;
+    width: 100%;
+    max-width: 21.75rem;
     margin: 0 0 2rem 0;
+
+    @include mobile {
+      max-width: none;
+      width: 22.5rem;
+    }
+
+    @include tablet {
+      width: 27rem;
+    }
+
+    @include laptop {
+      width: 29.5rem;
+    }
   }
 
   &__description {
     font-family: Europa Light;
     margin: 0 0 1.5rem 0;
+
+    @include mobile {
+      margin: 0.5rem 0 2rem 0;
+    }
+
+    @include tablet {
+      margin: 1rem 0 2.5rem 0;
+    }
   }
 
   &__group {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     margin: 0 0 1rem 0;
+  }
+
+  &__label {
+    @include p2;
+
+    @include laptop {
+      font-size: 1rem;
+    }
+  }
+
+  &__input {
+    padding: 0.25rem 0.5rem;
+    font-family: Europa Light;
+    @include p3;
+    color: $deep;
+    height: 1.5rem;
+    outline: none;
+    border: 1px solid rgb(202, 199, 199);
+    border-radius: 0.15rem;
+    line-height: 1.4rem;
+
+    &:hover {
+      border-color: $deep;
+    }
+
+    &:focus {
+      border-color: $superhero;
+    }
+
+    &::placeholder {
+      font-family: Europa Light;
+      color: rgb(202, 199, 199);
+      @include p3;
+    }
+  }
+
+  &__textarea {
+    @extend .contact-form__input;
+    resize: none;
+    height: 10rem;
+  }
+
+  &__submit {
+    font-family: Europa Regular;
+    @include body-cta;
+    width: fit-content;
+    align-self: flex-end;
+    margin-top: 1rem;
+
+    @include mobile {
+      margin-top: 1.5rem;
+    }
   }
 }
