@@ -7,13 +7,12 @@ import HeroSection from "../../components/HeroSection/HeroSection";
 import Footer from "../../components/Footer/Footer";
 import "./LandingPage.scss";
 
-const LandingPage = ({ contactRef, projectsRef }) => {
+const LandingPage = ({ contactRef, projectsRef, headerHeight }) => {
   const [isAboutVisible, setIsAboutVisible] = useState(false);
   const [isProjectsVisible, setIsProjectsVisible] = useState(false);
   const [isContactVisible, setIsContactVisible] = useState(false);
   const aboutSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
-  const headerHeight = 80;
 
   useEffect(() => {
     const observerCallback = (entries, observer) => {
