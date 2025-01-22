@@ -114,25 +114,15 @@ const Header = ({ contactRef, projectsRef }) => {
           </ul>
         </nav>
       </div>
-      <div className="header__home">
-        <div className="header__logo-container">
-          <img
-            className={`header__logo-n ${
-              isScrolled ? "header__logo-n--scrolled" : ""
-            }`}
-            src={logoCloud}
-            alt="cloud logo and link to the home page"
-            onClick={() => handleNavigateHome()}
-          />
-          {/* <img
-            className={`header__logo-name ${
-              isScrolled ? "header__logo-name--scrolled" : ""
-            }`}
-            src={logoName}
-            alt="first and last name link to the home page"
-            onClick={() => handleNavigateHome()}
-          /> */}
-        </div>
+      <div className="header__logo-container">
+        <img
+          className={`header__logo-n ${
+            isScrolled ? "header__logo-n--scrolled" : ""
+          }`}
+          src={logoCloud}
+          alt="cloud logo and link to the home page"
+          onClick={() => handleNavigateHome()}
+        />
       </div>
       <div className="header__cta">
         <div className="header__container">
