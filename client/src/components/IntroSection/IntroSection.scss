@@ -1,2 +1,54 @@
 @use "../../sass/partials/variables" as *;
 @use "../../sass/partials/mixins" as *;
+
+.process-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+  margin: 2rem 1.5rem 0 1.5rem;
+}
+
+.process-container {
+  display: flex;
+  flex-direction: column;
+
+  &__heading {
+    @include h3;
+    margin: 0;
+  }
+
+  &__text {
+    @include p1;
+    font-family: Europa Light;
+    font-size: 1.45rem;
+    padding: 0.5rem;
+    line-height: 2rem;
+    letter-spacing: 1px;
+
+    &--highlight {
+      font-family: Europa Bold;
+      color: $wooden;
+    }
+
+    &--bold {
+      font-family: Europa Bold;
+    }
+  }
+
+  &__body {
+    font-size: 1.25rem;
+  }
+
+  &__divider {
+    border: none;
+    border-bottom: 2px solid $lion;
+    width: 100%;
+    margin: 0 0 2rem 0;
+  }
+
+  &__img {
+    width: 12rem;
+    margin: 0 auto 4rem auto;
+  }
+}
