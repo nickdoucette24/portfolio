@@ -13,6 +13,7 @@ const LandingPage = ({ contactRef, projectsRef }) => {
   const [isContactVisible, setIsContactVisible] = useState(false);
   const aboutSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
+  const headerHeight = 80;
 
   useEffect(() => {
     const observerCallback = (entries, observer) => {
@@ -106,7 +107,7 @@ const LandingPage = ({ contactRef, projectsRef }) => {
             isContactVisible ? "contact-wrapper__visible" : ""
           }`}
         >
-          <ContactSection />
+          <ContactSection headerHeight={headerHeight} />
         </div>
       </section>
       <Footer />
