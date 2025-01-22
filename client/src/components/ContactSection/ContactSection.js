@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser"; // Move to form component when made
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./ContactSection.scss";
 
-const ContactSection = () => {
+const ContactSection = ({ headerHeight }) => {
   const [selectedTile, setSelectedTile] = useState(null);
   const [selectedSecondTile, setSelectedSecondTile] = useState(null);
   const [selectedThirdTiles, setSelectedThirdTiles] = useState([]);
@@ -13,7 +14,7 @@ const ContactSection = () => {
     message: "",
   });
   const [errors, setErrors] = useState({});
-  const bottomRef = useRef(null);
+  const dividerRef = useRef(null);
 
   const handleFieldInput = (event) => {
     const { name, value } = event.target;
@@ -84,13 +85,13 @@ const ContactSection = () => {
     setSelectedTile(tile);
     setSelectedSecondTile(null);
     setSelectedThirdTiles([]);
-    scrollToBottom();
+    scrollToDivider();
   };
 
   const handleSecondSelect = (tile) => {
     setSelectedSecondTile(tile);
     setSelectedThirdTiles([]); // Clear third-row selections on second-row change
-    scrollToBottom();
+    scrollToDivider();
   };
 
   const handleThirdSelect = (tile) => {
@@ -107,13 +108,18 @@ const ContactSection = () => {
         return [tile]; // Single selection for other second-row options
       }
     });
-    scrollToBottom();
+    scrollToDivider();
   };
 
-  const scrollToBottom = () => {
+  const scrollToDivider = () => {
     setTimeout(() => {
-      if (bottomRef.current) {
-        bottomRef.current.scrollIntoView({ behavior: "smooth" });
+      if (dividerRef.current) {
+        const dividerTop = dividerRef.current.getBoundingClientRect().top;
+        const scrollY = window.scrollY + dividerTop - headerHeight;
+        window.scrollTo({
+          top: scrollY,
+          behavior: "smooth",
+        });
       }
     }, 0);
   };
@@ -227,7 +233,7 @@ const ContactSection = () => {
   return (
     <div className="contact">
       <h2 className="contact__heading">Get in touch with me.</h2>
-      <hr className="contact__divider" />
+      <hr className="contact__divider" ref={dividerRef} />
       <div className="contact__container">
         <div className="contact__row">
           <div
@@ -261,7 +267,7 @@ const ContactSection = () => {
         </div>
         {selectedTile && (
           <>
-            <hr className="contact__row--divider" />
+            <hr className="contact__row--divider" ref={dividerRef} />
             <div className="contact__row contact__row--second">
               {secondRowOptions.map((option, index) => (
                 <div
@@ -282,7 +288,7 @@ const ContactSection = () => {
         )}
         {selectedSecondTile && thirdRowOptions?.length > 0 && (
           <>
-            <hr className="contact__row--divider" />
+            <hr className="contact__row--divider" ref={dividerRef} />
             <div className="contact__row contact__row--third">
               {thirdRowOptions.map((option, index) => (
                 <div
@@ -305,9 +311,9 @@ const ContactSection = () => {
         )}
         {showContactForm && (
           <>
-            <hr className="contact__row--divider" />
+            <hr className="contact__row--divider" ref={dividerRef} />
             <div className="contact-form">
-              <h3 className="contact-form__heading">Contact Me</h3>
+              <h3 className="contact-form__heading">Shoot me a message.</h3>
               <hr className="contact-form__divider" />
               <p className="contact-form__description">
                 Based on your selection, your message will be routed to me
@@ -316,8 +322,11 @@ const ContactSection = () => {
               <form className="contact-form__fields" onSubmit={handleSubmit}>
                 <div className="contact-form__info">
                   <div className="contact-form__group">
-                    <label htmlFor="name">Your Name</label>
+                    <label htmlFor="name" className="contact-form__label">
+                      Your Name
+                    </label>
                     <input
+                      className="contact-form__input"
                       type="text"
                       id="name"
                       name="name"
@@ -325,11 +334,14 @@ const ContactSection = () => {
                       value={formValues.name}
                       placeholder="Enter your name"
                     />
-                    {errors.name && <p className="error">{errors.name}</p>}
+                    {errors.name && <ErrorMessage message={errors.name} />}
                   </div>
                   <div className="contact-form__group">
-                    <label htmlFor="email">Your Email</label>
+                    <label htmlFor="email" className="contact-form__label">
+                      Your Email
+                    </label>
                     <input
+                      className="contact-form__input"
                       type="email"
                       id="email"
                       onChange={handleFieldInput}
@@ -337,23 +349,30 @@ const ContactSection = () => {
                       value={formValues.email}
                       placeholder="Enter your email"
                     />
-                    {errors.email && <p className="error">{errors.email}</p>}
+                    {errors.email && <ErrorMessage message={errors.email} />}
                   </div>
                 </div>
                 <div className="contact-form__group">
-                  <label htmlFor="request">Request</label>
+                  <label htmlFor="request" className="contact-form__label">
+                    Request
+                  </label>
                   <input
+                    className="contact-form__input"
                     type="text"
                     id="request"
                     name="request"
                     value={formValues.request}
                     onChange={handleFieldInput}
+                    readOnly
                   />
-                  {errors.request && <p className="error">{errors.request}</p>}
+                  {errors.request && <ErrorMessage message={errors.request} />}
                 </div>
                 <div className="contact-form__group">
-                  <label htmlFor="message">Your Message</label>
+                  <label htmlFor="message" className="contact-form__label">
+                    Your Message
+                  </label>
                   <textarea
+                    className="contact-form__textarea"
                     id="message"
                     name="message"
                     rows="8"
@@ -362,7 +381,7 @@ const ContactSection = () => {
                     autoComplete="off"
                     placeholder="Please write the details for your message here."
                   ></textarea>
-                  {errors.message && <p className="error">{errors.message}</p>}
+                  {errors.message && <ErrorMessage message={errors.message} />}
                 </div>
                 <button
                   type="submit"
@@ -376,7 +395,7 @@ const ContactSection = () => {
           </>
         )}
       </div>
-      <div ref={bottomRef} />
+      <div />
     </div>
   );
 };
