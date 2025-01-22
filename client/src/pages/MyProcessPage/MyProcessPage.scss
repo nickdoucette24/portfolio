@@ -1,0 +1,17 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+// ! Main Page Styling
+.process-page {
+  padding-top: 6rem;
+  background-color: $brunswick;
+
+  @include laptop {
+    padding-top: 8rem;
+  }
+}
+
+// ! Intro Section Styling
+.intro-wrapper {
+  @include flex-centre;
+}
