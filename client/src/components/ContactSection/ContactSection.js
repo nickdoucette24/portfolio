@@ -3,7 +3,7 @@ import emailjs from "@emailjs/browser"; // Move to form component when made
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./ContactSection.scss";
 
-const ContactSection = () => {
+const ContactSection = ({ headerHeight }) => {
   const [selectedTile, setSelectedTile] = useState(null);
   const [selectedSecondTile, setSelectedSecondTile] = useState(null);
   const [selectedThirdTiles, setSelectedThirdTiles] = useState([]);
@@ -14,7 +14,7 @@ const ContactSection = () => {
     message: "",
   });
   const [errors, setErrors] = useState({});
-  const bottomRef = useRef(null);
+  const dividerRef = useRef(null);
 
   const handleFieldInput = (event) => {
     const { name, value } = event.target;
@@ -85,13 +85,13 @@ const ContactSection = () => {
     setSelectedTile(tile);
     setSelectedSecondTile(null);
     setSelectedThirdTiles([]);
-    scrollToBottom();
+    scrollToDivider();
   };
 
   const handleSecondSelect = (tile) => {
     setSelectedSecondTile(tile);
     setSelectedThirdTiles([]); // Clear third-row selections on second-row change
-    scrollToBottom();
+    scrollToDivider();
   };
 
   const handleThirdSelect = (tile) => {
@@ -108,13 +108,18 @@ const ContactSection = () => {
         return [tile]; // Single selection for other second-row options
       }
     });
-    scrollToBottom();
+    scrollToDivider();
   };
 
-  const scrollToBottom = () => {
+  const scrollToDivider = () => {
     setTimeout(() => {
-      if (bottomRef.current) {
-        bottomRef.current.scrollIntoView({ behavior: "smooth" });
+      if (dividerRef.current) {
+        const dividerTop = dividerRef.current.getBoundingClientRect().top;
+        const scrollY = window.scrollY + dividerTop - headerHeight;
+        window.scrollTo({
+          top: scrollY,
+          behavior: "smooth",
+        });
       }
     }, 0);
   };
@@ -228,7 +233,7 @@ const ContactSection = () => {
   return (
     <div className="contact">
       <h2 className="contact__heading">Get in touch with me.</h2>
-      <hr className="contact__divider" />
+      <hr className="contact__divider" ref={dividerRef} />
       <div className="contact__container">
         <div className="contact__row">
           <div
@@ -262,7 +267,7 @@ const ContactSection = () => {
         </div>
         {selectedTile && (
           <>
-            <hr className="contact__row--divider" />
+            <hr className="contact__row--divider" ref={dividerRef} />
             <div className="contact__row contact__row--second">
               {secondRowOptions.map((option, index) => (
                 <div
@@ -283,7 +288,7 @@ const ContactSection = () => {
         )}
         {selectedSecondTile && thirdRowOptions?.length > 0 && (
           <>
-            <hr className="contact__row--divider" />
+            <hr className="contact__row--divider" ref={dividerRef} />
             <div className="contact__row contact__row--third">
               {thirdRowOptions.map((option, index) => (
                 <div
@@ -306,7 +311,7 @@ const ContactSection = () => {
         )}
         {showContactForm && (
           <>
-            <hr className="contact__row--divider" />
+            <hr className="contact__row--divider" ref={dividerRef} />
             <div className="contact-form">
               <h3 className="contact-form__heading">Shoot me a message.</h3>
               <hr className="contact-form__divider" />
@@ -390,7 +395,7 @@ const ContactSection = () => {
           </>
         )}
       </div>
-      <div ref={bottomRef} />
+      <div />
     </div>
   );
 };
