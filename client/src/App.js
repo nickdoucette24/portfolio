@@ -9,6 +9,7 @@ import BookingPage from "./pages/BookingPage/BookingPage";
 function App() {
   const contactRef = useRef(null);
   const projectsRef = useRef(null);
+  const headerHeight = 80;
 
   return (
     <BrowserRouter>
@@ -17,11 +18,21 @@ function App() {
         <Route
           path="/"
           element={
-            <LandingPage contactRef={contactRef} projectsRef={projectsRef} />
+            <LandingPage
+              contactRef={contactRef}
+              projectsRef={projectsRef}
+              headerHeight={headerHeight}
+            />
           }
         />
-        <Route path="/my-process" element={<MyProcessPage />} />
-        <Route path="/booking" element={<BookingPage />} />
+        <Route
+          path="/my-process"
+          element={<MyProcessPage headerHeight={headerHeight} />}
+        />
+        <Route
+          path="/booking"
+          element={<BookingPage headerHeight={headerHeight} />}
+        />
       </Routes>
     </BrowserRouter>
   );

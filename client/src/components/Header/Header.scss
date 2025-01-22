@@ -29,6 +29,13 @@
     padding: 2.5rem 2.75rem 2.5rem 2rem;
   }
 
+  &--scrolled {
+    background-color: $cloud;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 0.125rem 0.125rem;
+    border-bottom: 4px solid $orange;
+  }
+
   &__navs {
     display: none;
 
@@ -39,7 +46,7 @@
     }
   }
 
-  &__home {
+  &__logo-container {
     display: flex;
     justify-content: space-between;
 
@@ -54,68 +61,38 @@
     z-index: 1;
   }
 
-  &__logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @include tablet {
-      gap: 0.5rem;
-    }
-
-    @include laptop {
-      gap: 0.75rem;
-    }
-  }
-
-  &__logo-name {
-    display: none;
-
-    @include tablet {
-      display: block;
-      transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
-      cursor: pointer;
-      width: 10rem;
-      filter: invert(100%) brightness(250%) saturate(0%);
-    }
-
-    @include laptop {
-      width: 14rem;
-    }
-
-    &:hover {
-      transform: scale(1.01);
-    }
-
-    &:active {
-      transform: scale(0.99);
-    }
-
-    &--scrolled {
-      filter: none;
-    }
-  }
-
-  &__logo-cloud {
+  &__logo-n {
     transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
     cursor: pointer;
-    width: 4.5rem;
-    filter: invert(100%) brightness(250%) saturate(0%);
+    width: 3.5rem;
+
+    @include tablet {
+      width: 4.5rem;
+    }
 
     @include laptop {
       width: 5.5rem;
     }
 
     &:hover {
-      transform: scale(1.01);
+      transform: scale(1.05);
     }
 
     &:active {
-      transform: scale(0.99);
+      transform: scale(1.025);
     }
 
     &--scrolled {
       filter: none;
+      transform: scale(0.85);
+
+      &:hover {
+        transform: scale(0.9);
+      }
+
+      &:active {
+        transform: scale(0.875);
+      }
     }
   }
 
@@ -187,10 +164,6 @@
         margin-bottom: 0.2rem;
       }
 
-      &:hover {
-        filter: brightness(120) saturate(0.2);
-      }
-
       &-scrolled {
         filter: none;
       }
@@ -200,14 +173,14 @@
   &__container {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
 
     @include mobile {
-      gap: 1.5rem;
+      gap: 1.75rem;
     }
 
     @include tablet {
-      gap: 2rem;
+      gap: 2.25rem;
     }
 
     &--icon {
@@ -249,13 +222,6 @@
         display: none;
       }
     }
-  }
-
-  &--scrolled {
-    background-color: $cloud;
-    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
-    border-radius: 0 0 0.125rem 0.125rem;
-    border-bottom: 4px solid $orange;
   }
 }
 
@@ -305,7 +271,7 @@
 }
 
 .nav-link__selected {
-  transform: scale(1.15);
+  transform: scale(1.05);
 
   &::after {
     width: 100%;

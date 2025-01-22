@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./Header.scss";
-import logoCloud from "../../assets/images/cloud-logo.png";
-import logoName from "../../assets/images/name-logo.png";
+import logoCloud from "../../assets/images/n-logo.png";
+// import logoName from "../../assets/images/name-logo.png";
 import bulbIcon from "../../assets/icons/talk-arrow.svg";
 
 const Header = ({ contactRef, projectsRef }) => {
@@ -114,25 +114,15 @@ const Header = ({ contactRef, projectsRef }) => {
           </ul>
         </nav>
       </div>
-      <div className="header__home">
-        <div className="header__logo-container">
-          <img
-            className={`header__logo-cloud ${
-              isScrolled ? "header__logo-cloud--scrolled" : ""
-            }`}
-            src={logoCloud}
-            alt="cloud logo and link to the home page"
-            onClick={() => handleNavigateHome()}
-          />
-          <img
-            className={`header__logo-name ${
-              isScrolled ? "header__logo-name--scrolled" : ""
-            }`}
-            src={logoName}
-            alt="first and last name link to the home page"
-            onClick={() => handleNavigateHome()}
-          />
-        </div>
+      <div className="header__logo-container">
+        <img
+          className={`header__logo-n ${
+            isScrolled ? "header__logo-n--scrolled" : ""
+          }`}
+          src={logoCloud}
+          alt="cloud logo and link to the home page"
+          onClick={() => handleNavigateHome()}
+        />
       </div>
       <div className="header__cta">
         <div className="header__container">

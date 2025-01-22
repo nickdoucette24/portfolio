@@ -99,6 +99,7 @@
       font-size: 0.85rem;
       font-family: Europa Light;
       text-align: center;
+      padding: 0 1rem;
 
       @include tablet {
         font-size: 0.9rem;
@@ -113,7 +114,8 @@
 
 .tile-hovered {
   box-shadow: $cloud 0px 2px 8px 0px;
-  background-color: $deep;
+  background-color: $superhero;
+  opacity: 0.5;
   color: $cloud;
   z-index: 2;
 }
@@ -154,21 +156,21 @@
 
   &__divider {
     border: 1px solid $superhero;
-    width: 100%;
+    width: 17.5rem;
     max-width: 21.75rem;
     margin: 0 0 2rem 0;
 
     @include mobile {
       max-width: none;
-      width: 22.5rem;
+      width: 18rem;
     }
 
     @include tablet {
-      width: 27rem;
+      width: 22rem;
     }
 
     @include laptop {
-      width: 29.5rem;
+      width: 24rem;
     }
   }
 
@@ -201,7 +203,7 @@
   }
 
   &__input {
-    padding: 0.25rem 0.5rem;
+    padding: 0.35rem 0.5rem 0.2rem 0.5rem;
     font-family: Europa Light;
     @include p3;
     color: $deep;
@@ -210,6 +212,11 @@
     border: 1px solid rgb(202, 199, 199);
     border-radius: 0.15rem;
     line-height: 1.4rem;
+
+    @include tablet {
+      height: 2.5rem;
+      padding: 0.35rem 0.75rem 0.2rem 0.75rem;
+    }
 
     &:hover {
       border-color: $deep;
@@ -222,7 +229,7 @@
     &::placeholder {
       font-family: Europa Light;
       color: rgb(202, 199, 199);
-      @include p3;
+      @include placeholder;
     }
   }
 
