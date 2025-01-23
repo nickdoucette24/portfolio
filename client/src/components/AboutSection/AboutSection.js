@@ -60,7 +60,9 @@ const AboutSection = () => {
         that bring your idea to life and provide a top-tier user experience.
       </p>
       <div className="about-container__button">
-        <Link className="about-container__link">About My Process</Link>
+        <Link className="about-container__link" to="/my-process">
+          About My Process
+        </Link>
       </div>
     </div>
   );

@@ -1,12 +1,78 @@
-import React from "react";
+import { useState } from "react";
 import processImg from "../../assets/icons/behind-code.png";
 import precisionImg from "../../assets/icons/precision.png";
 import toolboxImg from "../../assets/icons/toolbox.png";
 import lifecycleImg from "../../assets/icons/lifecycle.png";
 import accessibilityImg from "../../assets/icons/accessibility.png";
+import cssLogo from "../../assets/images/cssLogo.svg";
+import reactLogo from "../../assets/images/react.svg";
+import javascriptLogo from "../../assets/images/javascript.svg";
+import htmlLogo from "../../assets/images/html.svg";
+import sassLogo from "../../assets/images/sass.svg";
+import expressLogo from "../../assets/images/express.svg";
+import nodeLogo from "../../assets/images/nodejs.svg";
+import mysqlLogo from "../../assets/images/mysql.svg";
+import sequelizeLogo from "../../assets/images/sequelize.svg";
+import socketLogo from "../../assets/images/socket.svg";
+import figmaLogo from "../../assets/images/figma.svg";
+import adobeLogo from "../../assets/images/adobe.svg";
+import jiraLogo from "../../assets/images/jira.svg";
+import gitLogo from "../../assets/images/git.svg";
+import vscodeLogo from "../../assets/images/vscode.svg";
+import postmanLogo from "../../assets/images/postman.svg";
+import npmLogo from "../../assets/images/npm.svg";
+import herokuLogo from "../../assets/images/heroku.svg";
+import digitaloceanLogo from "../../assets/images/digitalocean.svg";
+import dockerLogo from "../../assets/images/docker.svg";
+import bemLogo from "../../assets/images/bem.svg";
+import agileLogo from "../../assets/images/agile.png";
+import restfulLogo from "../../assets/images/restful.svg";
+import cicdLogo from "../../assets/images/cicd.svg";
+import mobileLogo from "../../assets/images/mobile.svg";
 import "./IntroSection.scss";
 
 const IntroSection = () => {
+  const [selectedCategory, setSelectedCategory] = useState("Client-Side");
+
+  const categories = {
+    "Client-Side": [
+      { name: "React.js", logo: reactLogo },
+      { name: "Javascript", logo: javascriptLogo },
+      { name: "HTML", logo: htmlLogo },
+      { name: "CSS", logo: cssLogo },
+      { name: "Sass", logo: sassLogo },
+    ],
+    "Server-Side": [
+      { name: "Express.js", logo: expressLogo },
+      { name: "Node.js", logo: nodeLogo },
+      { name: "MySQL", logo: mysqlLogo },
+      { name: "Sequelize", logo: sequelizeLogo },
+      { name: "Socket.io", logo: socketLogo },
+    ],
+    Design: [
+      { name: "Figma", logo: figmaLogo },
+      { name: "Adobe", logo: adobeLogo },
+    ],
+    Development: [
+      { name: "Jira", logo: jiraLogo },
+      { name: "Git", logo: gitLogo },
+      { name: "VS Code", logo: vscodeLogo },
+      { name: "Postman", logo: postmanLogo },
+      { name: "npm", logo: npmLogo },
+    ],
+    Deployment: [
+      { name: "Heroku", logo: herokuLogo },
+      { name: "DigitalOcean", logo: digitaloceanLogo },
+      { name: "Docker", logo: dockerLogo },
+    ],
+    Methodologies: [
+      { name: "BEM", logo: bemLogo },
+      { name: "AGILE", logo: agileLogo },
+      { name: "Mobile-First", logo: mobileLogo },
+      { name: "RESTful API", logo: restfulLogo },
+      { name: "CI/CD", logo: cicdLogo },
+    ],
+  };
   return (
     <section className="process-section">
       <div className="process-container">
@@ -67,25 +133,42 @@ const IntroSection = () => {
           My Toolbox.
         </h2>
         <hr className="process-container__divider toolbox-container__divider" />
-        <div className="toolbox-list__container">
-          <div className="toolbox-list__titles">
-            <ul className="toolbox-list__list">
-              <li className="toolbox-list__item">Client-Side</li>
-              <li className="toolbox-list__item">Server-Side</li>
-              <li className="toolbox-list__item">Deployment</li>
-              <li className="toolbox-list__item">Design</li>
-              <li className="toolbox-list__item">Development</li>
-              <li className="toolbox-list__item">Methodologies</li>
-            </ul>
-          </div>
-          <hr className="toolbox-list__divider" />
-          <div className="toolbox-list__icons">
-            <ul className="toolbox-list__icon-list">
-              <li className="toolbox-list__icon-item">
-                <img className="toolbox-list__icon-item--img" />
-                <p3 className="toolbox-list__icon-item--name">React.js</p3>
-              </li>
-            </ul>
+        <p className="process-container__text process-container__body">
+          A list of my most used frameworks, applications, and methodolgies that
+          follow. I'm a habitual learner so this list grows very fast.
+        </p>
+        <div className="toolbox-list">
+          <div className="toolbox-list__container">
+            <div className="toolbox-list__titles">
+              <ul className="toolbox-list__list">
+                {Object.keys(categories).map((category) => (
+                  <li
+                    key={category}
+                    className={`toolbox-list__item ${
+                      selectedCategory === category ? "active" : ""
+                    }`}
+                    onClick={() => setSelectedCategory(category)}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <hr className="toolbox-list__divider" />
+            <div className="toolbox-list__icons">
+              <ul className="toolbox-list__icon-list">
+                {categories[selectedCategory].map((tool) => (
+                  <li key={tool.name} className="toolbox-list__icon-item">
+                    <img
+                      className="toolbox-list__icon-item--img"
+                      src={tool.logo}
+                      alt={tool.name}
+                    />
+                    <p className="toolbox-list__icon-item--name">{tool.name}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

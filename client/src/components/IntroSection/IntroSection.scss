@@ -6,13 +6,21 @@
   flex-direction: column;
   gap: 4rem;
   align-items: center;
-  margin: 2rem 1.5rem 4rem 1.5rem;
+  margin: 3rem 1.5rem 4rem 1.5rem;
 }
 
 .process-container {
   display: flex;
   flex-direction: column;
   position: relative;
+
+  @include laptop {
+    width: 50rem;
+  }
+
+  @include desktop {
+    width: 67.5rem;
+  }
 
   &__heading {
     @include h2;
@@ -22,26 +30,51 @@
   &__text {
     @include p1;
     font-family: Europa Light;
+    max-width: 22.25rem;
     font-size: 1.25rem;
     padding: 0.5rem;
     line-height: 2rem;
     letter-spacing: 1px;
     z-index: 1;
 
+    @include mobile {
+      max-width: 28rem;
+    }
+
+    @include tablet {
+      max-width: 38rem;
+    }
+
+    @include laptop {
+      max-width: 30rem;
+    }
+
+    @include desktop {
+      max-width: 45rem;
+    }
+
     &--highlight {
       font-family: Europa Bold;
-      color: $firered;
+      color: $orange;
     }
 
     &--bold {
       font-family: Europa Bold;
-      color: $firered;
+      color: $orange;
     }
   }
 
   &__body {
     font-size: 1rem;
     z-index: 1;
+
+    @include tablet {
+      font-size: 1.125rem;
+    }
+
+    @include laptop {
+      font-size: 1.25rem;
+    }
   }
 
   &__divider {
@@ -57,6 +90,14 @@
     position: absolute;
     right: 20px;
     z-index: 0;
+
+    @include mobile {
+      width: 14rem;
+    }
+
+    @include tablet {
+      width: 16rem;
+    }
   }
 }
 
@@ -64,13 +105,42 @@
   font-size: 2rem;
   margin-top: 3rem;
 
+  @include tablet {
+    font-size: 2.25rem;
+  }
+
+  @include laptop {
+    font-size: 2.75rem;
+  }
+
+  @include desktop {
+    font-size: 3.25rem;
+    width: 100%;
+  }
+
   &__divider {
     width: 17rem;
   }
 }
 
 .precision-container {
-  margin-top: 18rem;
+  margin-top: 20rem;
+
+  @include mobile {
+    margin-top: 22rem;
+  }
+
+  @include tablet {
+    margin-top: 23rem;
+  }
+
+  @include laptop {
+    margin-top: 27rem;
+  }
+
+  @include desktop {
+    margin-top: 29rem;
+  }
 
   &__heading {
     margin-top: 3rem;
@@ -103,6 +173,7 @@
 
 .toolbox-container {
   width: 100%;
+  align-items: flex-start;
 
   &__heading {
     margin-top: 3rem;
@@ -114,13 +185,18 @@
 }
 
 .toolbox-list {
+  @include flex-centre;
+
   &__container {
     display: flex;
     justify-content: center;
+    margin-top: 1rem;
   }
 
   &__titles {
-    @include flex-centre;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
   }
 
   &__list {
@@ -134,16 +210,97 @@
 
   &__item {
     @include p2;
+    cursor: pointer;
+    position: relative;
+    color: $cream;
+    width: fit-content;
+    transition: color 0.3s ease-in-out;
+    font-family: Europa Light;
+
+    &:hover,
+    &.active {
+      color: $wooden;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $wooden;
+        transition: width 0.3s ease-in-out;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: $cream;
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
   }
 
   &__divider {
     border: none;
     border-left: 1px solid $wooden;
-    margin: 0 1.5rem;
+    margin: 0 1rem;
   }
 
   &__icons {
     @include flex-centre;
+  }
+
+  &__icon-list {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  &__icon-item {
+    display: flex;
+    min-width: 5.4rem;
+    max-width: 5.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid $cloud;
+    border-radius: 0.4rem;
+    padding: 1rem 0.5rem;
+    background-color: $cloud;
+    cursor: pointer;
+    z-index: 3;
+
+    &--img {
+      width: 3rem;
+      height: 3rem;
+      object-fit: contain;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &--name {
+      font-size: 0.875rem;
+      text-align: center;
+      color: $deep;
+      text-wrap: wrap;
+    }
   }
 }
 
@@ -153,30 +310,26 @@
   align-items: flex-start;
   position: absolute;
   top: 45rem;
-  left: 30vw;
+  left: 30%;
   z-index: 1;
 
   @include mobile {
-    top: 46rem;
+    top: 41rem;
   }
 
   @include tablet {
-    top: 50rem;
+    top: 35rem;
   }
 
   @include laptop {
-    top: 50rem;
-  }
-
-  @include desktop {
-    top: 53rem;
+    top: 38rem;
   }
 
   &__title {
     writing-mode: vertical-rl;
     text-orientation: sideways;
     transform: rotate(180deg);
-    color: $wooden;
+    color: $cloud;
     cursor: default;
     margin: 0.25rem;
     transition: color 0.1s ease-in-out;
@@ -189,7 +342,7 @@
   &__line {
     width: 1px;
     height: 20rem;
-    background: $wooden;
+    background: $cloud;
     transition: background 0.1s ease-in-out;
 
     &:hover {
