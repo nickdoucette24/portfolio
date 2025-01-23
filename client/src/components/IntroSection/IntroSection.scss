@@ -6,49 +6,202 @@
   flex-direction: column;
   gap: 4rem;
   align-items: center;
-  margin: 2rem 1.5rem 0 1.5rem;
+  margin: 2rem 1.5rem 4rem 1.5rem;
 }
 
 .process-container {
   display: flex;
   flex-direction: column;
+  position: relative;
 
   &__heading {
-    @include h3;
+    @include h2;
     margin: 0;
   }
 
   &__text {
     @include p1;
     font-family: Europa Light;
-    font-size: 1.45rem;
+    font-size: 1.25rem;
     padding: 0.5rem;
     line-height: 2rem;
     letter-spacing: 1px;
+    z-index: 1;
 
     &--highlight {
       font-family: Europa Bold;
-      color: $wooden;
+      color: $firered;
     }
 
     &--bold {
       font-family: Europa Bold;
+      color: $firered;
     }
   }
 
   &__body {
-    font-size: 1.25rem;
+    font-size: 1rem;
+    z-index: 1;
   }
 
   &__divider {
     border: none;
     border-bottom: 2px solid $lion;
-    width: 100%;
     margin: 0 0 2rem 0;
   }
 
   &__img {
     width: 12rem;
     margin: 0 auto 4rem auto;
+    opacity: 0.25;
+    position: absolute;
+    right: 20px;
+    z-index: 0;
+  }
+}
+
+.behind-heading {
+  font-size: 2rem;
+  margin-top: 3rem;
+
+  &__divider {
+    width: 17rem;
+  }
+}
+
+.precision-container {
+  margin-top: 18rem;
+
+  &__heading {
+    margin-top: 3rem;
+  }
+
+  &__divider {
+    width: 20.5rem;
+  }
+}
+
+.lifecycle-heading {
+  margin-top: 3rem;
+
+  &__divider {
+    width: 14.5rem;
+  }
+}
+
+.accessibility-container {
+  &__heading {
+    margin-top: 3rem;
+  }
+
+  &__divider {
+    width: 19.5rem;
+  }
+}
+
+// ! Toolbox Section Styling
+
+.toolbox-container {
+  width: 100%;
+
+  &__heading {
+    margin-top: 3rem;
+  }
+
+  &__divider {
+    width: 10.5rem;
+  }
+}
+
+.toolbox-list {
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__titles {
+    @include flex-centre;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__item {
+    @include p2;
+  }
+
+  &__divider {
+    border: none;
+    border-left: 1px solid $wooden;
+    margin: 0 1.5rem;
+  }
+
+  &__icons {
+    @include flex-centre;
+  }
+}
+
+// ! Scroll Container
+.scroll-container {
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+  top: 45rem;
+  left: 30vw;
+  z-index: 1;
+
+  @include mobile {
+    top: 46rem;
+  }
+
+  @include tablet {
+    top: 50rem;
+  }
+
+  @include laptop {
+    top: 50rem;
+  }
+
+  @include desktop {
+    top: 53rem;
+  }
+
+  &__title {
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    transform: rotate(180deg);
+    color: $wooden;
+    cursor: default;
+    margin: 0.25rem;
+    transition: color 0.1s ease-in-out;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+
+  &__line {
+    width: 1px;
+    height: 20rem;
+    background: $wooden;
+    transition: background 0.1s ease-in-out;
+
+    &:hover {
+      background: $orange;
+    }
+
+    @include tablet {
+      height: 23rem;
+    }
+
+    @include laptop {
+      height: 25rem;
+    }
   }
 }

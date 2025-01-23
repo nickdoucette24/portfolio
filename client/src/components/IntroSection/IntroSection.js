@@ -11,12 +11,14 @@ const IntroSection = () => {
     <section className="process-section">
       <div className="process-container">
         <img className="process-container__img" src={processImg} />
-        <h1 className="process-container__heading">Behind my code.</h1>
-        <hr className="process-container__divider" />
+        <h1 className="process-container__heading behind-heading">
+          Behind my code.
+        </h1>
+        <hr className="process-container__divider behind-heading__divider" />
         <p className="process-container__text">
           Every line of code I write is an opportunity to raise the standard of
-          content in the world. The internet is dark and ugly place, but I do my
-          best to make it a little bit prettier.
+          content in the world. The internet is a dark and ugly place, and I do
+          my best to make it a little bit prettier.
         </p>
         <p className="process-container__text">
           While that sentiment means little to most people, I find a lot of
@@ -31,12 +33,16 @@ const IntroSection = () => {
           and perfectly optimized experience.
         </p>
       </div>
-      <div className="process-container">
+      <div className="scroll-container">
+        <p className="scroll-container__title">this way</p>
+        <div className="scroll-container__line"></div>
+      </div>
+      <div className="process-container precision-container">
         <img className="process-container__img" src={precisionImg} />
-        <h1 className="process-container__heading">
+        <h2 className="process-container__heading precision-container__heading">
           Precision in Development.
-        </h1>
-        <hr className="process-container__divider" />
+        </h2>
+        <hr className="process-container__divider precision-container__divider" />
         <p className="process-container__text  process-container__body">
           I adapt my process to each project, ensuring its design is hitting the
           right{" "}
@@ -55,27 +61,29 @@ const IntroSection = () => {
           for.
         </p>
       </div>
-      <div className="process-stack">
+      <div className="process-container toolbox-container">
         <img className="process-container__img" src={toolboxImg} />
-        <h1 className="process-stack__heading">My Toolbox.</h1>
-        <hr className="process-container__divider" />
-        <div className="process-stack__container">
-          <div className="process-stack__titles">
-            <ul>
-              <li>Client-Side</li>
-              <li>Server-Side</li>
-              <li>Deployment</li>
-              <li>Design</li>
-              <li>Development</li>
-              <li>Methodologies</li>
+        <h2 className="process-container__heading toolbox-container__heading">
+          My Toolbox.
+        </h2>
+        <hr className="process-container__divider toolbox-container__divider" />
+        <div className="toolbox-list__container">
+          <div className="toolbox-list__titles">
+            <ul className="toolbox-list__list">
+              <li className="toolbox-list__item">Client-Side</li>
+              <li className="toolbox-list__item">Server-Side</li>
+              <li className="toolbox-list__item">Deployment</li>
+              <li className="toolbox-list__item">Design</li>
+              <li className="toolbox-list__item">Development</li>
+              <li className="toolbox-list__item">Methodologies</li>
             </ul>
           </div>
-          <hr />
-          <div className="process-stack__icons">
-            <ul>
-              <li>
-                <img />
-                <p3>React.js</p3>
+          <hr className="toolbox-list__divider" />
+          <div className="toolbox-list__icons">
+            <ul className="toolbox-list__icon-list">
+              <li className="toolbox-list__icon-item">
+                <img className="toolbox-list__icon-item--img" />
+                <p3 className="toolbox-list__icon-item--name">React.js</p3>
               </li>
             </ul>
           </div>
@@ -83,32 +91,35 @@ const IntroSection = () => {
       </div>
       <div className="process-container">
         <img className="process-container__img" src={lifecycleImg} />
-        <h1 className="process-container__heading">Project Lifecycle.</h1>
-        <hr className="process-container__divider" />
+        <h1 className="process-container__heading lifecycle-heading">
+          Project Lifecycle.
+        </h1>
+        <hr className="process-container__divider lifecycle-heading__divider" />
         <p className="process-container__text process-container__body">
-          From ideation to deployment, I follow a structured workflow to keep
-          each project on track and{" "}
-          <span className="process-container__text--bold">cover all bases</span>
-          . I use a{" "}
-          <span className="process-container__text--bold">mobile-first</span>
+          From ideation to deployment, I follow a{" "}
+          <span className="process-container__text--bold">
+            structured workflow
+          </span>{" "}
+          to keep each project on track and cover all bases. I use a{" "}
+          <span className="process-container__text--bold">mobile-first</span>{" "}
           approach to make sure the product looks good on all devices, and
-          adhere to <span className="process-container__text--bold">
-            BEM
-          </span>,{" "}
+          adhere to <span className="process-container__text--bold">BEM</span>,{" "}
           <span className="process-container__text--bold">accessible</span>{" "}
           development standards, and{" "}
           <span className="process-container__text--bold">RESTful</span> API
-          logic to ensure my projects are scalable and future-proof.
+          logic to ensure my projects are easily scalable and future-proof.
           Plan-Build-Test-Refine-Deploy.
         </p>
       </div>
-      <div className="process-container">
+      <div className="process-container accessibility-container">
         <img className="process-container__img" src={accessibilityImg} />
-        <h1 className="process-container__heading">Accessibility Matters.</h1>
-        <hr className="process-container__divider" />
+        <h1 className="process-container__heading accessibility-container__heading">
+          Accessibility Standards.
+        </h1>
+        <hr className="process-container__divider accessibility-container__divider" />
         <p className="process-container__text process-container__body">
           Inclusion and usability is at the heart of my web development process.
-          With the use of methodologies like{" "}
+          Using{" "}
           <span className="process-container__text--bold">ARIA roles</span> and{" "}
           <span className="process-container__text--bold">semantic HTML</span>,
           every project follows the industry-standard best practices for

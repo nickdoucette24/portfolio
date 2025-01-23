@@ -7,8 +7,8 @@
   flex-direction: column;
   align-items: center;
   padding-top: 6rem;
-  background-color: $deep;
-  color: $cloud;
+  background-color: $brunswick;
+  color: $cream;
 
   @include laptop {
     padding-top: 8rem;
@@ -24,6 +24,5 @@
 .footer-wrapper {
   @include flex-centre;
   width: 100vw;
-  margin-top: 4rem;
   color: $deep;
 }
