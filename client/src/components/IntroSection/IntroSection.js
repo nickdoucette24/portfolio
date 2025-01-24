@@ -73,6 +73,34 @@ const categories = {
   ],
 };
 
+const deploymentPlan = [
+  {
+    title: "Plan",
+    description:
+      "Collaborate to define goals, identify key features, and create a detailed roadmap for the project.",
+  },
+  {
+    title: "Build",
+    description:
+      "Write clean, scalable, and efficient code to bring the project to life while adhering to best practices.",
+  },
+  {
+    title: "Test",
+    description:
+      "Ensure everything runs smoothly with thorough testing for functionality, performance, and usability.",
+  },
+  {
+    title: "Refine",
+    description:
+      "Polish the product based on testing results and feedback, making necessary optimizations and improvements.",
+  },
+  {
+    title: "Deploy",
+    description:
+      "Launch the project with confidence, ensuring it’s secure, scalable, and ready for users.",
+  },
+];
+
 const IntroSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("Client-Side");
   const [icons, setIcons] = useState(categories["Client-Side"]);
@@ -187,12 +215,12 @@ const IntroSection = () => {
           </div>
         </div>
       </div>
-      <div className="process-container">
+      <div className="process-container lifecycle-container">
         <img className="process-container__img" src={lifecycleImg} />
-        <h1 className="process-container__heading lifecycle-heading">
+        <h1 className="process-container__heading lifecycle-container__heading">
           Project Lifecycle.
         </h1>
-        <hr className="process-container__divider lifecycle-heading__divider" />
+        <hr className="process-container__divider lifecycle-container__divider" />
         <p className="process-container__text process-container__body">
           From ideation to deployment, I follow a{" "}
           <span className="process-container__text--bold">
@@ -208,6 +236,22 @@ const IntroSection = () => {
           logic to ensure my projects are easily scalable and future-proof.
           Plan-Build-Test-Refine-Deploy.
         </p>
+        <div className="lifecycle-timeline">
+          {deploymentPlan.map((step, index) => (
+            <div className="lifecycle-container__step" key={index}>
+              <div className="lifecycle-container__node" />
+              <div className="lifecycle-container__content">
+                <h3 className="lifecycle-container__step--title">
+                  {step.title}
+                </h3>
+                <p className="lifecycle-container__step--description">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
+          <div className="lifecycle-container__line" />
+        </div>
       </div>
       <div className="process-container accessibility-container">
         <img className="process-container__img" src={accessibilityImg} />

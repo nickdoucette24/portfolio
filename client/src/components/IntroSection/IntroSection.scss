@@ -170,11 +170,86 @@
   }
 }
 
-.lifecycle-heading {
-  margin-top: 3rem;
+.lifecycle-container {
+  position: relative;
+  margin-top: 2rem;
 
-  &__divider {
-    width: 14.5rem;
+  &__line {
+    position: absolute;
+    left: 0.9rem; // Align with nodes
+    top: 0.2rem;
+    bottom: 0;
+    width: 2px;
+    background-color: $cloud;
+    z-index: 0;
+  }
+
+  &__step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--title {
+      @include h3;
+      color: $cloud;
+      margin: 0 0 0.5rem 0;
+    }
+
+    &--description {
+      @include p2;
+      color: $cloud;
+      font-family: Europa Light;
+      line-height: 1.5rem;
+      max-width: 25rem;
+    }
+  }
+
+  &__node {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    background-color: $cloud; // Your highlight color
+    border-radius: 50%;
+    margin-right: 2rem;
+    flex-shrink: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: $cloud;
+      border-radius: 50%;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.lifecycle-timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 2rem;
+
+  @include tablet {
+    margin-left: 2rem;
+  }
+
+  @include laptop {
+    margin-left: 4rem;
   }
 }
 
@@ -193,6 +268,23 @@
 .toolbox-container {
   width: 100%;
   align-items: flex-start;
+  max-width: 22.5rem;
+
+  @include mobile {
+    max-width: 28rem;
+  }
+
+  @include tablet {
+    max-width: 38rem;
+  }
+
+  @include laptop {
+    max-width: 50rem;
+  }
+
+  @include desktop {
+    max-width: 67.5rem;
+  }
 
   &__heading {
     margin-top: 3rem;
@@ -211,8 +303,9 @@
 
   &__container {
     display: flex;
-    justify-content: flex-start;
+    align-items: flex-start;
     margin-top: 2rem;
+    width: 100%;
 
     @include mobile {
       min-width: 26rem;
@@ -294,6 +387,7 @@
     border: none;
     border-left: 1px solid $cloud;
     margin: 0 1rem;
+    min-height: 23.75rem;
 
     @include mobile {
       margin: 0 1.5rem;
@@ -301,6 +395,7 @@
 
     @include tablet {
       margin: 0 2rem;
+      min-height: 16.75rem;
     }
 
     @include laptop {
@@ -331,7 +426,7 @@
     list-style: none;
     padding: 0;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
 
     @include mobile {
       gap: 1.25rem;
