@@ -7,6 +7,16 @@
   gap: 4rem;
   align-items: center;
   margin: 3rem 1.5rem 4rem 1.5rem;
+
+  @include mobile {
+    margin-left: 1.75rem;
+    margin-right: 1.75rem;
+  }
+
+  @include tablet {
+    margin-left: 2.25rem;
+    margin-right: 2.25rem;
+  }
 }
 
 .process-container {
@@ -32,7 +42,6 @@
     font-family: Europa Light;
     max-width: 22.25rem;
     font-size: 1.25rem;
-    padding: 0.5rem;
     line-height: 2rem;
     letter-spacing: 1px;
     z-index: 1;
@@ -46,21 +55,15 @@
     }
 
     @include laptop {
-      max-width: 30rem;
-    }
-
-    @include desktop {
       max-width: 45rem;
     }
 
-    &--highlight {
-      font-family: Europa Bold;
-      color: $orange;
+    &--bottom {
+      margin-top: 1.5rem;
     }
 
     &--bold {
       font-family: Europa Bold;
-      color: $orange;
     }
   }
 
@@ -79,7 +82,7 @@
 
   &__divider {
     border: none;
-    border-bottom: 2px solid $lion;
+    border-bottom: 2px solid $superhero;
     margin: 0 0 2rem 0;
   }
 
@@ -101,25 +104,41 @@
   }
 }
 
-.behind-heading {
-  font-size: 2rem;
-  margin-top: 3rem;
+.behind-container {
+  margin-top: 1rem;
+  &__heading {
+    font-size: 2rem;
+    padding-bottom: 0.25rem;
+    margin-top: 3rem;
 
-  @include tablet {
-    font-size: 2.25rem;
-  }
+    @include tablet {
+      font-size: 2.25rem;
+    }
 
-  @include laptop {
-    font-size: 2.75rem;
-  }
+    @include laptop {
+      font-size: 2.75rem;
+    }
 
-  @include desktop {
-    font-size: 3.25rem;
-    width: 100%;
+    @include desktop {
+      font-size: 3.25rem;
+      width: 100%;
+    }
   }
 
   &__divider {
     width: 17rem;
+
+    @include tablet {
+      width: 19rem;
+    }
+
+    @include laptop {
+      width: 23rem;
+    }
+
+    @include desktop {
+      width: 27rem;
+    }
   }
 }
 
@@ -185,18 +204,40 @@
 }
 
 .toolbox-list {
-  @include flex-centre;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 
   &__container {
     display: flex;
-    justify-content: center;
-    margin-top: 1rem;
+    justify-content: flex-start;
+    margin-top: 2rem;
+
+    @include mobile {
+      min-width: 26rem;
+      max-width: 26rem;
+      margin-top: 3rem;
+    }
+
+    @include tablet {
+      min-width: 35rem;
+      max-width: 35rem;
+      margin-top: 4rem;
+    }
+
+    @include laptop {
+      min-width: 45rem;
+      max-width: 45rem;
+      margin-top: 4rem;
+    }
   }
 
   &__titles {
     display: flex;
     flex-direction: column;
     margin: 1rem 0;
+    width: fit-content;
   }
 
   &__list {
@@ -206,20 +247,20 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: fit-content;
   }
 
   &__item {
     @include p2;
     cursor: pointer;
     position: relative;
-    color: $cream;
     width: fit-content;
     transition: color 0.3s ease-in-out;
     font-family: Europa Light;
 
     &:hover,
     &.active {
-      color: $wooden;
+      color: $cloud;
 
       &::after {
         content: "";
@@ -228,7 +269,7 @@
         left: 0;
         width: 100%;
         height: 1px;
-        background-color: $wooden;
+        background-color: $superhero;
         transition: width 0.3s ease-in-out;
       }
     }
@@ -240,7 +281,7 @@
       left: 0;
       width: 0;
       height: 1px;
-      background-color: $cream;
+      background-color: $superhero;
       transition: width 0.3s ease-in-out;
     }
 
@@ -251,12 +292,36 @@
 
   &__divider {
     border: none;
-    border-left: 1px solid $wooden;
+    border-left: 1px solid $cloud;
     margin: 0 1rem;
+
+    @include mobile {
+      margin: 0 1.5rem;
+    }
+
+    @include tablet {
+      margin: 0 2rem;
+    }
+
+    @include laptop {
+      margin: 0 3rem;
+    }
   }
 
   &__icons {
-    @include flex-centre;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden; // Ensures no content spills during animation
+
+    &.slide-out {
+      animation: slideOut 0.5s ease-in-out forwards;
+    }
+
+    &.slide-in {
+      animation: slideIn 0.5s ease-in-out forwards;
+    }
   }
 
   &__icon-list {
@@ -266,6 +331,19 @@
     list-style: none;
     padding: 0;
     flex-wrap: wrap;
+    justify-content: center;
+
+    @include mobile {
+      gap: 1.25rem;
+    }
+
+    @include tablet {
+      gap: 1.5rem;
+    }
+
+    @include laptop {
+      gap: 2rem;
+    }
   }
 
   &__icon-item {
@@ -276,8 +354,7 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    border: 1px solid $cloud;
-    border-radius: 0.4rem;
+    border-radius: 0.2rem;
     padding: 1rem 0.5rem;
     background-color: $cloud;
     cursor: pointer;
@@ -309,12 +386,12 @@
   display: flex;
   align-items: flex-start;
   position: absolute;
-  top: 45rem;
+  top: 42rem;
   left: 30%;
   z-index: 1;
 
   @include mobile {
-    top: 41rem;
+    top: 38rem;
   }
 
   @include tablet {
@@ -356,5 +433,29 @@
     @include laptop {
       height: 25rem;
     }
+  }
+}
+
+// ! Keyframe Animations
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

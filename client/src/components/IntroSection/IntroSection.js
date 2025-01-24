@@ -1,4 +1,6 @@
 import { useState } from "react";
+import HeroCanvas from "../../components/HeroCanvas/HeroCanvas";
+
 import processImg from "../../assets/icons/behind-code.png";
 import precisionImg from "../../assets/icons/precision.png";
 import toolboxImg from "../../assets/icons/toolbox.png";
@@ -31,72 +33,81 @@ import cicdLogo from "../../assets/images/cicd.svg";
 import mobileLogo from "../../assets/images/mobile.svg";
 import "./IntroSection.scss";
 
+const categories = {
+  "Client-Side": [
+    { name: "React.js", logo: reactLogo },
+    { name: "Javascript", logo: javascriptLogo },
+    { name: "HTML", logo: htmlLogo },
+    { name: "CSS", logo: cssLogo },
+    { name: "Sass", logo: sassLogo },
+  ],
+  "Server-Side": [
+    { name: "Express.js", logo: expressLogo },
+    { name: "Node.js", logo: nodeLogo },
+    { name: "MySQL", logo: mysqlLogo },
+    { name: "Sequelize", logo: sequelizeLogo },
+    { name: "Socket.io", logo: socketLogo },
+  ],
+  Design: [
+    { name: "Figma", logo: figmaLogo },
+    { name: "Adobe", logo: adobeLogo },
+  ],
+  Development: [
+    { name: "Jira", logo: jiraLogo },
+    { name: "Git", logo: gitLogo },
+    { name: "VS Code", logo: vscodeLogo },
+    { name: "Postman", logo: postmanLogo },
+    { name: "npm", logo: npmLogo },
+  ],
+  Deployment: [
+    { name: "Heroku", logo: herokuLogo },
+    { name: "DigitalOcean", logo: digitaloceanLogo },
+    { name: "Docker", logo: dockerLogo },
+  ],
+  Methodologies: [
+    { name: "BEM", logo: bemLogo },
+    { name: "AGILE", logo: agileLogo },
+    { name: "Mobile-First", logo: mobileLogo },
+    { name: "RESTful API", logo: restfulLogo },
+    { name: "CI/CD", logo: cicdLogo },
+  ],
+};
+
 const IntroSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("Client-Side");
+  const [icons, setIcons] = useState(categories["Client-Side"]);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const categories = {
-    "Client-Side": [
-      { name: "React.js", logo: reactLogo },
-      { name: "Javascript", logo: javascriptLogo },
-      { name: "HTML", logo: htmlLogo },
-      { name: "CSS", logo: cssLogo },
-      { name: "Sass", logo: sassLogo },
-    ],
-    "Server-Side": [
-      { name: "Express.js", logo: expressLogo },
-      { name: "Node.js", logo: nodeLogo },
-      { name: "MySQL", logo: mysqlLogo },
-      { name: "Sequelize", logo: sequelizeLogo },
-      { name: "Socket.io", logo: socketLogo },
-    ],
-    Design: [
-      { name: "Figma", logo: figmaLogo },
-      { name: "Adobe", logo: adobeLogo },
-    ],
-    Development: [
-      { name: "Jira", logo: jiraLogo },
-      { name: "Git", logo: gitLogo },
-      { name: "VS Code", logo: vscodeLogo },
-      { name: "Postman", logo: postmanLogo },
-      { name: "npm", logo: npmLogo },
-    ],
-    Deployment: [
-      { name: "Heroku", logo: herokuLogo },
-      { name: "DigitalOcean", logo: digitaloceanLogo },
-      { name: "Docker", logo: dockerLogo },
-    ],
-    Methodologies: [
-      { name: "BEM", logo: bemLogo },
-      { name: "AGILE", logo: agileLogo },
-      { name: "Mobile-First", logo: mobileLogo },
-      { name: "RESTful API", logo: restfulLogo },
-      { name: "CI/CD", logo: cicdLogo },
-    ],
+  const handleCategoryChange = (category) => {
+    if (selectedCategory === category) return; // Prevent redundant animations
+    setIsAnimating(true);
+
+    // Wait for slide-out animation to finish before changing icons
+    setTimeout(() => {
+      setSelectedCategory(category);
+      setIcons(categories[category]);
+      setIsAnimating(false); // Trigger slide-in animation
+    }, 500); // Match the animation duration in CSS
   };
+
   return (
     <section className="process-section">
-      <div className="process-container">
-        <img className="process-container__img" src={processImg} />
-        <h1 className="process-container__heading behind-heading">
+      <HeroCanvas />
+      <div className="process-container behind-container">
+        {/* <img className="process-container__img" src={processImg} /> */}
+        <h1 className="process-container__heading behind-container__heading">
           Behind my code.
         </h1>
-        <hr className="process-container__divider behind-heading__divider" />
+        <hr className="process-container__divider behind-container__divider" />
         <p className="process-container__text">
-          Every line of code I write is an opportunity to raise the standard of
-          content in the world. The internet is a dark and ugly place, and I do
-          my best to make it a little bit prettier.
+          I look at every project as an opportunity to make the world a little
+          bit cleaner, a little bit more efficient, and a little bit prettier.
         </p>
-        <p className="process-container__text">
-          While that sentiment means little to most people, I find a lot of
-          fulfillment in spending time writing{" "}
-          <span className="process-container__text--highlight">
-            crystal clear
-          </span>{" "}
-          code which provides the user a{" "}
-          <span className="process-container__text--highlight">
-            silky smooth
-          </span>{" "}
-          and perfectly optimized experience.
+        <p className="process-container__text process-container__text--bottom">
+          I find a lot of fulfillment when creating things I know have been
+          built with effort and care. I write every line to ensure a{" "}
+          <span className="process-container__text--bold">silky smooth</span>{" "}
+          experience, every time.
         </p>
       </div>
       <div className="scroll-container">
@@ -128,14 +139,14 @@ const IntroSection = () => {
         </p>
       </div>
       <div className="process-container toolbox-container">
-        <img className="process-container__img" src={toolboxImg} />
+        {/* <img className="process-container__img" src={toolboxImg} /> */}
         <h2 className="process-container__heading toolbox-container__heading">
           My Toolbox.
         </h2>
         <hr className="process-container__divider toolbox-container__divider" />
         <p className="process-container__text process-container__body">
           A list of my most used frameworks, applications, and methodolgies that
-          follow. I'm a habitual learner so this list grows very fast.
+          follow.
         </p>
         <div className="toolbox-list">
           <div className="toolbox-list__container">
@@ -147,7 +158,7 @@ const IntroSection = () => {
                     className={`toolbox-list__item ${
                       selectedCategory === category ? "active" : ""
                     }`}
-                    onClick={() => setSelectedCategory(category)}
+                    onClick={() => handleCategoryChange(category)}
                   >
                     {category}
                   </li>
@@ -155,9 +166,13 @@ const IntroSection = () => {
               </ul>
             </div>
             <hr className="toolbox-list__divider" />
-            <div className="toolbox-list__icons">
+            <div
+              className={`toolbox-list__icons ${
+                isAnimating ? "slide-out" : "slide-in"
+              }`}
+            >
               <ul className="toolbox-list__icon-list">
-                {categories[selectedCategory].map((tool) => (
+                {icons.map((tool) => (
                   <li key={tool.name} className="toolbox-list__icon-item">
                     <img
                       className="toolbox-list__icon-item--img"
