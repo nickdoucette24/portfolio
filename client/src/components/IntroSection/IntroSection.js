@@ -1,11 +1,11 @@
 import { useState } from "react";
-import HeroCanvas from "../../components/HeroCanvas/HeroCanvas";
+// import HeroCanvas from "../../components/HeroCanvas/HeroCanvas";
 
 import processImg from "../../assets/icons/behind-code.png";
 import precisionImg from "../../assets/icons/precision.png";
 import toolboxImg from "../../assets/icons/toolbox.png";
 import lifecycleImg from "../../assets/icons/lifecycle.png";
-import accessibilityImg from "../../assets/icons/accessibility.png";
+import accessibilityImg from "../../assets/icons/accessibility_shield.svg";
 import cssLogo from "../../assets/images/cssLogo.svg";
 import reactLogo from "../../assets/images/react.svg";
 import javascriptLogo from "../../assets/images/javascript.svg";
@@ -75,29 +75,29 @@ const categories = {
 
 const deploymentPlan = [
   {
-    title: "Plan",
+    title: "Plan.",
     description:
       "Collaborate to define goals, identify key features, and create a detailed roadmap for the project.",
   },
   {
-    title: "Build",
+    title: "Build.",
     description:
-      "Write clean, scalable, and efficient code to bring the project to life while adhering to best practices.",
+      "Write clean, intuitive, and up-to-date code, bringing the project to life and getting it ready for revisions.",
   },
   {
-    title: "Test",
+    title: "Test.",
     description:
       "Ensure everything runs smoothly with thorough testing for functionality, performance, and usability.",
   },
   {
-    title: "Refine",
+    title: "Refine.",
     description:
-      "Polish the product based on testing results and feedback, making necessary optimizations and improvements.",
+      "Polish the product based on feedback and testing results, making necessary optimizations and improvements.",
   },
   {
-    title: "Deploy",
+    title: "Deploy.",
     description:
-      "Launch the project with confidence, ensuring it’s secure, scalable, and ready for users.",
+      "Launch the project with confidence, ensuring it’s secure and ready for users.",
   },
 ];
 
@@ -120,21 +120,23 @@ const IntroSection = () => {
 
   return (
     <section className="process-section">
-      <HeroCanvas />
+      {/* <HeroCanvas /> */}
       <div className="process-container behind-container">
         {/* <img className="process-container__img" src={processImg} /> */}
         <h1 className="process-container__heading behind-container__heading">
           Behind my code.
         </h1>
         <hr className="process-container__divider behind-container__divider" />
-        <p className="process-container__text">
+        <p className="process-container__text behind-container__text">
           I look at every project as an opportunity to make the world a little
           bit cleaner, a little bit more efficient, and a little bit prettier.
         </p>
-        <p className="process-container__text process-container__text--bottom">
+        <p className="process-container__text process-container__text--bottom behind-container__text">
           I find a lot of fulfillment when creating things I know have been
           built with effort and care. I write every line to ensure a{" "}
-          <span className="process-container__text--bold">silky smooth</span>{" "}
+          <span className="process-container__text--bold behind-container__text">
+            silky smooth
+          </span>{" "}
           experience, every time.
         </p>
       </div>
@@ -143,98 +145,117 @@ const IntroSection = () => {
         <div className="scroll-container__line"></div>
       </div>
       <div className="process-container precision-container">
-        <img className="process-container__img" src={precisionImg} />
-        <h2 className="process-container__heading precision-container__heading">
-          Precision in Development.
-        </h2>
-        <hr className="process-container__divider precision-container__divider" />
-        <p className="process-container__text  process-container__body">
-          I adapt my process to each project, ensuring its design is hitting the
-          right{" "}
-          <span className="process-container__text--bold">
-            target demographic
-          </span>{" "}
-          and its code is built for maximum efficiency and scalability. Every
-          pixel of space is{" "}
-          <span className="process-container__text--bold">deliberate</span>,
-          every animation is{" "}
-          <span className="process-container__text--bold">thought out</span>,
-          and every direction the user takes is{" "}
-          <span className="process-container__text--bold">
-            planned and prepared
-          </span>{" "}
-          for.
-        </p>
+        <div className="precision-container__content">
+          {/* <img className="process-container__img" src={precisionImg} /> */}
+          <h2 className="process-container__heading precision-container__heading">
+            Precision in Development.
+          </h2>
+          <hr className="process-container__divider precision-container__divider" />
+          <p className="process-container__text  process-container__body">
+            I adapt my process to each project, ensuring its design is hitting
+            the right{" "}
+            <span className="process-container__text--bold">
+              target demographic
+            </span>{" "}
+            and its code is built for maximum efficiency and readability. Every
+            pixel of space is{" "}
+            <span className="process-container__text--bold">deliberate</span>,
+            every animation is{" "}
+            <span className="process-container__text--bold">thought out</span>,
+            and every path the user takes is{" "}
+            <span className="process-container__text--bold">
+              planned and prepared
+            </span>{" "}
+            for.
+          </p>
+        </div>
+      </div>
+      <div className="scroll-container__mid">
+        <p className="scroll-container__mid--title">this way</p>
+        <div className="scroll-container__mid--line"></div>
       </div>
       <div className="process-container toolbox-container">
-        {/* <img className="process-container__img" src={toolboxImg} /> */}
-        <h2 className="process-container__heading toolbox-container__heading">
-          My Toolbox.
-        </h2>
-        <hr className="process-container__divider toolbox-container__divider" />
-        <p className="process-container__text process-container__body">
-          A list of my most used frameworks, applications, and methodolgies that
-          follow.
-        </p>
-        <div className="toolbox-list">
-          <div className="toolbox-list__container">
-            <div className="toolbox-list__titles">
-              <ul className="toolbox-list__list">
-                {Object.keys(categories).map((category) => (
-                  <li
-                    key={category}
-                    className={`toolbox-list__item ${
-                      selectedCategory === category ? "active" : ""
-                    }`}
-                    onClick={() => handleCategoryChange(category)}
-                  >
-                    {category}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <hr className="toolbox-list__divider" />
-            <div
-              className={`toolbox-list__icons ${
-                isAnimating ? "slide-out" : "slide-in"
-              }`}
-            >
-              <ul className="toolbox-list__icon-list">
-                {icons.map((tool) => (
-                  <li key={tool.name} className="toolbox-list__icon-item">
-                    <img
-                      className="toolbox-list__icon-item--img"
-                      src={tool.logo}
-                      alt={tool.name}
-                    />
-                    <p className="toolbox-list__icon-item--name">{tool.name}</p>
-                  </li>
-                ))}
-              </ul>
+        <div className="toolbox-container__content">
+          {/* <img className="process-container__img" src={toolboxImg} /> */}
+          <h2 className="process-container__heading toolbox-container__heading">
+            My Toolbox.
+          </h2>
+          <hr className="process-container__divider toolbox-container__divider" />
+          <p className="process-container__text process-container__body toolbox-container__text">
+            A list of my most used frameworks, applications, and methodologies
+            that I follow.
+          </p>
+          <div className="toolbox-list">
+            <div className="toolbox-list__container">
+              <div className="toolbox-list__titles">
+                <ul className="toolbox-list__list">
+                  {Object.keys(categories).map((category) => (
+                    <li
+                      key={category}
+                      className={`toolbox-list__item ${
+                        selectedCategory === category ? "active" : ""
+                      }`}
+                      onClick={() => handleCategoryChange(category)}
+                    >
+                      {category}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <hr className="toolbox-list__divider" />
+              <div
+                className={`toolbox-list__icons ${
+                  isAnimating ? "slide-out" : "slide-in"
+                }`}
+              >
+                <ul className="toolbox-list__icon-list">
+                  {icons.map((tool) => (
+                    <li key={tool.name} className="toolbox-list__icon-item">
+                      <img
+                        className="toolbox-list__icon-item--img"
+                        src={tool.logo}
+                        alt={tool.name}
+                      />
+                      <p className="toolbox-list__icon-item--name">
+                        {tool.name}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div className="process-container lifecycle-container">
-        <img className="process-container__img" src={lifecycleImg} />
+        {/* <img className="process-container__img" src={lifecycleImg} /> */}
         <h1 className="process-container__heading lifecycle-container__heading">
           Project Lifecycle.
         </h1>
         <hr className="process-container__divider lifecycle-container__divider" />
-        <p className="process-container__text process-container__body">
+        <p className="process-container__text process-container__body lifecycle-container__text">
           From ideation to deployment, I follow a{" "}
-          <span className="process-container__text--bold">
+          <span className="process-container__text--bold lifecycle-container__text">
             structured workflow
           </span>{" "}
           to keep each project on track and cover all bases. I use a{" "}
-          <span className="process-container__text--bold">mobile-first</span>{" "}
+          <span className="process-container__text--bold lifecycle-container__text">
+            mobile-first
+          </span>{" "}
           approach to make sure the product looks good on all devices, and
-          adhere to <span className="process-container__text--bold">BEM</span>,{" "}
-          <span className="process-container__text--bold">accessible</span>{" "}
+          adhere to{" "}
+          <span className="process-container__text--bold lifecycle-container__text">
+            BEM
+          </span>
+          ,{" "}
+          <span className="process-container__text--bold lifecycle-container__text">
+            accessible
+          </span>{" "}
           development standards, and{" "}
-          <span className="process-container__text--bold">RESTful</span> API
-          logic to ensure my projects are easily scalable and future-proof.
-          Plan-Build-Test-Refine-Deploy.
+          <span className="process-container__text--bold lifecycle-container__text">
+            RESTful
+          </span>{" "}
+          API logic to ensure my projects are easily scalable and future-proof.
         </p>
         <div className="lifecycle-timeline">
           {deploymentPlan.map((step, index) => (
@@ -244,6 +265,7 @@ const IntroSection = () => {
                 <h3 className="lifecycle-container__step--title">
                   {step.title}
                 </h3>
+                <hr className="lifecycle-container__step--divider" />
                 <p className="lifecycle-container__step--description">
                   {step.description}
                 </p>
@@ -254,23 +276,35 @@ const IntroSection = () => {
         </div>
       </div>
       <div className="process-container accessibility-container">
-        <img className="process-container__img" src={accessibilityImg} />
-        <h1 className="process-container__heading accessibility-container__heading">
-          Accessibility Standards.
-        </h1>
-        <hr className="process-container__divider accessibility-container__divider" />
-        <p className="process-container__text process-container__body">
-          Inclusion and usability is at the heart of my web development process.
-          Using{" "}
-          <span className="process-container__text--bold">ARIA roles</span> and{" "}
-          <span className="process-container__text--bold">semantic HTML</span>,
-          every project follows the industry-standard best practices for
-          ensuring usability for all users,{" "}
-          <span className="process-container__text--bold">
-            regardless of their ability
-          </span>
-          .
-        </p>
+        <div className="accessibility-container__content">
+          <div className="accessibility-container__img-container">
+            <img
+              className="accessibility-container__img-container--img"
+              src={accessibilityImg}
+            />
+          </div>
+          <h1 className="process-container__heading accessibility-container__heading">
+            Accessibility Standards.
+          </h1>
+          <hr className="process-container__divider accessibility-container__divider" />
+          <p className="process-container__text process-container__body accessibility-container__text">
+            Inclusion and usability are at the heart of my development process.
+            Using{" "}
+            <span className="process-container__text--bold accessibility-container__text">
+              ARIA roles
+            </span>{" "}
+            and{" "}
+            <span className="process-container__text--bold accessibility-container__text">
+              semantic HTML
+            </span>
+            , every project follows the industry-standard best practices for
+            ensuring usability for everyone,{" "}
+            <span className="process-container__text--bold accessibility-container__text">
+              regardless of their ability
+            </span>
+            .
+          </p>
+        </div>
       </div>
     </section>
   );

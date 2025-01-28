@@ -8,6 +8,7 @@
   align-items: center;
   padding-top: 6rem;
   color: $cloud;
+  background-color: $deep;
 
   @include laptop {
     padding-top: 8rem;
@@ -17,6 +18,7 @@
 // ! Intro Section Styling
 .intro-wrapper {
   @include flex-centre;
+  width: 100%;
 }
 
 // ! Footer Section Styling
