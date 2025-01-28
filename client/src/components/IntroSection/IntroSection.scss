@@ -4,15 +4,27 @@
 .process-section {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
   align-items: center;
-  margin: 2rem 1.5rem 4rem 1.5rem;
+  margin: 3rem 0 0 0;
+  width: 100%;
+
+  @include laptop {
+    margin-top: 6rem;
+  }
 }
 
 .process-container {
   display: flex;
   flex-direction: column;
   position: relative;
+
+  @include laptop {
+    width: 50rem;
+  }
+
+  @include desktop {
+    width: 67.5rem;
+  }
 
   &__heading {
     @include h2;
@@ -22,80 +34,174 @@
   &__text {
     @include p1;
     font-family: Europa Light;
+    color: $deep;
+    max-width: 22.25rem;
     font-size: 1.25rem;
-    padding: 0.5rem;
     line-height: 2rem;
     letter-spacing: 1px;
     z-index: 1;
 
-    &--highlight {
-      font-family: Europa Bold;
-      color: $firered;
+    @include mobile {
+      max-width: 28rem;
+    }
+
+    @include tablet {
+      max-width: 38rem;
+    }
+
+    @include laptop {
+      max-width: 49rem;
+    }
+
+    &--bottom {
+      margin-top: 1.5rem;
     }
 
     &--bold {
       font-family: Europa Bold;
-      color: $firered;
     }
   }
 
   &__body {
     font-size: 1rem;
     z-index: 1;
+    margin-bottom: 4rem;
+
+    @include tablet {
+      font-size: 1.125rem;
+    }
+
+    @include laptop {
+      font-size: 1.25rem;
+    }
   }
 
   &__divider {
     border: none;
-    border-bottom: 2px solid $lion;
+    border-bottom: 2px solid $superhero;
     margin: 0 0 2rem 0;
-  }
 
-  &__img {
-    width: 12rem;
-    margin: 0 auto 4rem auto;
-    opacity: 0.25;
-    position: absolute;
-    right: 20px;
-    z-index: 0;
+    @include tablet {
+      margin: 0 0 3rem 0;
+    }
   }
 }
 
-.behind-heading {
-  font-size: 2rem;
-  margin-top: 3rem;
+.behind-container {
+  margin: 1rem 1.5rem 0 1.5rem;
+
+  @include mobile {
+    margin: 1rem 1.75rem 0 1.75rem;
+  }
+
+  &__heading {
+    font-size: 2rem;
+    padding-bottom: 0.25rem;
+    margin-top: 3rem;
+
+    @include tablet {
+      font-size: 2.25rem;
+    }
+
+    @include laptop {
+      font-size: 2.75rem;
+    }
+
+    @include desktop {
+      font-size: 3.25rem;
+      width: 100%;
+    }
+  }
+
+  &__text {
+    color: $cloud;
+  }
 
   &__divider {
     width: 17rem;
+
+    @include tablet {
+      width: 19rem;
+    }
+
+    @include laptop {
+      width: 23rem;
+    }
+
+    @include desktop {
+      width: 27rem;
+    }
   }
 }
 
 .precision-container {
-  margin-top: 18rem;
+  margin-top: 29rem;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: $cloud;
+
+  @include mobile {
+    margin-top: 29rem;
+    padding: 0 1.75rem;
+    display: flex;
+    align-items: center;
+  }
+
+  @include tablet {
+    margin-top: 33rem;
+  }
+
+  @include laptop {
+    margin-top: 37rem;
+  }
+
+  @include desktop {
+    margin-top: 38rem;
+  }
 
   &__heading {
-    margin-top: 3rem;
+    margin-top: 4rem;
+    color: $deep;
+
+    @include tablet {
+      margin-top: 8rem;
+    }
   }
 
   &__divider {
     width: 20.5rem;
-  }
-}
 
-.lifecycle-heading {
-  margin-top: 3rem;
+    @include mobile {
+      width: 21.5rem;
+    }
 
-  &__divider {
-    width: 14.5rem;
-  }
-}
+    @include tablet {
+      width: 25.5rem;
+    }
 
-.accessibility-container {
-  &__heading {
-    margin-top: 3rem;
+    @include laptop {
+      width: 28rem;
+    }
   }
 
-  &__divider {
-    width: 19.5rem;
+  &__content {
+    @include mobile {
+      max-width: 28rem;
+    }
+
+    @include tablet {
+      max-width: 38rem;
+    }
+
+    @include laptop {
+      max-width: none;
+      width: 50rem;
+    }
+
+    @include desktop {
+      width: 67.5rem;
+    }
   }
 }
 
@@ -103,24 +209,119 @@
 
 .toolbox-container {
   width: 100%;
+  min-height: 78rem;
+  box-sizing: border-box;
+  padding: 0 1.5rem;
+  align-items: flex-start;
+  background-color: $cloud;
+
+  @include mobile {
+    padding: 0 1.75rem;
+    min-height: 63rem;
+    display: flex;
+    align-items: center;
+  }
+
+  @include tablet {
+    min-height: 62rem;
+  }
+
+  @include laptop {
+    min-height: 62rem;
+  }
+
+  @include desktop {
+    min-height: 63rem;
+  }
+
+  @media (min-width: 408px) and (max-width: 479px) {
+    min-height: 61rem;
+  }
 
   &__heading {
-    margin-top: 3rem;
+    margin-top: 23rem;
+    color: $deep;
+
+    @include tablet {
+      margin-top: 25rem;
+    }
+  }
+
+  &__text {
+    margin-bottom: 2rem;
+
+    @include mobile {
+      margin-bottom: 0;
+    }
   }
 
   &__divider {
     width: 10.5rem;
+
+    @include tablet {
+      width: 13rem;
+    }
+
+    @include laptop {
+      width: 14rem;
+    }
+  }
+
+  &__content {
+    @include mobile {
+      max-width: 28rem;
+    }
+
+    @include tablet {
+      max-width: 38rem;
+    }
+
+    @include laptop {
+      max-width: none;
+      width: 50rem;
+    }
+
+    @include desktop {
+      width: 67.5rem;
+    }
   }
 }
 
 .toolbox-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
   &__container {
     display: flex;
-    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+
+    @include mobile {
+      min-width: 26rem;
+      max-width: 26rem;
+      margin-top: 3rem;
+    }
+
+    @include tablet {
+      min-width: 35rem;
+      max-width: 35rem;
+      margin-top: 3.5rem;
+    }
+
+    @include laptop {
+      min-width: 45rem;
+      max-width: 45rem;
+      margin-top: 2rem;
+    }
   }
 
   &__titles {
-    @include flex-centre;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    width: fit-content;
   }
 
   &__list {
@@ -130,20 +331,404 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: fit-content;
   }
 
   &__item {
     @include p2;
+    color: $deep;
+    cursor: pointer;
+    position: relative;
+    width: fit-content;
+    transition: color 0.3s ease-in-out;
+    font-family: Europa Light;
+
+    &:hover,
+    &.active {
+      color: $superhero;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $orange;
+        transition: width 0.3s ease-in-out;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: $orange;
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
   }
 
   &__divider {
     border: none;
-    border-left: 1px solid $wooden;
-    margin: 0 1.5rem;
+    border-left: 1px solid $superhero;
+    margin: 0 1.5rem 0 1rem;
+    min-height: 13.75rem;
+
+    @include mobile {
+      margin: 0 1.5rem;
+    }
+
+    @include tablet {
+      margin: 0 2rem;
+      min-height: 16.75rem;
+    }
+
+    @include laptop {
+      margin: 0 3rem;
+    }
   }
 
   &__icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden; // Ensures no content spills during animation
+
+    &.slide-out {
+      animation: slideOut 0.5s ease-in-out forwards;
+    }
+
+    &.slide-in {
+      animation: slideIn 0.5s ease-in-out forwards;
+    }
+  }
+
+  &__icon-list {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    @include mobile {
+      gap: 1.25rem;
+    }
+
+    @include tablet {
+      gap: 1.5rem;
+    }
+
+    @include laptop {
+      gap: 2rem;
+    }
+  }
+
+  &__icon-item {
+    display: flex;
+    min-width: 5.4rem;
+    max-width: 5.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.2rem;
+    border: 1px solid $superhero;
+    padding: 1rem 0.5rem;
+    background-color: $cloud;
+    cursor: pointer;
+    z-index: 3;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    &--img {
+      width: 3rem;
+      height: 3rem;
+      object-fit: contain;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &--name {
+      font-size: 0.875rem;
+      text-align: center;
+      color: $deep;
+      text-wrap: wrap;
+    }
+
+    &:hover {
+      border-color: $orange;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
+  }
+}
+
+.lifecycle-container {
+  position: relative;
+  margin-top: 4rem;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+
+  @include mobile {
+    padding: 0 1.75rem;
+  }
+
+  &__heading {
+    margin-top: 4rem;
+  }
+
+  &__text {
+    color: $cloud;
+    margin-bottom: 2rem;
+  }
+
+  &__line {
+    position: absolute;
+    left: 0.9rem; // Align with nodes
+    top: 1.5rem;
+    bottom: 0;
+    width: 2px;
+    background-color: $cloud;
+    z-index: 0;
+    max-height: 62rem;
+
+    @include tablet {
+      max-height: 68rem;
+    }
+
+    @include laptop {
+      max-height: 75rem;
+    }
+  }
+
+  &__step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--title {
+      @include h3;
+      color: $superhero;
+      font-weight: 600;
+      margin: 0;
+      transition: font-weight 0.3s ease-in-out;
+      cursor: default;
+      width: fit-content;
+
+      &:hover {
+        font-weight: 800;
+      }
+    }
+
+    &--divider {
+      margin: 0 0 2rem 0;
+      border: 1px solid $orange;
+      width: 50%;
+
+      @include tablet {
+        width: 13rem;
+      }
+
+      @include laptop {
+        width: 16rem;
+      }
+    }
+
+    &--description {
+      @include p2;
+      color: $cloud;
+      font-family: Europa Light;
+      font-weight: 200;
+      line-height: 1.5rem;
+      max-width: 25rem;
+      padding-left: 0.125rem;
+      margin-bottom: 2rem;
+      max-width: 21rem;
+
+      @include laptop {
+        max-width: 28rem;
+        margin-bottom: 4.5rem;
+      }
+
+      @include desktop {
+        max-width: 36rem;
+      }
+    }
+  }
+
+  &__node {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: $superhero; // Your highlight color
+    border-radius: 50%;
+    margin-right: 2rem;
+    flex-shrink: 0;
+    top: 1.1rem;
+    left: 0.2rem;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: $superhero;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: $orange;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      max-width: 38rem;
+    }
+
+    @include laptop {
+      max-width: 50rem;
+    }
+  }
+
+  &__divider {
+    width: 14.25rem;
+
+    @include tablet {
+      width: 17.5rem;
+    }
+
+    @include laptop {
+      width: 19.5rem;
+    }
+  }
+}
+
+.lifecycle-timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 2rem;
+
+  @include tablet {
+    margin-left: 2rem;
+  }
+
+  @include laptop {
+    margin-left: 4rem;
+  }
+}
+
+.accessibility-container {
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: $orange;
+
+  @include mobile {
+    padding: 0 1.75rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__heading {
+    margin-top: 9.5rem;
+    color: $cream;
+  }
+
+  &__divider {
+    width: 19.5rem;
+    border: 1px solid $firered;
+
+    @include tablet {
+      width: 24rem;
+    }
+
+    @include laptop {
+      width: 26rem;
+    }
+  }
+
+  &__text {
+    margin-bottom: 6rem;
+    color: $cream;
+
+    @include laptop {
+      margin-bottom: 8rem;
+    }
+  }
+
+  &__content {
+    @include mobile {
+      max-width: 28rem;
+    }
+
+    @include tablet {
+      max-width: 38rem;
+    }
+
+    @include laptop {
+      max-width: 50rem;
+    }
+
+    @include desktop {
+      max-width: 67.5rem;
+    }
+  }
+
+  &__img-container {
     @include flex-centre;
+
+    &--img {
+      width: 12rem;
+      margin: 2rem 0 0 0;
+      position: absolute;
+      opacity: 0.25;
+      top: 0;
+      z-index: 0;
+
+      @include tablet {
+        width: 16rem;
+        margin-left: 20rem;
+        top: 1rem;
+      }
+
+      @include laptop {
+        margin-left: 30rem;
+        width: 20rem;
+      }
+
+      @include desktop {
+        width: 24rem;
+      }
+    }
   }
 }
 
@@ -152,31 +737,27 @@
   display: flex;
   align-items: flex-start;
   position: absolute;
-  top: 45rem;
-  left: 30vw;
+  top: 42rem;
+  left: 30%;
   z-index: 1;
 
   @include mobile {
-    top: 46rem;
+    top: 38rem;
   }
 
   @include tablet {
-    top: 50rem;
+    top: 36rem;
   }
 
   @include laptop {
-    top: 50rem;
-  }
-
-  @include desktop {
-    top: 53rem;
+    top: 42rem;
   }
 
   &__title {
     writing-mode: vertical-rl;
     text-orientation: sideways;
     transform: rotate(180deg);
-    color: $wooden;
+    color: $cloud;
     cursor: default;
     margin: 0.25rem;
     transition: color 0.1s ease-in-out;
@@ -189,7 +770,7 @@
   &__line {
     width: 1px;
     height: 20rem;
-    background: $wooden;
+    background: $cloud;
     transition: background 0.1s ease-in-out;
 
     &:hover {
@@ -203,5 +784,84 @@
     @include laptop {
       height: 25rem;
     }
+  }
+
+  &__mid {
+    display: flex;
+    align-items: flex-start;
+    position: absolute;
+    top: 93rem;
+    left: 60%;
+    z-index: 1;
+
+    @include mobile {
+      top: 87rem;
+    }
+
+    @include tablet {
+      top: 91rem;
+      left: 55%;
+    }
+
+    @include laptop {
+      top: 100rem;
+    }
+
+    &--title {
+      writing-mode: vertical-rl;
+      text-orientation: sideways;
+      transform: rotate(180deg);
+      color: $deep;
+      cursor: default;
+      margin: 0.25rem;
+      transition: color 0.1s ease-in-out;
+
+      &:hover {
+        color: $superhero;
+      }
+    }
+
+    &--line {
+      width: 1px;
+      height: 20rem;
+      background: $deep;
+      transition: background 0.1s ease-in-out;
+
+      &:hover {
+        background: $superhero;
+      }
+
+      @include tablet {
+        height: 23rem;
+      }
+
+      @include laptop {
+        height: 25rem;
+      }
+    }
+  }
+}
+
+// ! Keyframe Animations
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

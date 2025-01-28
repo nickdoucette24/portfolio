@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./Header.scss";
 import logoCloud from "../../assets/images/n-logo.png";
-// import logoName from "../../assets/images/name-logo.png";
-import bulbIcon from "../../assets/icons/talk-arrow.svg";
+import bulbIcon from "../../assets/icons/calendar.svg";
 
 const Header = ({ contactRef, projectsRef }) => {
   const [isActive, setIsActive] = useState(false);
@@ -18,6 +17,10 @@ const Header = ({ contactRef, projectsRef }) => {
     setSelectedNav("");
     setShowHomeButton(false);
     navigate("/");
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleNavClear = () => {
@@ -47,15 +50,24 @@ const Header = ({ contactRef, projectsRef }) => {
     }
   };
 
-  const handleLetsTalkClick = () => {
-    handleNavClear();
-    if (showHomeButton) {
-      handleNavigateHome();
-    } else {
-      setShowHomeButton(true);
-      navigate("/booking");
-    }
+  const handleProcessClick = () => {
+    navigate("/my-process");
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+    setSelectedNav("My Process");
   };
+
+  // const handleLetsTalkClick = () => {
+  //   handleNavClear();
+  //   if (showHomeButton) {
+  //     handleNavigateHome();
+  //   } else {
+  //     setShowHomeButton(true);
+  //     navigate("/booking");
+  //   }
+  // };
 
   // Animated Hamburger Menu Function
   const toggleHamburger = () => {
@@ -86,7 +98,7 @@ const Header = ({ contactRef, projectsRef }) => {
                   selectedNav === "My Process" ? "nav-link__selected" : ""
                 } ${isScrolled ? "nav-link__scrolled" : ""}`}
                 to={"/my-process"}
-                onClick={() => setSelectedNav("My Process")}
+                onClick={handleProcessClick}
               >
                 My Process
               </Link>
@@ -124,17 +136,34 @@ const Header = ({ contactRef, projectsRef }) => {
           onClick={() => handleNavigateHome()}
         />
       </div>
-      <div className="header__cta">
-        <div className="header__container">
-          <Link
+      {/* <div className="header__cta"> */}
+      <div className="header__container">
+        <div className="header__container--hamburger">
+          <button
+            className={`hamburger hamburger--spring ${
+              isActive ? "is-active" : ""
+            }`}
+            type="button"
+            onClick={toggleHamburger}
+          >
+            <span className="hamburger-box">
+              <span
+                className={`hamburger-inner ${
+                  isScrolled ? "hamburger-scrolled" : ""
+                }`}
+              ></span>
+            </span>
+          </button>
+        </div>
+        {/* <Link
             className={`header__talk ${
               isScrolled ? "header__talk--scrolled" : ""
             }`}
-            to={"/booking"}
+            to="/booking"
             onClick={handleLetsTalkClick}
           >
             <h4 className="header__talk--text">
-              {showHomeButton ? "Home" : "Let's Talk"}
+              {showHomeButton ? "Home" : "My Calendar"}
             </h4>
             <img
               src={bulbIcon}
@@ -142,26 +171,9 @@ const Header = ({ contactRef, projectsRef }) => {
                 isScrolled ? "header__talk--icon-scrolled" : ""
               }`}
             />
-          </Link>
-          <div className="header__container--hamburger">
-            <button
-              className={`hamburger hamburger--spring ${
-                isActive ? "is-active" : ""
-              }`}
-              type="button"
-              onClick={toggleHamburger}
-            >
-              <span className="hamburger-box">
-                <span
-                  className={`hamburger-inner ${
-                    isScrolled ? "hamburger-scrolled" : ""
-                  }`}
-                ></span>
-              </span>
-            </button>
-          </div>
-        </div>
+          </Link> */}
       </div>
+      {/* </div> */}
     </header>
   );
 };
