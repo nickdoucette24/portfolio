@@ -14,6 +14,13 @@ const AboutSection = () => {
   const [currentWord, setCurrentWord] = useState(0);
   const [isFading, setIsFading] = useState(false);
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIsFading(true);
@@ -60,7 +67,13 @@ const AboutSection = () => {
         that bring your idea to life and provide a top-tier user experience.
       </p>
       <div className="about-container__button">
-        <Link className="about-container__link">About My Process</Link>
+        <Link
+          className="about-container__link"
+          to="/my-process"
+          onClick={handleScrollToTop}
+        >
+          About My Process
+        </Link>
       </div>
     </div>
   );
