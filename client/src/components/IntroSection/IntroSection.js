@@ -1,10 +1,4 @@
-import { useState } from "react";
-// import HeroCanvas from "../../components/HeroCanvas/HeroCanvas";
-
-import processImg from "../../assets/icons/behind-code.png";
-import precisionImg from "../../assets/icons/precision.png";
-import toolboxImg from "../../assets/icons/toolbox.png";
-import lifecycleImg from "../../assets/icons/lifecycle.png";
+import { useState, useRef } from "react";
 import accessibilityImg from "../../assets/icons/accessibility_shield.svg";
 import cssLogo from "../../assets/images/cssLogo.svg";
 import reactLogo from "../../assets/images/react.svg";
@@ -105,6 +99,20 @@ const IntroSection = () => {
   const [selectedCategory, setSelectedCategory] = useState("Client-Side");
   const [icons, setIcons] = useState(categories["Client-Side"]);
   const [isAnimating, setIsAnimating] = useState(false);
+  const precisionRef = useRef();
+  const toolboxRef = useRef();
+
+  const scrollToSection = (ref, isMiddleScroll = false) => {
+    if (ref && ref.current) {
+      const elementTop = ref.current.getBoundingClientRect().top;
+      const offset = isMiddleScroll ? 160 : 80;
+      const scrollY = window.scrollY + elementTop - offset;
+      window.scrollTo({
+        top: scrollY,
+        behavior: "smooth",
+      });
+    }
+  };
 
   const handleCategoryChange = (category) => {
     if (selectedCategory === category) return; // Prevent redundant animations
@@ -141,10 +149,15 @@ const IntroSection = () => {
         </p>
       </div>
       <div className="scroll-container">
-        <p className="scroll-container__title">this way</p>
+        <p
+          className="scroll-container__title"
+          onClick={() => scrollToSection(precisionRef)}
+        >
+          this way
+        </p>
         <div className="scroll-container__line"></div>
       </div>
-      <div className="process-container precision-container">
+      <div className="process-container precision-container" ref={precisionRef}>
         <div className="precision-container__content">
           {/* <img className="process-container__img" src={precisionImg} /> */}
           <h2 className="process-container__heading precision-container__heading">
@@ -171,13 +184,21 @@ const IntroSection = () => {
         </div>
       </div>
       <div className="scroll-container__mid">
-        <p className="scroll-container__mid--title">this way</p>
+        <p
+          className="scroll-container__mid--title"
+          onClick={() => scrollToSection(toolboxRef, true)}
+        >
+          this way
+        </p>
         <div className="scroll-container__mid--line"></div>
       </div>
       <div className="process-container toolbox-container">
         <div className="toolbox-container__content">
           {/* <img className="process-container__img" src={toolboxImg} /> */}
-          <h2 className="process-container__heading toolbox-container__heading">
+          <h2
+            className="process-container__heading toolbox-container__heading"
+            ref={toolboxRef}
+          >
             My Toolbox.
           </h2>
           <hr className="process-container__divider toolbox-container__divider" />

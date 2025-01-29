@@ -4,38 +4,40 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  background-color: $deep;
+  background-color: $deep2;
   border: 1px solid $cloud;
   border-radius: 0.5rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  height: fit-content;
 
   @include laptop {
-    width: 27rem;
-    max-width: 35rem;
+    max-width: 100%;
   }
 
   @include desktop {
-    width: 27.2rem;
+    max-width: 56rem;
   }
 
   &:hover {
-    transform: scale(1.02);
-    box-shadow: $cloud 0px 4px 8px;
-  }
-
-  &:active {
     transform: scale(1.01);
   }
 
   &__info {
     display: flex;
     flex-direction: column;
+
+    @include mobile {
+      margin: 0.75rem 0.75rem 0 0.75rem;
+    }
+
+    @include tablet {
+      margin: 2.25rem 2.25rem 0 2.25rem;
+    }
   }
 
   &__title {
     font-family: Zing Lines;
-    color: $superhero;
+    color: $cloud;
     font-weight: 100;
     margin: 0.5rem 1rem 0 1rem;
     font-size: 3.5rem;
@@ -43,45 +45,134 @@
 
   &__divider {
     border: 1px solid $superhero;
-    margin: 0 1rem 1rem 1rem;
+    margin: 0 1rem 2rem 1rem;
+
+    @include laptop {
+      margin-bottom: 3rem;
+    }
   }
 
   &__label {
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 1rem 0;
     width: fit-content;
-    color: $superhero;
+    color: $cloud;
     font-family: Parkinsans;
-    border-bottom: 1px solid $superhero;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+    border-bottom: 1px solid $cloud;
     padding-bottom: 0.125rem;
+
+    @include tablet {
+      font-size: 0.9rem;
+    }
+
+    @include laptop {
+      margin-right: 2rem;
+      margin-top: 0.125rem;
+      border-bottom: none;
+    }
   }
 
   &__description {
+    @include p2;
     color: $cloud;
+    font-family: Europa Light;
+
+    @include laptop {
+      max-width: 40rem;
+      margin-bottom: 2rem;
+    }
   }
 
   &__content {
     display: flex;
     flex-direction: column;
-    margin: 1.5rem 1rem 1rem 1rem;
+    margin: 2rem 1rem 1rem 1rem;
+    position: relative;
+
+    @include laptop {
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 3rem 1rem;
+    }
+  }
+
+  &__content-container {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+  }
+
+  &__component {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.3s ease-in-out forwards;
+    width: 100%;
+  }
+
+  &__info-icon {
+    display: block;
+    width: 8rem;
+    margin: auto;
+    filter: brightness(150%);
+    animation: fadeInUp 0.3s ease-in-out forwards;
+
+    @include mobile {
+      margin: 1rem auto;
+      width: 9rem;
+    }
+
+    @include laptop {
+      width: 12rem;
+      margin-top: 1rem;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   &__mobile-nav {
     padding: 0;
-    margin: 1rem;
+    margin: 2rem 1rem 0.5rem 1rem;
     list-style: none;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
 
+    @include tablet {
+      margin: 2.25rem 1.75rem 1rem 1.75rem;
+      gap: 1.25rem;
+    }
+
+    @include laptop {
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 2rem;
+      justify-content: flex-start;
+    }
+
+    &--container {
+      display: flex;
+      align-items: center;
+    }
+
     &--item {
       position: relative;
       color: $cloud;
       font-family: Parkinsans;
       text-decoration: none;
+      font-size: 0.9rem;
       cursor: pointer;
+      letter-spacing: 0.2px;
       border-bottom: 1px solid transparent;
-      transition: transform 0.3s ease-in-out;
+      transition: transform 0.3s ease-in-out, color 0.2s ease-in-out;
+
+      @include tablet {
+        font-size: 1rem;
+      }
 
       &::after {
         content: "";
@@ -90,26 +181,95 @@
         bottom: 0;
         height: 1px;
         width: 0;
-        background-color: $cloud;
+        background-color: $superhero;
         transition: width 0.3s ease-in-out; // Smooth slide-in effect
       }
 
       &:hover {
+        color: $superhero;
+
+        &::after {
+          width: 100%; // Slide the border fully across the element
+        }
+      }
+
+      &.option-selected {
         color: $cloud;
 
         &::after {
           width: 100%; // Slide the border fully across the element
+          height: 1.5px;
         }
       }
     }
 
     &--divider {
       height: 0.75rem;
-      margin: 0;
+      margin: 0 0 0 0.5rem;
       border: 0.5px solid $superhero;
+
+      @include laptop {
+        display: none;
+      }
+    }
+
+    &--spacer {
+      width: 75%;
+      border: 0.5px solid #fefefe63;
+
+      @include laptop {
+        width: 0;
+        height: inherit;
+        margin: 0;
+      }
     }
   }
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-enter-active {
+  animation: fadeInUp 0.3s ease-in-out forwards;
+}
+
+// .option-selected {
+//   position: relative;
+//   color: $cloud;
+//   font-family: Parkinsans;
+//   text-decoration: none;
+//   cursor: pointer;
+//   border-bottom: 1px solid transparent;
+//   transition: transform 0.3s ease-in-out;
+
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     left: 0;
+//     bottom: 0;
+//     height: 1px;
+//     width: 0;
+//     background-color: $orange;
+//     transition: width 0.3s ease-in-out; // Smooth slide-in effect
+//   }
+
+//   &:hover,
+//   &. {
+//     color: $cloud;
+
+//     &::after {
+//       width: 100%; // Slide the border fully across the element
+//     }
+//   }
+// }
 
 .card-hover {
   font-family: Zing Base;
@@ -127,23 +287,60 @@
 
   &__label {
     margin: 0;
-    color: $superhero;
+    color: $cloud;
     font-family: Parkinsans;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+
+    @include tablet {
+      font-size: 0.9rem;
+    }
   }
 
   &__year {
     color: $cloud;
+    font-size: 1rem;
+    font-family: Europa Regular;
     margin-left: 0.5rem;
+
+    @include tablet {
+      font-size: 1.125rem;
+    }
   }
 
   &__links {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 0.75rem;
     margin-left: 0.5rem;
 
+    &--anchor {
+      @include flex-centre;
+    }
+
     &--icon {
-      color: $cloud;
+      width: 2rem;
+      margin: 0 0.5rem;
+      transition: transform 0.2s ease-in-out;
+
+      @include mobile {
+        margin: 0 0.75rem;
+        width: 2.125rem;
+      }
+
+      @include tablet {
+        margin: 0 1rem;
+        width: 2.5rem;
+      }
+
+      &:hover {
+        transform: scale(1.075);
+      }
+
+      &:active {
+        transform: scale(1.025);
+      }
     }
   }
 }

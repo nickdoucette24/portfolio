@@ -1,0 +1,31 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+.card-overview {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  gap: 1rem;
+
+  @include mobile {
+    margin: 1.75rem;
+  }
+
+  @include tablet {
+    margin: 2.25rem;
+  }
+
+  @include laptop {
+    margin: 2rem;
+  }
+
+  &__text {
+    @include p2;
+    color: $cloud;
+    font-family: Europa Light;
+
+    @include laptop {
+      width: 36rem;
+    }
+  }
+}

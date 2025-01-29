@@ -14,6 +14,17 @@ const LandingPage = ({ contactRef, projectsRef, headerHeight }) => {
   const aboutSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
 
+  const scrollToSection = (ref) => {
+    if (ref && ref.current) {
+      const elementTop = ref.current.getBoundingClientRect().top;
+      const scrollY = window.scrollY + elementTop - 80; // Adjust for fixed header height
+      window.scrollTo({
+        top: scrollY,
+        behavior: "smooth",
+      });
+    }
+  };
+
   useEffect(() => {
     const observerCallback = (entries, observer) => {
       entries.forEach((entry) => {
@@ -77,7 +88,12 @@ const LandingPage = ({ contactRef, projectsRef, headerHeight }) => {
         </div>
       </section>
       <div className="line-container">
-        <p className="line-container__title">this way</p>
+        <p
+          className="line-container__title"
+          onClick={() => scrollToSection(aboutSectionRef)}
+        >
+          this way
+        </p>
         <div className="line-container__line"></div>
       </div>
       <section className="about-section">
