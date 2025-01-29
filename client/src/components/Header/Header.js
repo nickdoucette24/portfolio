@@ -8,14 +8,14 @@ const Header = ({ contactRef, projectsRef }) => {
   const [isActive, setIsActive] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [selectedNav, setSelectedNav] = useState("");
-  const [showHomeButton, setShowHomeButton] = useState(false);
+  // const [showHomeButton, setShowHomeButton] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   // Header Logo Navigating to the top of the page/the home page
   const handleNavigateHome = () => {
     setSelectedNav("");
-    setShowHomeButton(false);
+    // setShowHomeButton(false);
     navigate("/");
     window.scrollTo({
       top: 0,
@@ -23,9 +23,9 @@ const Header = ({ contactRef, projectsRef }) => {
     });
   };
 
-  const handleNavClear = () => {
-    setSelectedNav("");
-  };
+  // const handleNavClear = () => {
+  //   setSelectedNav("");
+  // };
 
   const scrollToSection = (ref, navItem) => {
     if (location.pathname !== "/") {

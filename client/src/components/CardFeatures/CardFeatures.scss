@@ -1,0 +1,44 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+.card-features {
+  @include flex-centre;
+  margin: 1.5rem 0;
+
+  @include laptop {
+    margin: 2rem;
+  }
+
+  &__list {
+    @include flex-centre;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include laptop {
+      width: 36rem;
+    }
+  }
+
+  &__item {
+    border: 1px solid $cloud;
+    border-radius: 1.5rem;
+    padding: 0.55rem 0.65rem 0.4rem 0.65rem;
+    background-color: #fefefe2f;
+    font-family: Europa Light;
+    letter-spacing: 0.75px;
+    color: $cloud;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+    @include laptop {
+      padding: 0.75rem 0.75rem 0.6rem 0.75rem;
+    }
+
+    &:hover {
+      background-color: #fefefe63;
+      transform: scale(1.035);
+    }
+  }
+}

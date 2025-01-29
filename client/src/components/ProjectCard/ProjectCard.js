@@ -1,8 +1,29 @@
 import { useState } from "react";
+import CardOverview from "../CardOverview/CardOverview";
+import CardFeatures from "../CardFeatures/CardFeatures";
+import CardStack from "../CardStack/CardStack";
+import githubIcon from "../../assets/icons/gh-logo-white.svg";
+import infoIcon from "../../assets/icons/info-icon.svg";
 import "./ProjectCard.scss";
 
-const ProjectCard = ({ title, description, year, browser, github }) => {
+const ProjectCard = ({
+  title,
+  description,
+  year,
+  github,
+  stack,
+  features,
+  overview,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isSelected, setIsSelected] = useState("");
+
+  // Mapping selected options to their respective components
+  const renderComponents = {
+    Overview: <CardOverview option={isSelected} overview={overview} />,
+    Features: <CardFeatures option={isSelected} features={features} />,
+    Stack: <CardStack option={isSelected} stack={stack} />,
+  };
 
   // Hover functionality
   const handleMouseEnter = () => {
@@ -12,6 +33,21 @@ const ProjectCard = ({ title, description, year, browser, github }) => {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
+  const handleOptionSelect = (option) => {
+    // If clicking the same option, deselect it
+    if (option === isSelected) {
+      setIsSelected("");
+      return;
+    }
+    // Reset animation by briefly removing the component
+    setIsSelected("");
+    setTimeout(() => {
+      setIsSelected(option);
+    }, 10);
+  };
+
+  const options = ["Overview", "Features", "Stack"];
 
   return (
     <div
@@ -32,8 +68,12 @@ const ProjectCard = ({ title, description, year, browser, github }) => {
           <div className="mobile-tile__content">
             <h5 className="mobile-tile__label">view:</h5>
             <div className="mobile-tile__links">
-              <a className="mobile-tile__links--icon">github</a>
-              <a className="mobile-tile__links--icon">browser</a>
+              <a className="mobile-tile__links--anchor" href={github}>
+                <img className="mobile-tile__links--icon" src={githubIcon} />
+              </a>
+              {/* <a className="mobile-tile__links--anchor" href={browser}>
+                <img className="mobile-tile__links--icon" src={githubIcon} />
+              </a> */}
             </div>
           </div>
         </div>
@@ -41,13 +81,37 @@ const ProjectCard = ({ title, description, year, browser, github }) => {
           <h5 className="project-card__label">Description:</h5>
           <p className="project-card__description">{description}</p>
           <ul className="project-card__mobile-nav">
-            <li className="project-card__mobile-nav--item">Overview</li>
-            <hr className="project-card__mobile-nav--divider" />
-            <li className="project-card__mobile-nav--item">Features</li>
-            <hr className="project-card__mobile-nav--divider" />
-            <li className="project-card__mobile-nav--item">Stack</li>
+            {options.map((option, index) => (
+              <li className="project-card__mobile-nav--container" key={option}>
+                <span
+                  className={`project-card__mobile-nav--item ${
+                    isSelected === option ? "option-selected" : ""
+                  }`}
+                  onClick={() => handleOptionSelect(option)}
+                >
+                  {option}
+                </span>
+                {/* Only add a divider if it's not the last option */}
+                {index < options.length - 1 && (
+                  <hr className="project-card__mobile-nav--divider" />
+                )}
+              </li>
+            ))}
           </ul>
-          <div>all of the text goes renders here</div>
+          <hr className="project-card__mobile-nav--spacer" />
+          <div className="project-card__content-container">
+            {isSelected ? (
+              <div className="project-card__component fade-enter-active">
+                {renderComponents[isSelected]}
+              </div>
+            ) : (
+              <img
+                className="project-card__info-icon fade-enter-active"
+                src={infoIcon}
+                alt="Information icon"
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
