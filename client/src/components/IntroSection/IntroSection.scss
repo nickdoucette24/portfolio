@@ -38,7 +38,7 @@
     max-width: 22.25rem;
     font-size: 1.25rem;
     line-height: 2rem;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     z-index: 1;
 
     @include mobile {
@@ -510,7 +510,12 @@
     }
 
     @include laptop {
-      max-height: 75rem;
+      max-height: 77rem;
+      top: 2rem;
+    }
+
+    @include desktop {
+      max-height: 76rem;
     }
   }
 
@@ -558,6 +563,7 @@
       color: $cloud;
       font-family: Europa Light;
       font-weight: 200;
+      letter-spacing: 0.2px;
       line-height: 1.5rem;
       max-width: 25rem;
       padding-left: 0.125rem;
@@ -586,6 +592,14 @@
     top: 1.1rem;
     left: 0.2rem;
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+    @include tablet {
+      top: 1.5rem;
+    }
+
+    @include laptop {
+      top: 2rem;
+    }
 
     &::after {
       content: "";
@@ -758,7 +772,7 @@
     text-orientation: sideways;
     transform: rotate(180deg);
     color: $cloud;
-    cursor: default;
+    cursor: pointer;
     margin: 0.25rem;
     transition: color 0.1s ease-in-out;
 
@@ -812,7 +826,7 @@
       text-orientation: sideways;
       transform: rotate(180deg);
       color: $deep;
-      cursor: default;
+      cursor: pointer;
       margin: 0.25rem;
       transition: color 0.1s ease-in-out;
 

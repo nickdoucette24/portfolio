@@ -1,9 +1,13 @@
 import React from "react";
+import "./CardOverview.scss";
 
-const CardOverview = ({ option }) => {
+const CardOverview = ({ overview }) => {
   return (
     <div className="card-overview">
-      <div>{option}</div>
+      <div className="card-overview__text">{overview.intro}</div>
+      <div className="card-overview__text">{overview.para1}</div>
+      <div className="card-overview__text">{overview.para2}</div>
+      <div className="card-overview__text">{overview.para3}</div>
     </div>
   );
 };

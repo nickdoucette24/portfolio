@@ -126,11 +126,13 @@
     flex-wrap: wrap;
     min-width: 56rem;
     max-width: 71.5rem;
+    gap: 1.5rem;
   }
 
   @include desktop {
     justify-content: center;
     min-width: 70rem;
     max-width: 85rem;
+    gap: 2rem;
   }
 }
