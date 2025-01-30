@@ -128,6 +128,7 @@ const ProcessSection = () => {
   // Refs for scroll functionality
   const precisionRef = useRef(null);
   const toolboxRef = useRef(null);
+  const lifecycleRef = useRef(null);
 
   /**
    * @function
@@ -136,7 +137,7 @@ const ProcessSection = () => {
   const scrollToSection = useCallback((ref, isMiddleScroll = false) => {
     if (ref?.current) {
       const elementTop = ref.current.getBoundingClientRect().top;
-      const offset = isMiddleScroll ? 160 : 80;
+      const offset = isMiddleScroll ? 160 : 160;
       const scrollY = window.scrollY + elementTop - offset;
       window.scrollTo({
         top: scrollY,
@@ -194,7 +195,16 @@ const ProcessSection = () => {
           handleCategoryChange={handleCategoryChange}
         />
       </div>
-      <div className="lifecycle-wrapper">
+      <div className="scroll-container__bottom">
+        <p
+          className="scroll-container__bottom--title"
+          onClick={() => scrollToSection(lifecycleRef, true)}
+        >
+          this way
+        </p>
+        <div className="scroll-container__bottom--line"></div>
+      </div>
+      <div className="lifecycle-wrapper" ref={lifecycleRef}>
         <LifecycleSection deploymentPlan={deploymentPlan} />
       </div>
       <div className="process-container accessibility-container">

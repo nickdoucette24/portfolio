@@ -11,7 +11,7 @@ import "./LandingPage.scss";
 // Threshold of 0.2 means callback triggers when 20% of element is visible
 const OBSERVER_OPTIONS = {
   root: null,
-  threshold: 0.2,
+  threshold: 0.1,
 };
 
 /**
@@ -28,6 +28,7 @@ const LandingPage = ({ contactRef, projectsRef, headerHeight }) => {
   // Refs for section visibility tracking
   const aboutSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
+  const projectsSectionRef = useRef(null);
 
   // Function for handing smooth scrolling to target section
   const scrollToSection = (ref) => {
@@ -52,7 +53,10 @@ const LandingPage = ({ contactRef, projectsRef, headerHeight }) => {
           observer.unobserve(entry.target);
         }
         // Projects section visibility
-        if (entry.target === projectsRef.current && entry.isIntersecting) {
+        if (
+          entry.target === projectsSectionRef.current &&
+          entry.isIntersecting
+        ) {
           setIsProjectsVisible(true);
           observer.unobserve(entry.target);
         }
@@ -77,8 +81,8 @@ const LandingPage = ({ contactRef, projectsRef, headerHeight }) => {
     if (aboutSectionRef.current) {
       observer.observe(aboutSectionRef.current);
     }
-    if (projectsRef.current) {
-      observer.observe(projectsRef.current);
+    if (projectsSectionRef.current) {
+      observer.observe(projectsSectionRef.current);
     }
     if (contactSectionRef.current) {
       observer.observe(contactSectionRef.current);
@@ -89,8 +93,8 @@ const LandingPage = ({ contactRef, projectsRef, headerHeight }) => {
       if (aboutSectionRef.current) {
         observer.unobserve(aboutSectionRef.current);
       }
-      if (projectsRef.current) {
-        observer.unobserve(projectsRef.current);
+      if (projectsSectionRef.current) {
+        observer.unobserve(projectsSectionRef.current);
       }
       if (contactSectionRef.current) {
         observer.unobserve(contactSectionRef.current);
@@ -127,11 +131,12 @@ const LandingPage = ({ contactRef, projectsRef, headerHeight }) => {
       </section>
       <section className="projects-section" ref={projectsRef}>
         <div
+          ref={projectsSectionRef}
           className={`projects-wrapper ${
             isProjectsVisible ? "projects-wrapper__visible" : ""
           }`}
         >
-          <ProjectsSection isVisible={isProjectsVisible} />
+          <ProjectsSection />
         </div>
       </section>
       <section className="contact-section" ref={contactRef}>

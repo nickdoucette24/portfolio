@@ -1,10 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Header from "./components/Header/Header";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import MyProcessPage from "./pages/MyProcessPage/MyProcessPage";
-import BookingPage from "./pages/BookingPage/BookingPage";
+// import BookingPage from "./pages/BookingPage/BookingPage";
 
 import "./sass/App.scss";
 
@@ -16,7 +15,7 @@ function App() {
   // Refs for scroll management and component communication
   const contactRef = useRef(null);
   const projectsRef = useRef(null);
-  const headerHeight = 80;
+  const headerHeight = 120;
 
   return (
     <BrowserRouter>

@@ -28,7 +28,16 @@
 
   &__heading {
     @include h2;
+    font-size: 2.2rem;
     margin: 0;
+
+    @include mobile {
+      font-size: 2.5rem;
+    }
+
+    @include laptop {
+      font-size: 3rem;
+    }
   }
 
   &__text {
@@ -59,6 +68,7 @@
 
     &--bold {
       font-family: Europa Bold;
+      color: $deep;
     }
   }
 
@@ -189,27 +199,27 @@
   display: flex;
   align-items: flex-start;
   position: absolute;
-  top: 42rem;
+  top: 39rem;
   left: 30%;
   z-index: 1;
 
   @include mobile {
-    top: 38rem;
+    top: 35rem;
   }
 
   @include tablet {
-    top: 36rem;
+    top: 37rem;
   }
 
   @include laptop {
-    top: 42rem;
+    top: 44rem;
   }
 
   &__title {
     writing-mode: vertical-rl;
     text-orientation: sideways;
     transform: rotate(180deg);
-    color: $cloud;
+    color: $deep;
     cursor: pointer;
     margin: 0.25rem;
     transition: color 0.1s ease-in-out;
@@ -222,7 +232,7 @@
   &__line {
     width: 1px;
     height: 20rem;
-    background: $cloud;
+    background: $deep;
     transition: background 0.1s ease-in-out;
 
     &:hover {
@@ -242,21 +252,79 @@
     display: flex;
     align-items: flex-start;
     position: absolute;
-    top: 93rem;
+    top: 89rem;
     left: 60%;
     z-index: 1;
 
     @include mobile {
-      top: 87rem;
+      top: 81rem;
     }
 
     @include tablet {
-      top: 91rem;
+      top: 84rem;
       left: 55%;
     }
 
     @include laptop {
-      top: 100rem;
+      top: 96rem;
+    }
+
+    &--title {
+      writing-mode: vertical-rl;
+      text-orientation: sideways;
+      transform: rotate(180deg);
+      color: $deep;
+      cursor: pointer;
+      margin: 0.25rem;
+      transition: color 0.1s ease-in-out;
+
+      &:hover {
+        color: $superhero;
+      }
+    }
+
+    &--line {
+      width: 1px;
+      height: 20rem;
+      background: $deep;
+      transition: background 0.1s ease-in-out;
+
+      &:hover {
+        background: $superhero;
+      }
+
+      @include tablet {
+        height: 23rem;
+      }
+
+      @include laptop {
+        height: 25rem;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: flex-start;
+    position: absolute;
+    top: 172rem;
+    left: 20%;
+    z-index: 1;
+
+    @include mobile {
+      top: 152rem;
+    }
+
+    @include tablet {
+      top: 150rem;
+    }
+
+    @include laptop {
+      top: 162rem;
+    }
+
+    @media (min-width: 416px) and (max-width: 479px) {
+      top: 152rem;
     }
 
     &--title {

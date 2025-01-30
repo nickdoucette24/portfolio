@@ -30,6 +30,11 @@
   &__heading {
     margin-top: 4rem;
     color: $deep;
+    max-width: 16rem;
+
+    @include mobile {
+      max-width: none;
+    }
 
     @include tablet {
       margin-top: 8rem;
@@ -37,18 +42,18 @@
   }
 
   &__divider {
-    width: 20.5rem;
+    width: 15.5rem;
 
     @include mobile {
-      width: 21.5rem;
+      width: 17.5rem;
     }
 
     @include tablet {
-      width: 25.5rem;
+      width: 32rem;
     }
 
     @include laptop {
-      width: 28rem;
+      width: 38rem;
     }
   }
 

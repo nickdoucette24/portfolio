@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import CardOverview from "../CardOverview/CardOverview";
 import CardFeatures from "../CardFeatures/CardFeatures";
 import CardStack from "../CardStack/CardStack";
-import githubIcon from "../../assets/icons/gh-logo-white.svg";
+import githubIcon from "../../assets/icons/gh-logo-black.svg";
 import infoIcon from "../../assets/icons/info-icon.svg";
 import "./ProjectCard.scss";
 

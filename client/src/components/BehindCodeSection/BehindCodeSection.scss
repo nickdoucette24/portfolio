@@ -8,6 +8,10 @@
     margin: 1rem 1.75rem 0 1.75rem;
   }
 
+  @include tablet {
+    margin-top: 6rem;
+  }
+
   &__heading {
     font-size: 2rem;
     padding-bottom: 0.25rem;
@@ -32,14 +36,18 @@
   }
 
   &__divider {
-    width: 17rem;
+    width: 19rem;
+
+    @include mobile {
+      width: 21rem;
+    }
 
     @include tablet {
-      width: 19rem;
+      width: 21.5rem;
     }
 
     @include laptop {
-      width: 23rem;
+      width: 25.5rem;
     }
 
     @include desktop {

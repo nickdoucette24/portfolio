@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import "./ProjectsSection.scss";
 

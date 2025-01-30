@@ -1,21 +1,18 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./Header.scss";
-import logoCloud from "../../assets/images/n-logo.png";
-import bulbIcon from "../../assets/icons/calendar.svg";
+import logo from "../../assets/images/n-logo.png";
 
 const Header = ({ contactRef, projectsRef }) => {
   const [isActive, setIsActive] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [selectedNav, setSelectedNav] = useState("");
-  // const [showHomeButton, setShowHomeButton] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   // Header Logo Navigating to the top of the page/the home page
   const handleNavigateHome = () => {
     setSelectedNav("");
-    // setShowHomeButton(false);
     navigate("/");
     window.scrollTo({
       top: 0,
@@ -32,7 +29,7 @@ const Header = ({ contactRef, projectsRef }) => {
       navigate("/");
       setTimeout(() => {
         scrollToSectionHelper(ref, navItem);
-      }, 500); // Adjust delay if needed
+      }, 250); // Adjust delay if needed
     } else {
       scrollToSectionHelper(ref, navItem);
     }
@@ -58,16 +55,6 @@ const Header = ({ contactRef, projectsRef }) => {
     });
     setSelectedNav("My Process");
   };
-
-  // const handleLetsTalkClick = () => {
-  //   handleNavClear();
-  //   if (showHomeButton) {
-  //     handleNavigateHome();
-  //   } else {
-  //     setShowHomeButton(true);
-  //     navigate("/booking");
-  //   }
-  // };
 
   // Animated Hamburger Menu Function
   const toggleHamburger = () => {
@@ -131,12 +118,11 @@ const Header = ({ contactRef, projectsRef }) => {
           className={`header__logo-n ${
             isScrolled ? "header__logo-n--scrolled" : ""
           }`}
-          src={logoCloud}
+          src={logo}
           alt="cloud logo and link to the home page"
           onClick={() => handleNavigateHome()}
         />
       </div>
-      {/* <div className="header__cta"> */}
       <div className="header__container">
         <div className="header__container--hamburger">
           <button
@@ -155,25 +141,19 @@ const Header = ({ contactRef, projectsRef }) => {
             </span>
           </button>
         </div>
-        {/* <Link
-            className={`header__talk ${
-              isScrolled ? "header__talk--scrolled" : ""
+        <button className="resume-button">
+          <a
+            className={`resume-button__link ${
+              isScrolled ? "resume-button__scrolled" : ""
             }`}
-            to="/booking"
-            onClick={handleLetsTalkClick}
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <h4 className="header__talk--text">
-              {showHomeButton ? "Home" : "My Calendar"}
-            </h4>
-            <img
-              src={bulbIcon}
-              className={`header__talk--icon ${
-                isScrolled ? "header__talk--icon-scrolled" : ""
-              }`}
-            />
-          </Link> */}
+            Resume
+          </a>
+        </button>
       </div>
-      {/* </div> */}
     </header>
   );
 };

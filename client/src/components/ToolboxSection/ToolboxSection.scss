@@ -5,33 +5,37 @@
 
 .toolbox-container {
   width: 100%;
-  min-height: 78rem;
+  min-height: 80rem;
   box-sizing: border-box;
   padding: 0 1.5rem;
   align-items: flex-start;
   background-color: $cloud;
+  margin-top: 27rem;
 
   @include mobile {
     padding: 0 1.75rem;
-    min-height: 63rem;
+    min-height: 66rem;
     display: flex;
     align-items: center;
+    margin-top: 26rem;
   }
 
   @include tablet {
-    min-height: 62rem;
+    min-height: 64rem;
+    margin-top: 28rem;
   }
 
   @include laptop {
+    min-height: 64rem;
+    margin-top: 31rem;
+  }
+
+  @media (min-width: 416px) and (max-width: 479px) {
     min-height: 62rem;
   }
 
-  @include desktop {
-    min-height: 63rem;
-  }
-
-  @media (min-width: 408px) and (max-width: 479px) {
-    min-height: 61rem;
+  @media (min-width: 408px) and (max-width: 415px) {
+    min-height: 80rem;
   }
 
   &__heading {
@@ -52,14 +56,18 @@
   }
 
   &__divider {
-    width: 10.5rem;
+    width: 13.5rem;
+
+    @include mobile {
+      width: 15.5rem;
+    }
 
     @include tablet {
-      width: 13rem;
+      width: 16rem;
     }
 
     @include laptop {
-      width: 14rem;
+      width: 19rem;
     }
   }
 

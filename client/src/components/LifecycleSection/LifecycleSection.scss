@@ -26,21 +26,21 @@
     top: 1.5rem;
     bottom: 0;
     width: 2px;
-    background-color: $cloud;
+    background-color: $superhero;
     z-index: 0;
-    max-height: 62rem;
+    max-height: 73rem;
 
     @include tablet {
-      max-height: 68rem;
+      max-height: 79rem;
     }
 
     @include laptop {
-      max-height: 77rem;
+      max-height: 80rem;
       top: 2rem;
     }
 
     @include desktop {
-      max-height: 76rem;
+      max-height: 78.5rem;
     }
   }
 
@@ -57,12 +57,25 @@
 
     &--title {
       @include h3;
+      font-size: 4rem;
       color: $superhero;
       font-weight: 600;
-      margin: 0;
+      margin: 0 0 0.75rem 0;
       transition: font-weight 0.3s ease-in-out;
       cursor: default;
       width: fit-content;
+
+      @include mobile {
+        font-size: 4.2rem;
+      }
+
+      @include tablet {
+        font-size: 4.5rem;
+      }
+
+      @include laptop {
+        font-size: 5rem;
+      }
 
       &:hover {
         font-weight: 800;
@@ -72,27 +85,31 @@
     &--divider {
       margin: 0 0 2rem 0;
       border: 1px solid $orange;
-      width: 50%;
+      width: 90%;
+
+      @include mobile {
+        width: 80%;
+      }
 
       @include tablet {
-        width: 13rem;
+        width: 18rem;
       }
 
       @include laptop {
-        width: 16rem;
+        width: 20rem;
       }
     }
 
     &--description {
       @include p2;
-      color: $cloud;
+      color: $deep;
       font-family: Europa Light;
       font-weight: 200;
       letter-spacing: 0.2px;
       line-height: 1.5rem;
       max-width: 25rem;
       padding-left: 0.125rem;
-      margin-bottom: 2rem;
+      margin-bottom: 4rem;
       max-width: 21rem;
 
       @include laptop {
