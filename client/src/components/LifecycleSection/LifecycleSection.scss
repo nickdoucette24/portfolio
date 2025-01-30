@@ -1,0 +1,186 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+.lifecycle-container {
+  position: relative;
+  margin-top: 4rem;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+
+  @include mobile {
+    padding: 0 1.75rem;
+  }
+
+  &__heading {
+    margin-top: 4rem;
+  }
+
+  &__text {
+    color: $cloud;
+    margin-bottom: 2rem;
+  }
+
+  &__line {
+    position: absolute;
+    left: 0.9rem; // Align with nodes
+    top: 1.5rem;
+    bottom: 0;
+    width: 2px;
+    background-color: $cloud;
+    z-index: 0;
+    max-height: 62rem;
+
+    @include tablet {
+      max-height: 68rem;
+    }
+
+    @include laptop {
+      max-height: 77rem;
+      top: 2rem;
+    }
+
+    @include desktop {
+      max-height: 76rem;
+    }
+  }
+
+  &__step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 1;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--title {
+      @include h3;
+      color: $superhero;
+      font-weight: 600;
+      margin: 0;
+      transition: font-weight 0.3s ease-in-out;
+      cursor: default;
+      width: fit-content;
+
+      &:hover {
+        font-weight: 800;
+      }
+    }
+
+    &--divider {
+      margin: 0 0 2rem 0;
+      border: 1px solid $orange;
+      width: 50%;
+
+      @include tablet {
+        width: 13rem;
+      }
+
+      @include laptop {
+        width: 16rem;
+      }
+    }
+
+    &--description {
+      @include p2;
+      color: $cloud;
+      font-family: Europa Light;
+      font-weight: 200;
+      letter-spacing: 0.2px;
+      line-height: 1.5rem;
+      max-width: 25rem;
+      padding-left: 0.125rem;
+      margin-bottom: 2rem;
+      max-width: 21rem;
+
+      @include laptop {
+        max-width: 28rem;
+        margin-bottom: 4.5rem;
+      }
+
+      @include desktop {
+        max-width: 36rem;
+      }
+    }
+  }
+
+  &__node {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: $superhero; // Your highlight color
+    border-radius: 50%;
+    margin-right: 2rem;
+    flex-shrink: 0;
+    top: 1.1rem;
+    left: 0.2rem;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+    @include tablet {
+      top: 1.5rem;
+    }
+
+    @include laptop {
+      top: 2rem;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: $superhero;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: $orange;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      max-width: 38rem;
+    }
+
+    @include laptop {
+      max-width: 50rem;
+    }
+  }
+
+  &__divider {
+    width: 14.25rem;
+
+    @include tablet {
+      width: 17.5rem;
+    }
+
+    @include laptop {
+      width: 19.5rem;
+    }
+  }
+}
+
+.lifecycle-timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 2rem;
+
+  @include tablet {
+    margin-left: 2rem;
+  }
+
+  @include laptop {
+    margin-left: 4rem;
+  }
+}

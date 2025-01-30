@@ -32,10 +32,10 @@
   }
 
   &--scrolled {
-    background-color: $cloud;
+    background-color: $deep;
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
     border-radius: 0 0 0.125rem 0.125rem;
-    border-bottom: 4px solid $orange;
+    border-bottom: 2px solid $superhero;
     transition: height 0.3s ease-in-out;
 
     @include laptop {

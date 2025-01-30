@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import CardOverview from "../CardOverview/CardOverview";
 import CardFeatures from "../CardFeatures/CardFeatures";
 import CardStack from "../CardStack/CardStack";
@@ -6,6 +7,18 @@ import githubIcon from "../../assets/icons/gh-logo-white.svg";
 import infoIcon from "../../assets/icons/info-icon.svg";
 import "./ProjectCard.scss";
 
+const PROJECT_CARD_OPTIONS = ["Overview", "Features", "Stack"];
+
+const COMPONENT_MAP = {
+  Overview: CardOverview,
+  Features: CardFeatures,
+  Stack: CardStack,
+};
+
+/**
+ * Project Card Component
+ * @component
+ */
 const ProjectCard = ({
   title,
   description,
@@ -15,14 +28,18 @@ const ProjectCard = ({
   features,
   overview,
 }) => {
+  // Hovered and Selected state mangement for nav list options
   const [isHovered, setIsHovered] = useState(false);
   const [isSelected, setIsSelected] = useState("");
 
-  // Mapping selected options to their respective components
   const renderComponents = {
-    Overview: <CardOverview option={isSelected} overview={overview} />,
-    Features: <CardFeatures option={isSelected} features={features} />,
-    Stack: <CardStack option={isSelected} stack={stack} />,
+    Overview: (
+      <CardOverview key="overview" option={isSelected} overview={overview} />
+    ),
+    Features: (
+      <CardFeatures key="features" option={isSelected} features={features} />
+    ),
+    Stack: <CardStack key="stack" option={isSelected} stack={stack} />,
   };
 
   // Hover functionality
@@ -47,8 +64,6 @@ const ProjectCard = ({
     }, 10);
   };
 
-  const options = ["Overview", "Features", "Stack"];
-
   return (
     <div
       className="project-card"
@@ -71,9 +86,6 @@ const ProjectCard = ({
               <a className="mobile-tile__links--anchor" href={github}>
                 <img className="mobile-tile__links--icon" src={githubIcon} />
               </a>
-              {/* <a className="mobile-tile__links--anchor" href={browser}>
-                <img className="mobile-tile__links--icon" src={githubIcon} />
-              </a> */}
             </div>
           </div>
         </div>
@@ -81,7 +93,7 @@ const ProjectCard = ({
           <h5 className="project-card__label">Description:</h5>
           <p className="project-card__description">{description}</p>
           <ul className="project-card__mobile-nav">
-            {options.map((option, index) => (
+            {PROJECT_CARD_OPTIONS.map((option, index) => (
               <li className="project-card__mobile-nav--container" key={option}>
                 <span
                   className={`project-card__mobile-nav--item ${
@@ -92,7 +104,7 @@ const ProjectCard = ({
                   {option}
                 </span>
                 {/* Only add a divider if it's not the last option */}
-                {index < options.length - 1 && (
+                {index < PROJECT_CARD_OPTIONS.length - 1 && (
                   <hr className="project-card__mobile-nav--divider" />
                 )}
               </li>
@@ -108,7 +120,6 @@ const ProjectCard = ({
               <img
                 className="project-card__info-icon fade-enter-active"
                 src={infoIcon}
-                alt="Information icon"
               />
             )}
           </div>

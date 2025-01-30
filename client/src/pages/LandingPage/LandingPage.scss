@@ -22,48 +22,48 @@
   display: flex;
   align-items: flex-start;
   position: absolute;
-  top: 24rem;
+  top: 36rem;
   left: 50vw;
   z-index: 0;
 
   @include mobile {
-    top: 24rem;
+    top: 39rem;
   }
 
   @include tablet {
-    top: 35rem;
+    top: 46rem;
   }
 
   @include laptop {
-    top: 41rem;
+    top: 44rem;
   }
 
   @include desktop {
-    top: 42.5rem;
+    top: 45rem;
   }
 
   &__title {
     writing-mode: vertical-rl;
     text-orientation: sideways;
     transform: rotate(180deg);
-    color: $cloud;
+    color: $deep;
     cursor: pointer;
     margin: 0.25rem;
     transition: color 0.1s ease-in-out;
 
     &:hover {
-      color: $orange;
+      color: $superhero;
     }
   }
 
   &__line {
     width: 1px;
     height: 21rem;
-    background: $cloud;
+    background: $deep;
     transition: background 0.1s ease-in-out;
 
     &:hover {
-      background: $orange;
+      background: $superhero;
     }
 
     @include tablet {
@@ -96,7 +96,14 @@
 }
 
 .hero-wrapper {
-  @include flex-centre;
+  display: flex;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  width: 100%;
+
+  @include mobile {
+    justify-content: center;
+  }
 }
 
 // ! About Section Styling
@@ -105,6 +112,8 @@
   background-color: $cloud;
   width: 100%;
   margin-top: 27rem;
+  border-top: 1px solid rgb(227, 227, 227);
+  border-bottom: 1px solid rgb(227, 227, 227);
 
   @include tablet {
     margin-top: 30rem;
@@ -134,10 +143,11 @@
 // ! Projects Section Styling
 .projects-section {
   @include flex-centre;
-  background-color: transparent;
+  background-color: $cloud;
   width: 100%;
   padding: 3rem 1.5rem;
   box-sizing: border-box;
+  border-bottom: 1px solid rgb(227, 227, 227);
 
   @include mobile {
     padding: 3rem 1.75rem;

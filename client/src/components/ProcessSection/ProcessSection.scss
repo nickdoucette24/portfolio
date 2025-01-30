@@ -1,0 +1,319 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+.process-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 0 0 0;
+  width: 100%;
+
+  @include laptop {
+    margin-top: 6rem;
+  }
+}
+
+.process-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  @include laptop {
+    width: 50rem;
+  }
+
+  @include desktop {
+    width: 67.5rem;
+  }
+
+  &__heading {
+    @include h2;
+    margin: 0;
+  }
+
+  &__text {
+    @include p1;
+    font-family: Europa Light;
+    color: $deep;
+    max-width: 22.25rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    letter-spacing: 0.5px;
+    z-index: 1;
+
+    @include mobile {
+      max-width: 28rem;
+    }
+
+    @include tablet {
+      max-width: 38rem;
+    }
+
+    @include laptop {
+      max-width: 49rem;
+    }
+
+    &--bottom {
+      margin-top: 1.5rem;
+    }
+
+    &--bold {
+      font-family: Europa Bold;
+    }
+  }
+
+  &__body {
+    font-size: 1rem;
+    z-index: 1;
+    margin-bottom: 4rem;
+
+    @include tablet {
+      font-size: 1.125rem;
+    }
+
+    @include laptop {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__divider {
+    border: none;
+    border-bottom: 2px solid $superhero;
+    margin: 0 0 2rem 0;
+
+    @include tablet {
+      margin: 0 0 3rem 0;
+    }
+  }
+}
+
+.lifecycle-wrapper {
+  @include flex-centre;
+}
+
+.accessibility-container {
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: $orange;
+
+  @include mobile {
+    padding: 0 1.75rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__heading {
+    margin-top: 9.5rem;
+    color: $cream;
+  }
+
+  &__divider {
+    width: 19.5rem;
+    border: 1px solid $firered;
+
+    @include tablet {
+      width: 24rem;
+    }
+
+    @include laptop {
+      width: 26rem;
+    }
+  }
+
+  &__content-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+  }
+
+  &__text {
+    margin-bottom: 6rem;
+    color: $cream;
+
+    @include laptop {
+      margin-bottom: 8rem;
+    }
+  }
+
+  &__content {
+    @include flex-centre;
+
+    @include mobile {
+      max-width: 28rem;
+    }
+
+    @include tablet {
+      max-width: 38rem;
+    }
+
+    @include laptop {
+      max-width: 50rem;
+    }
+
+    @include desktop {
+      max-width: 67.5rem;
+    }
+  }
+
+  &__img-container {
+    @include flex-centre;
+
+    &--img {
+      width: 12rem;
+      position: absolute;
+      opacity: 0.25;
+      z-index: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 2rem;
+
+      @include tablet {
+        width: 16rem;
+        top: 1rem;
+      }
+
+      @include laptop {
+        width: 20rem;
+      }
+
+      @include desktop {
+        width: 24rem;
+      }
+    }
+  }
+}
+
+// ! Scroll Container
+.scroll-container {
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+  top: 42rem;
+  left: 30%;
+  z-index: 1;
+
+  @include mobile {
+    top: 38rem;
+  }
+
+  @include tablet {
+    top: 36rem;
+  }
+
+  @include laptop {
+    top: 42rem;
+  }
+
+  &__title {
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    transform: rotate(180deg);
+    color: $cloud;
+    cursor: pointer;
+    margin: 0.25rem;
+    transition: color 0.1s ease-in-out;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+
+  &__line {
+    width: 1px;
+    height: 20rem;
+    background: $cloud;
+    transition: background 0.1s ease-in-out;
+
+    &:hover {
+      background: $orange;
+    }
+
+    @include tablet {
+      height: 23rem;
+    }
+
+    @include laptop {
+      height: 25rem;
+    }
+  }
+
+  &__mid {
+    display: flex;
+    align-items: flex-start;
+    position: absolute;
+    top: 93rem;
+    left: 60%;
+    z-index: 1;
+
+    @include mobile {
+      top: 87rem;
+    }
+
+    @include tablet {
+      top: 91rem;
+      left: 55%;
+    }
+
+    @include laptop {
+      top: 100rem;
+    }
+
+    &--title {
+      writing-mode: vertical-rl;
+      text-orientation: sideways;
+      transform: rotate(180deg);
+      color: $deep;
+      cursor: pointer;
+      margin: 0.25rem;
+      transition: color 0.1s ease-in-out;
+
+      &:hover {
+        color: $superhero;
+      }
+    }
+
+    &--line {
+      width: 1px;
+      height: 20rem;
+      background: $deep;
+      transition: background 0.1s ease-in-out;
+
+      &:hover {
+        background: $superhero;
+      }
+
+      @include tablet {
+        height: 23rem;
+      }
+
+      @include laptop {
+        height: 25rem;
+      }
+    }
+  }
+}
+
+// ! Keyframe Animations
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

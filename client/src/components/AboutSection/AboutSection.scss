@@ -38,6 +38,8 @@
   &__text {
     color: $deep;
     @include p2;
+    font-family: Europa Light;
+    font-size: 1rem;
 
     @include tablet {
       max-width: 35rem;
@@ -171,7 +173,8 @@
   transition: opacity 0.85s ease-out, filter 0.85s ease-out;
   opacity: 1;
   font-weight: 600;
-  font-family: Parkinsans;
+  font-family: Europa Bold;
+  font-size: 1.125rem;
   width: 4.5rem;
   color: $orange;
   filter: blur(0);

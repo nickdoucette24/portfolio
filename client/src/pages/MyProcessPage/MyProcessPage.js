@@ -1,17 +1,17 @@
-import IntroSection from "../../components/IntroSection/IntroSection";
+import ProcessSection from "../../components/ProcessSection/ProcessSection";
 import Footer from "../../components/Footer/Footer";
 import "./MyProcessPage.scss";
 
 const MyProcessPage = () => {
   return (
-    <div className="process-page">
-      <div className="intro-wrapper">
-        <IntroSection />
-      </div>
-      <div className="footer-wrapper">
+    <main className="process-page" role="main">
+      <article className="process-content">
+        <ProcessSection />
+      </article>
+      <footer className="footer-wrapper">
         <Footer />
-      </div>
-    </div>
+      </footer>
+    </main>
   );
 };
 

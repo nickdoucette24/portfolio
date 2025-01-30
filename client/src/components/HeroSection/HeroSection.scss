@@ -6,12 +6,15 @@
   width: 100%;
   margin-top: 3rem;
   flex-direction: column-reverse;
-  align-items: center;
+
+  @include mobile {
+    max-width: 26.875rem;
+  }
 
   @include tablet {
     flex-direction: row;
-    justify-content: center;
     gap: 7%;
+    max-width: fit-content;
   }
 
   @include laptop {
@@ -33,31 +36,31 @@
     flex-direction: column;
     align-items: flex-start;
 
-    @include tablet {
-      display: flex;
-      flex-direction: column;
-    }
-
     @include laptop {
       align-items: baseline;
     }
 
     &--hello {
       @include h1;
-      font-size: 2rem;
-      color: $cloud;
-      text-align: center;
+      font-size: 5rem;
+      color: $deep;
       font-family: Parkinsans;
       font-weight: 600;
       margin: 2.5rem 0 0 0;
 
+      @include mobile {
+        font-size: 6rem;
+      }
+
       @include tablet {
         margin-top: 4rem;
+        font-size: 6.5rem;
       }
 
       @include laptop {
         margin-top: 7rem;
         margin-bottom: 2rem;
+        font-size: 7rem;
       }
 
       @include desktop {
@@ -68,17 +71,21 @@
     &--h2 {
       @include h2;
       font-family: Parkinsans;
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: $cloud;
+      font-size: 3rem;
+      font-weight: 500;
+      color: $deep;
       margin: 0.5rem 0 2rem 0;
 
       @include mobile {
-        font-size: 1.6rem;
+        font-size: 4rem;
       }
 
       @include tablet {
-        font-size: 4rem;
+        font-size: 4.5rem;
+      }
+
+      @include laptop {
+        font-size: 5rem;
       }
     }
 
@@ -90,37 +97,43 @@
     &--h4 {
       text-wrap: nowrap;
       @include h4;
-      font-weight: 400;
-      font-size: 1.5rem;
+      font-family: Parkinsans;
+      font-weight: 500;
+      font-size: 2rem;
       margin: 1rem 0;
-      color: $cloud;
+      color: $deep;
 
       @include mobile {
-        font-size: 1.6rem;
+        font-size: 3rem;
       }
 
       @include tablet {
-        font-size: 4rem;
+        font-size: 4.5rem;
         line-height: 6rem;
+      }
+
+      @include laptop {
+        font-size: 5rem;
       }
     }
 
     &--highlight {
       color: $orange;
-      font-size: 2.25rem;
+      font-size: 5rem;
       transition: color 0.3s ease-in-out;
       cursor: pointer;
+      margin-top: 0;
 
       @include mobile {
-        font-size: 2.25rem;
+        font-size: 6rem;
       }
 
       @include tablet {
-        font-size: 5.25rem;
+        font-size: 6.5rem;
       }
 
       @include laptop {
-        font-size: 5.5rem;
+        font-size: 7rem;
       }
 
       &:hover {
@@ -130,17 +143,27 @@
 
     &--group {
       display: flex;
-      align-items: baseline;
-      gap: 1rem;
+      flex-direction: column;
+      align-content: flex-start;
+      gap: 1.5rem;
 
       @include tablet {
         gap: 1.5rem;
+        margin: auto;
+      }
+
+      @include laptop {
+        gap: 0;
+        margin: 0;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 2rem;
       }
     }
 
     &--groupTwo {
       display: flex;
-      gap: 0.5rem;
+      gap: 1rem;
       align-items: baseline;
 
       @include tablet {
@@ -149,16 +172,33 @@
     }
 
     &--period {
-      color: $cloud;
+      color: $superhero;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: $orange;
+      }
     }
   }
 
   &__rotating-cube {
     width: 100%;
+    max-width: 16.5rem;
+
+    @include tablet {
+      width: 26.5rem;
+      max-width: none;
+    }
+
+    @include laptop {
+      width: 100%;
+      max-width: 49rem;
+    }
   }
 
   &__cube-container {
     @include flex-centre;
+    justify-content: flex-start;
     flex-wrap: nowrap;
     gap: 1rem;
     width: 100%;
@@ -182,8 +222,8 @@
   transform-style: preserve-3d;
   animation: rotateCube 12s infinite ease-in-out;
 
-  @include tablet {
-    height: 4rem;
+  @include mobile {
+    height: 3rem;
   }
 
   @include laptop {
@@ -201,11 +241,16 @@
   align-items: center;
   font-weight: 800;
   text-wrap: nowrap;
-  border: 2px solid $cloud;
+  border: 2px solid rgb(189, 188, 188);
   color: white;
-  font-size: 1rem;
+  font-size: 1.2rem;
   box-sizing: border-box;
-  border-radius: 1px;
+  border-radius: 0.5px;
+
+  @include mobile {
+    font-size: 1.5rem;
+    height: 3rem;
+  }
 
   @include tablet {
     height: 4rem;
@@ -228,6 +273,10 @@
   background-color: $superhero;
   color: $cloud;
 
+  @include mobile {
+    transform: rotateX(0deg) translateZ(1.5rem);
+  }
+
   @include tablet {
     transform: rotateX(0deg) translateZ(2rem);
   }
@@ -237,6 +286,10 @@
   transform: rotateX(270deg) translateZ(1.12rem);
   background-color: $orange;
   color: $cloud;
+
+  @include mobile {
+    transform: rotateX(270deg) translateZ(1.5rem);
+  }
 
   @include tablet {
     transform: rotateX(270deg) translateZ(2rem);
@@ -248,6 +301,10 @@
   background-color: $superhero;
   color: $cloud;
 
+  @include mobile {
+    transform: rotateX(180deg) translateZ(1.5rem);
+  }
+
   @include tablet {
     transform: rotateX(180deg) translateZ(2rem);
   }
@@ -257,6 +314,10 @@
   transform: rotateX(90deg) translateZ(1.12rem);
   background-color: $orange;
   color: $cloud;
+
+  @include mobile {
+    transform: rotateX(90deg) translateZ(1.5rem);
+  }
 
   @include tablet {
     transform: rotateX(90deg) translateZ(2rem);
