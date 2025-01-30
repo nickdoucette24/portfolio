@@ -1,28 +1,53 @@
 import React, { useRef, useEffect } from "react";
 
+// Configuration constants that could be moved to a separate config file
+const CONFIG = {
+  SPEED_MULTIPLIER: 0.25,
+  MOUSE_RADIUS: 150,
+  CONNECTION_DISTANCE: 100,
+  ORANGE_DOT_COLOR: "rgba(254, 87, 34, 1)",
+  DEFAULT_DOT_COLOR: "rgba(200, 200, 200, 0.8)",
+  DEFAULT_DOT_SIZE: 2,
+  LAPTOP_BREAKPOINT: 1024,
+  TABLET_BREAKPOINT: 768,
+  MAX_DOTS: 250,
+  DOT_REDUCTION_TABLET: 0.75,
+  DOT_REDUCTION_MOBILE: 0.5,
+  MOUSE_ATTRACTION_SPEED: 0.5,
+  FADE_DURATION: 200,
+  CLOSEST_DOTS_COUNT: 5,
+};
+
+/**
+ * Hero Canvas Design Component
+ * @component
+ */
+
 const HeroCanvas = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    // Initialize canvas context and state
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    const speedMultiplier = 0.25; // Dot movement speed around the screen
     let animationFrameId;
     let width, height;
     let dots = [];
-    let isMouseInteractionEnabled = window.innerWidth >= 1024;
-    const mouse = { x: null, y: null, radius: 150 };
+    let isMouseInteractionEnabled =
+      window.innerWidth >= CONFIG.LAPTOP_BREAKPOINT;
+    const mouse = { x: null, y: null, radius: CONFIG.MOUSE_RADIUS };
 
-    const orangeDot = "rgba(254, 87, 34, 1)";
-
+    /**
+     * Calculates the optimal number of dots based on viewport width
+     * @function
+     */
     const calculateDotCount = () => {
-      if (window.innerWidth < 768) {
-        return Math.floor(150 * 0.5); // 50% fewer dots
-      } else if (window.innerWidth < 1024) {
-        return Math.floor(150 * 0.75); // 25% fewer dots
-      } else {
-        return 250; // Full dot count
+      if (window.innerWidth < CONFIG.TABLET_BREAKPOINT) {
+        return Math.floor(CONFIG.MAX_DOTS * CONFIG.DOT_REDUCTION_MOBILE);
+      } else if (window.innerWidth < CONFIG.LAPTOP_BREAKPOINT) {
+        return Math.floor(CONFIG.MAX_DOTS * CONFIG.DOT_REDUCTION_TABLET);
       }
+      return CONFIG.MAX_DOTS;
     };
 
     const resizeCanvas = () => {
@@ -32,34 +57,47 @@ const HeroCanvas = () => {
       initDots(); // Reinitialize dots on resize
     };
 
+    // Particle class representing each dot in the animation
     class Dot {
       constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.vx = (Math.random() * 2 - 1) * speedMultiplier; // Apply speed multiplier
-        this.vy = (Math.random() * 2 - 1) * speedMultiplier; // Apply speed multiplier
-        this.size = 2;
-        this.color = "rgba(200, 200, 200, 0.8)";
+        this.vx = (Math.random() * 2 - 1) * CONFIG.SPEED_MULTIPLIER;
+        this.vy = (Math.random() * 2 - 1) * CONFIG.SPEED_MULTIPLIER;
+        this.size = CONFIG.DEFAULT_DOT_SIZE;
+        this.color = CONFIG.DEFAULT_DOT_COLOR;
         this.originalColor = this.color;
         this.isFading = false;
+        this.halfSize = this.size / 2;
       }
 
+      // Updates dot position and handles boundary collisions
       update() {
-        if (this.x + this.size > width || this.x - this.size < 0) this.vx *= -1;
-        if (this.y + this.size > height || this.y - this.size < 0)
+        // Boundary collision detection
+        const nextX = this.x + this.vx;
+        const nextY = this.y + this.vy;
+
+        if (nextX + this.halfSize > width || nextX - this.halfSize < 0) {
+          this.vx *= -1;
+        }
+        if (nextY + this.halfSize > height || nextY - this.halfSize < 0) {
           this.vy *= -1;
+        }
 
         this.x += this.vx;
         this.y += this.vy;
 
-        if (isMouseInteractionEnabled) {
+        // Mouse interaction
+        if (isMouseInteractionEnabled && mouse.x !== null) {
           const dx = mouse.x - this.x;
           const dy = mouse.y - this.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const distanceSquared = dx * dx + dy * dy;
 
-          if (distance < mouse.radius) {
-            this.x += (dx / distance) * 0.5; // how fast the dots move towards the mouse
-            this.y += (dy / distance) * 0.5; // how fast the dots move towards the mouse
+          if (distanceSquared < mouse.radius * mouse.radius) {
+            const distance = Math.sqrt(distanceSquared);
+            const force = CONFIG.MOUSE_ATTRACTION_SPEED / distance;
+            this.x += dx * force;
+            this.y += dy * force;
           }
         }
       }
@@ -73,7 +111,7 @@ const HeroCanvas = () => {
 
       fadeToOrange() {
         this.isFading = true;
-        this.color = orangeDot;
+        this.color = CONFIG.ORANGE_DOT_COLOR;
 
         setTimeout(() => {
           this.color = this.originalColor;
@@ -124,16 +162,24 @@ const HeroCanvas = () => {
       });
     };
 
+    // Main animation loop
     const animate = () => {
+      // Clear canvas
       ctx.clearRect(0, 0, width, height);
-      dots.forEach((dot) => {
-        dot.update();
-        dot.draw();
-      });
+
+      // Batch updates and draws for better performance
+      const len = dots.length;
+      for (let i = 0; i < len; i++) {
+        dots[i].update();
+        dots[i].draw();
+      }
+
       connectDots();
-      if (isMouseInteractionEnabled && mouse.x !== null && mouse.y !== null) {
+
+      if (isMouseInteractionEnabled && mouse.x !== null) {
         findClosestDots();
       }
+
       animationFrameId = requestAnimationFrame(animate);
     };
 

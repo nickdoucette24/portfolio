@@ -4,8 +4,8 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  background-color: $deep2;
-  border: 1px solid $cloud;
+  background-color: white;
+  border: 1px solid $deep;
   border-radius: 0.5rem;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   height: fit-content;
@@ -37,7 +37,7 @@
 
   &__title {
     font-family: Zing Lines;
-    color: $cloud;
+    color: $deep;
     font-weight: 100;
     margin: 0.5rem 1rem 0 1rem;
     font-size: 3.5rem;
@@ -55,12 +55,12 @@
   &__label {
     margin: 0 0 1rem 0;
     width: fit-content;
-    color: $cloud;
+    color: $deep;
     font-family: Parkinsans;
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.25px;
-    border-bottom: 1px solid $cloud;
+    border-bottom: 1px solid $deep;
     padding-bottom: 0.125rem;
 
     @include tablet {
@@ -76,7 +76,7 @@
 
   &__description {
     @include p2;
-    color: $cloud;
+    color: $deep;
     font-family: Europa Light;
 
     @include laptop {
@@ -115,7 +115,8 @@
     display: block;
     width: 8rem;
     margin: auto;
-    filter: brightness(150%);
+    filter: invert(15%) sepia(95%) saturate(3714%) hue-rotate(205deg)
+      brightness(97%) contrast(97%) opacity(12%);
     animation: fadeInUp 0.3s ease-in-out forwards;
 
     @include mobile {
@@ -144,7 +145,7 @@
 
     @include tablet {
       margin: 2.25rem 1.75rem 1rem 1.75rem;
-      gap: 1.25rem;
+      gap: 1rem;
     }
 
     @include laptop {
@@ -161,7 +162,7 @@
 
     &--item {
       position: relative;
-      color: $cloud;
+      color: $deep;
       font-family: Parkinsans;
       text-decoration: none;
       font-size: 0.9rem;
@@ -194,11 +195,10 @@
       }
 
       &.option-selected {
-        color: $cloud;
+        color: $orange;
 
         &::after {
           width: 100%; // Slide the border fully across the element
-          height: 1.5px;
         }
       }
     }
@@ -208,6 +208,10 @@
       margin: 0 0 0 0.5rem;
       border: 0.5px solid $superhero;
 
+      @include tablet {
+        margin-left: 1rem;
+      }
+
       @include laptop {
         display: none;
       }
@@ -215,7 +219,7 @@
 
     &--spacer {
       width: 75%;
-      border: 0.5px solid #fefefe63;
+      border: 0.5px solid $superhero;
 
       @include laptop {
         width: 0;
@@ -241,36 +245,6 @@
   animation: fadeInUp 0.3s ease-in-out forwards;
 }
 
-// .option-selected {
-//   position: relative;
-//   color: $cloud;
-//   font-family: Parkinsans;
-//   text-decoration: none;
-//   cursor: pointer;
-//   border-bottom: 1px solid transparent;
-//   transition: transform 0.3s ease-in-out;
-
-//   &::after {
-//     content: "";
-//     position: absolute;
-//     left: 0;
-//     bottom: 0;
-//     height: 1px;
-//     width: 0;
-//     background-color: $orange;
-//     transition: width 0.3s ease-in-out; // Smooth slide-in effect
-//   }
-
-//   &:hover,
-//   &. {
-//     color: $cloud;
-
-//     &::after {
-//       width: 100%; // Slide the border fully across the element
-//     }
-//   }
-// }
-
 .card-hover {
   font-family: Zing Base;
 }
@@ -287,7 +261,7 @@
 
   &__label {
     margin: 0;
-    color: $cloud;
+    color: $deep;
     font-family: Parkinsans;
     font-size: 0.8rem;
     font-weight: 500;
@@ -299,7 +273,7 @@
   }
 
   &__year {
-    color: $cloud;
+    color: $orange;
     font-size: 1rem;
     font-family: Europa Regular;
     margin-left: 0.5rem;
@@ -335,11 +309,11 @@
       }
 
       &:hover {
-        transform: scale(1.075);
+        transform: scale(1.05);
       }
 
       &:active {
-        transform: scale(1.025);
+        transform: scale(1.0125);
       }
     }
   }

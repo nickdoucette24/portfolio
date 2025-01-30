@@ -130,9 +130,11 @@
 // ! CTA Mixins
 @mixin work-together {
   @include h4;
+  font-family: Europa Light;
   padding: 0.25rem 1rem;
   background-color: transparent;
   border: 1.5px solid $superhero;
+  border-radius: 0.25rem;
   text-decoration: none;
   box-sizing: border-box;
   text-wrap: nowrap;
@@ -226,7 +228,7 @@
   background: none;
   font-family: Europa Light;
   font-size: 0.8rem;
-  color: $cloud;
+  color: $deep;
   border: none;
   cursor: pointer;
   padding: 0.25rem 0;
@@ -239,7 +241,7 @@
   }
 
   &:hover {
-    color: $cloud;
+    color: $superhero;
     font-weight: 600;
   }
 
@@ -250,7 +252,7 @@
     left: 0;
     width: 0;
     height: 1px; // Adjust thickness as needed
-    background-color: $cloud; // White border color
+    background-color: $superhero; // White border color
     transition: width 0.3s ease-in-out;
   }
 

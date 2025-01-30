@@ -1,5 +1,17 @@
 import "./HeroSection.scss";
 
+// Text content for the rotating cube faces
+const CUBE_FACES = {
+  front: "software engineer",
+  bottom: "web developer",
+  back: "UX designer",
+  top: "creative",
+};
+
+/**
+ * Hero Section Component
+ * @component
+ */
 const HeroSection = () => {
   return (
     <div className="hero">
@@ -18,16 +30,20 @@ const HeroSection = () => {
           <div className="hero__rotating-cube">
             <div className="cube">
               <div className="face front">
-                software engineer<span className="face__period">.</span>
+                {CUBE_FACES.front}
+                <span className="face__period">.</span>
               </div>
               <div className="face bottom">
-                web developer<span className="face__period">.</span>
+                {CUBE_FACES.bottom}
+                <span className="face__period">.</span>
               </div>
               <div className="face back">
-                UX designer<span className="face__period">.</span>
+                {CUBE_FACES.back}
+                <span className="face__period">.</span>
               </div>
               <div className="face top">
-                creative<span className="face__period">.</span>
+                {CUBE_FACES.top}
+                <span className="face__period">.</span>
               </div>
             </div>
           </div>

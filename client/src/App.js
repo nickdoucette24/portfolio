@@ -1,15 +1,21 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./sass/App.scss";
 import Header from "./components/Header/Header";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import MyProcessPage from "./pages/MyProcessPage/MyProcessPage";
-import BookingPage from "./pages/BookingPage/BookingPage";
+// import BookingPage from "./pages/BookingPage/BookingPage";
 
+import "./sass/App.scss";
+
+/**
+ * Main App Component
+ * @component
+ */
 function App() {
+  // Refs for scroll management and component communication
   const contactRef = useRef(null);
   const projectsRef = useRef(null);
-  const headerHeight = 80;
+  const headerHeight = 120;
 
   return (
     <BrowserRouter>
@@ -29,10 +35,11 @@ function App() {
           path="/my-process"
           element={<MyProcessPage headerHeight={headerHeight} />}
         />
-        <Route
+        {/* Booking Page to be built soon */}
+        {/* <Route
           path="/booking"
           element={<BookingPage headerHeight={headerHeight} />}
-        />
+        /> */}
       </Routes>
     </BrowserRouter>
   );
