@@ -38,6 +38,8 @@
   &__text {
     color: $deep;
     @include p2;
+    font-family: Europa Light;
+    font-size: 1rem;
 
     @include tablet {
       max-width: 35rem;
@@ -96,9 +98,14 @@
   flex-direction: column;
   gap: 0.5rem;
 
+  @include laptop {
+    gap: 0;
+  }
+
   &__small {
     @include h2;
     color: $deep;
+    font-size: 2.2rem;
 
     @include mobile {
       display: none;
@@ -110,8 +117,10 @@
     color: $deep;
 
     @include mobile {
-      @include h2;
       display: flex;
+      font-family: Europa Bold;
+      font-size: 2.5rem;
+      margin: 0 0 0.25rem 0;
     }
 
     @include tablet {
@@ -120,9 +129,11 @@
   }
 
   &__tablet {
-    @include h2;
     display: none;
     color: $deep;
+    font-size: 2.5rem;
+    font-family: Europa Bold;
+    margin: 0;
 
     @include tablet {
       display: flex;
@@ -137,30 +148,35 @@
     display: none;
 
     @include laptop {
-      @include h2;
       display: flex;
       color: $deep;
+      font-size: 3rem;
+      font-family: Europa Bold;
+      margin: 0;
     }
   }
 
   &__divider {
     border: 1px solid $superhero;
-    width: 16.625rem;
+    width: 100%;
+    max-width: 22.25rem;
     margin: 0 0 2rem 0;
 
     @include mobile {
-      width: 17rem;
       margin-bottom: 3rem;
+      width: 25rem;
+      max-width: none;
     }
 
     @include tablet {
-      width: 30.5rem;
+      width: 38rem;
       margin-bottom: 4rem;
     }
 
     @include laptop {
-      width: 33.25rem;
+      width: 45rem;
       margin-bottom: 4rem;
+      margin-top: 0.5rem;
     }
   }
 }
@@ -172,6 +188,7 @@
   opacity: 1;
   font-weight: 600;
   font-family: Parkinsans;
+  font-size: 1rem;
   width: 4.5rem;
   color: $orange;
   filter: blur(0);

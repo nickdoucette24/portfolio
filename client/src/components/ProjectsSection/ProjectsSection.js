@@ -1,6 +1,19 @@
-import { useState, useRef } from "react";
+import { useState, useCallback, useRef } from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import "./ProjectsSection.scss";
+
+// Configuration constants that could be moved to a separate config file
+const CONFIG = {
+  INITIAL_DISPLAY_COUNT: 3,
+  SCROLL_OFFSET: 64,
+  SCROLL_DELAY: 0,
+  SCROLL_BEHAVIOR: "smooth",
+};
+
+/**
+ * Projects Section Component
+ * @component
+ */
 
 const ProjectsSection = () => {
   const [showAll, setShowAll] = useState(false);
@@ -150,54 +163,62 @@ const ProjectsSection = () => {
     },
   ];
 
-  const handleShowMore = () => {
+  // Memoized handlers to prevent unnecessary re-renders
+  const handleShowMore = useCallback(() => {
     setShowAll((prevState) => !prevState);
     scrollToBottom();
-  };
+  }, []);
 
-  const scrollToBottom = () => {
+  // Smoothly scrolls to the bottom of the projects container
+  const scrollToBottom = useCallback(() => {
     setTimeout(() => {
       if (containerRef.current) {
         const containerBottom =
           containerRef.current.getBoundingClientRect().bottom;
         const scrollY =
-          window.scrollY + containerBottom - window.innerHeight + 64;
+          window.scrollY +
+          containerBottom -
+          window.innerHeight +
+          CONFIG.SCROLL_OFFSET;
 
         window.scrollTo({
           top: scrollY,
-          behavior: "smooth",
+          behavior: CONFIG.SCROLL_BEHAVIOR,
         });
       }
-    }, 0);
-  };
+    }, CONFIG.SCROLL_DELAY);
+  }, []);
 
-  const displayed = showAll ? projects : projects.slice(0, 3);
+  const displayed = showAll
+    ? projects
+    : projects.slice(0, CONFIG.INITIAL_DISPLAY_COUNT);
 
   return (
-    <div className="projects" ref={containerRef}>
+    <section className="projects" ref={containerRef}>
       <div className="projects__heading-container">
         <h2 className="projects__heading">My Work.</h2>
         <hr className="projects__divider" />
       </div>
       <div className="projects-container">
         {displayed.map((project) => (
-          <ProjectCard
-            key={project.id}
-            title={project.title}
-            description={project.description}
-            year={project.year}
-            browser={project.browser}
-            github={project.github}
-            stack={project.stack}
-            features={project.features}
-            overview={project.overview}
-          />
+          <div key={project.id}>
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              year={project.year}
+              browser={project.browser}
+              github={project.github}
+              stack={project.stack}
+              features={project.features}
+              overview={project.overview}
+            />
+          </div>
         ))}
       </div>
       <button className="projects__toggle" onClick={handleShowMore}>
         {showAll ? "Show Less" : "Show More"}
       </button>
-    </div>
+    </section>
   );
 };
 

@@ -1,0 +1,78 @@
+@use "../../sass/partials/variables" as *;
+@use "../../sass/partials/mixins" as *;
+
+.precision-container {
+  margin-top: 29rem;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: $cloud;
+
+  @include mobile {
+    margin-top: 29rem;
+    padding: 0 1.75rem;
+    display: flex;
+    align-items: center;
+  }
+
+  @include tablet {
+    margin-top: 33rem;
+  }
+
+  @include laptop {
+    margin-top: 37rem;
+  }
+
+  @include desktop {
+    margin-top: 38rem;
+  }
+
+  &__heading {
+    margin-top: 4rem;
+    color: $deep;
+    max-width: 16rem;
+
+    @include mobile {
+      max-width: none;
+    }
+
+    @include tablet {
+      margin-top: 8rem;
+    }
+  }
+
+  &__divider {
+    width: 15.5rem;
+
+    @include mobile {
+      width: 17.5rem;
+    }
+
+    @include tablet {
+      width: 32rem;
+    }
+
+    @include laptop {
+      width: 38rem;
+    }
+  }
+
+  &__content {
+    @include mobile {
+      max-width: 28rem;
+    }
+
+    @include tablet {
+      max-width: 38rem;
+    }
+
+    @include laptop {
+      max-width: none;
+      width: 50rem;
+    }
+
+    @include desktop {
+      width: 67.5rem;
+    }
+  }
+}

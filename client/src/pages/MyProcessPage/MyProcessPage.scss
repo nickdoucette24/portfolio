@@ -7,8 +7,8 @@
   flex-direction: column;
   align-items: center;
   padding-top: 6rem;
-  color: $cloud;
-  background-color: $deep;
+  color: $deep;
+  background-color: $cloud;
 
   @include laptop {
     padding-top: 8rem;
@@ -16,7 +16,7 @@
 }
 
 // ! Intro Section Styling
-.intro-wrapper {
+.process-content {
   @include flex-centre;
   width: 100%;
 }
@@ -25,5 +25,4 @@
 .footer-wrapper {
   @include flex-centre;
   width: 100vw;
-  color: $deep;
 }

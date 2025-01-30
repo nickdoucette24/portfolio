@@ -1,8 +1,13 @@
+/**
+ * @component
+ */
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./AboutSection.scss";
 
 const AboutSection = () => {
+  // Wordbank for the rotating text animation
   const wordbank = [
     "dynamic",
     "scalable",
@@ -11,9 +16,16 @@ const AboutSection = () => {
     "durable",
     "intuitive",
   ];
+
+  // State management for word rotation animation
   const [currentWord, setCurrentWord] = useState(0);
+  // State management for the fade-out/fade-in animation
   const [isFading, setIsFading] = useState(false);
 
+  /**
+   * Handles scroll reset when navigating to a new page
+   * @function
+   */
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -21,10 +33,13 @@ const AboutSection = () => {
     });
   };
 
+  // Word rotation animation effect
   useEffect(() => {
     const interval = setInterval(() => {
       setIsFading(true);
+
       setTimeout(() => {
+        // Use modulo to cycle through wordbank continuously
         setCurrentWord((prev) => (prev + 1) % wordbank.length);
         setIsFading(false);
       }, 500);
@@ -47,7 +62,7 @@ const AboutSection = () => {
         <hr className="heading-container__divider" />
       </div>
       <p className="about-container__text">
-        I’m a full-stack software engineer based in Ontario, Canada. I craft{" "}
+        I'm a full-stack software engineer based in Ontario, Canada. I craft{" "}
         <span className={`rotating-word ${isFading ? "fading" : ""}`}>
           {wordbank[currentWord]}
         </span>{" "}

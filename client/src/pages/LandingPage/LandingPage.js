@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import AboutSection from "../../components/AboutSection/AboutSection";
 import ProjectsSection from "../../components/ProjectsSection/ProjectsSection";
 import ContactSection from "../../components/ContactSection/ContactSection";
@@ -7,17 +7,34 @@ import HeroSection from "../../components/HeroSection/HeroSection";
 import Footer from "../../components/Footer/Footer";
 import "./LandingPage.scss";
 
+// Configuration object for Intersection Observer
+// Threshold of 0.2 means callback triggers when 20% of element is visible
+const OBSERVER_OPTIONS = {
+  root: null,
+  threshold: 0.1,
+};
+
+/**
+ * LandingPage Component
+ * @component
+ */
+
 const LandingPage = ({ contactRef, projectsRef, headerHeight }) => {
+  // State management for section visibility animations
   const [isAboutVisible, setIsAboutVisible] = useState(false);
   const [isProjectsVisible, setIsProjectsVisible] = useState(false);
   const [isContactVisible, setIsContactVisible] = useState(false);
+
+  // Refs for section visibility tracking
   const aboutSectionRef = useRef(null);
   const contactSectionRef = useRef(null);
+  const projectsSectionRef = useRef(null);
 
+  // Function for handing smooth scrolling to target section
   const scrollToSection = (ref) => {
     if (ref && ref.current) {
       const elementTop = ref.current.getBoundingClientRect().top;
-      const scrollY = window.scrollY + elementTop - 80; // Adjust for fixed header height
+      const scrollY = window.scrollY + elementTop - headerHeight; // Adjust for fixed header height
       window.scrollTo({
         top: scrollY,
         behavior: "smooth",
@@ -26,52 +43,58 @@ const LandingPage = ({ contactRef, projectsRef, headerHeight }) => {
   };
 
   useEffect(() => {
+    // Intersection Observer Callback
+    // Visibility state management function
     const observerCallback = (entries, observer) => {
       entries.forEach((entry) => {
+        // About section visibility
         if (entry.target === aboutSectionRef.current && entry.isIntersecting) {
           setIsAboutVisible(true);
-          observer.unobserve(entry.target); // Stop observing once visible
+          observer.unobserve(entry.target);
         }
-        if (entry.target === projectsRef.current && entry.isIntersecting) {
+        // Projects section visibility
+        if (
+          entry.target === projectsSectionRef.current &&
+          entry.isIntersecting
+        ) {
           setIsProjectsVisible(true);
-          observer.unobserve(entry.target); // Stop observing once visible
+          observer.unobserve(entry.target);
         }
+        // Contact section visibility
         if (
           entry.target === contactSectionRef.current &&
           entry.isIntersecting
         ) {
           setIsContactVisible(true);
-          observer.unobserve(entry.target); // Stop observing once visible
+          observer.unobserve(entry.target);
         }
       });
     };
 
-    const observerOptions = {
-      root: null,
-      threshold: 0.2, // Trigger when 20% of the section is visible
-    };
-
+    // Initialize observer with callback and options
     const observer = new IntersectionObserver(
       observerCallback,
-      observerOptions
+      OBSERVER_OPTIONS
     );
 
+    // Start observing sections if refs are available
     if (aboutSectionRef.current) {
       observer.observe(aboutSectionRef.current);
     }
-    if (projectsRef.current) {
-      observer.observe(projectsRef.current);
+    if (projectsSectionRef.current) {
+      observer.observe(projectsSectionRef.current);
     }
     if (contactSectionRef.current) {
       observer.observe(contactSectionRef.current);
     }
 
+    // Cleanup observer on component unmount
     return () => {
       if (aboutSectionRef.current) {
         observer.unobserve(aboutSectionRef.current);
       }
-      if (projectsRef.current) {
-        observer.unobserve(projectsRef.current);
+      if (projectsSectionRef.current) {
+        observer.unobserve(projectsSectionRef.current);
       }
       if (contactSectionRef.current) {
         observer.unobserve(contactSectionRef.current);
@@ -108,11 +131,12 @@ const LandingPage = ({ contactRef, projectsRef, headerHeight }) => {
       </section>
       <section className="projects-section" ref={projectsRef}>
         <div
+          ref={projectsSectionRef}
           className={`projects-wrapper ${
             isProjectsVisible ? "projects-wrapper__visible" : ""
           }`}
         >
-          <ProjectsSection isVisible={isProjectsVisible} />
+          <ProjectsSection />
         </div>
       </section>
       <section className="contact-section" ref={contactRef}>

@@ -20,28 +20,43 @@
   }
 
   &__heading {
-    @include h2;
     color: $deep;
+    font-size: 1.7rem;
+    font-family: Europa Bold;
     margin: 0;
+
+    @include mobile {
+      font-size: 2.2rem;
+    }
+
+    @include tablet {
+      font-size: 2.5rem;
+    }
+
+    @include laptop {
+      font-size: 3rem;
+    }
   }
 
   &__divider {
     border: 1px solid $superhero;
-    width: 17.5rem;
+    width: 100%;
+    max-width: 18.5rem;
     margin: 0.25rem 0 2rem 0;
 
     @include mobile {
-      width: 18rem;
+      max-width: none;
+      width: 24rem;
       margin-bottom: 2.5rem;
     }
 
     @include tablet {
-      width: 22rem;
+      width: 27rem;
       margin-bottom: 3.5rem;
     }
 
     @include laptop {
-      width: 24rem;
+      width: 32.5rem;
       margin-bottom: 4rem;
     }
   }
