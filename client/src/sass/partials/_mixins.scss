@@ -1,5 +1,10 @@
 @use "./variables" as *;
 
+* {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
 // ! Styling Mixins
 @mixin h1 {
   font-size: 4rem;
@@ -22,7 +27,8 @@
   font-family: Europa Bold;
   margin: 1rem 0 0 0;
   line-height: 2.4rem;
-  font-weight: 800;
+  text-size-adjust: 100%; // Add this line
+  -webkit-text-size-adjust: 100%; // And this line
 
   @include mobile {
     font-size: 1.65rem;
@@ -251,8 +257,8 @@
     bottom: 0;
     left: 0;
     width: 0;
-    height: 1px; // Adjust thickness as needed
-    background-color: $superhero; // White border color
+    height: 1px;
+    background-color: $superhero;
     transition: width 0.3s ease-in-out;
   }
 
