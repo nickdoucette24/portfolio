@@ -21,7 +21,7 @@
 
   &__heading {
     color: $deep;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     font-family: Europa Bold;
     margin: 0;
 
@@ -74,7 +74,6 @@
     flex-direction: column;
     align-items: center;
     gap: 0rem;
-    // width: 100%;
     overflow: visible;
 
     @include tablet {
@@ -222,6 +221,7 @@
     font-family: Europa Light;
     @include p3;
     color: $deep;
+    background-color: white;
     height: 1.5rem;
     outline: none;
     border: 1px solid rgb(202, 199, 199);
