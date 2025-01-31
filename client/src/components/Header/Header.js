@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./Header.scss";
 import logo from "../../assets/images/n-logo.png";
+import Modal from "../Modal/Modal";
 
 const Header = ({ contactRef, projectsRef }) => {
   const [isActive, setIsActive] = useState(false);
@@ -59,6 +60,7 @@ const Header = ({ contactRef, projectsRef }) => {
   // Animated Hamburger Menu Function
   const toggleHamburger = () => {
     setIsActive(!isActive);
+    document.body.style.overflow = !isActive ? "hidden" : "";
   };
 
   useEffect(() => {
@@ -154,6 +156,13 @@ const Header = ({ contactRef, projectsRef }) => {
           </a>
         </button>
       </div>
+      <Modal
+        isOpen={isActive}
+        onClose={toggleHamburger}
+        scrollToSection={scrollToSection}
+        projectsRef={projectsRef}
+        contactRef={contactRef}
+      />
     </header>
   );
 };
