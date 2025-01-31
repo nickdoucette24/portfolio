@@ -4,6 +4,12 @@
 
 @import "~hamburgers/_sass/hamburgers/hamburgers";
 
+@media (-webkit-min-device-pixel-ratio: 0) {
+  * {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
 html {
   margin: 0;
 }
