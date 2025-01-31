@@ -4,8 +4,8 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  background-color: white;
-  border: 1px solid $deep;
+  background-color: $cloud;
+  border: 1px solid $superhero;
   border-radius: 0.5rem;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   height: fit-content;
@@ -37,7 +37,7 @@
 
   &__title {
     font-family: Zing Lines;
-    color: $deep;
+    color: $orange;
     font-weight: 100;
     margin: 0.5rem 1rem 0 1rem;
     font-size: 3.5rem;
